@@ -105,6 +105,7 @@
     <Compile Include="Datos\ConexionBD.cs" />
     <Compile Include="Datos\UsuarioD.cs" />
     <Compile Include="Logica\UsuarioL.cs" />
+    <Compile Include="Modelo\DatosLoginUser.cs" />
     <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vista\Auth\ControlDatos.Master.cs">
