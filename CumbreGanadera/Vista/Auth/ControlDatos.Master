@@ -1,0 +1,57 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="ControlDatos.master.cs" Inherits="CumbreGanadera.Vista.Auth.ControlDatos" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Cumbre Ganadera</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../Source/CSS/StyleDatos.css" />
+    <link rel="stylesheet" href="../Source/CSS/StyleRegistroCliente.css"
+
+    <asp:ContentPlaceHolder ID="head" runat="server" />
+
+</head>
+
+<body>
+
+    <form id="form1" runat="server">
+
+        <div class="bg-auth">
+
+            <div class="overlay"></div>
+
+            <!-- LOGO -->
+            <div class="brand-container">
+                <div class="brand-icon">
+                    <i class="bi bi-tree"></i>
+                </div>
+
+                <div class="ms-2">
+                    <div class="brand-title">Cumbre Ganadera</div>
+                    <div class="brand-subtitle">
+                        PRODUCCIÓN RESPONSABLE, RESULTADOS CONFIABLES
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTENIDO -->
+            <div class="auth-center">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" />
+            </div>
+
+        </div>
+
+    </form>
+
+</body>
+</html>

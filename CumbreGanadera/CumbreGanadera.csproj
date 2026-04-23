@@ -1,0 +1,237 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B516C710-C7D5-4CDE-8A81-6759A20108A2}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CumbreGanadera</RootNamespace>
+    <AssemblyName>CumbreGanadera</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Vista\Auth\InicioSesion.aspx" />
+    <Content Include="Vista\Auth\RecuperarContraseña.aspx" />
+    <Content Include="Vista\Auth\RegistroCliente.aspx" />
+    <Content Include="Vista\Auth\RestablecerContraseña.aspx" />
+    <Content Include="Vista\Cliente\InicioCliente.aspx" />
+    <Content Include="Vista\Dueño\InicioDueño.aspx" />
+    <Content Include="Vista\Gerente\InicioGerente.aspx" />
+    <Content Include="Vista\Invitado\InicioInvitado.aspx" />
+    <Content Include="Vista\Source\CSS\StyleDatos.css" />
+    <Content Include="Vista\Source\CSS\StyleEstructura.css" />
+    <Content Include="Vista\Source\CSS\StyleRegistroCliente.css" />
+    <Content Include="Vista\Source\Img\Iconos\Logo.png" />
+    <Content Include="Vista\Source\Img\ImagenesCG\ConstraseñaLG.png" />
+    <Content Include="Vista\Source\Img\ImagenesCG\CorreoLG.png" />
+    <Content Include="Vista\Source\Img\ImagenesCG\FondoRC.png" />
+    <Content Include="Vista\Source\Img\ImagenesCG\gradientLG.png" />
+    <Content Include="Vista\Source\Img\ImagenesCG\IconoCampoDocumentoRC.png" />
+    <Content Include="Vista\Source\Img\ImagenesCG\IconoClienteSR.png" />
+    <Content Include="Vista\Source\Img\ImagenesCG\IconoConfirmarContraseñaRC.png" />
+    <Content Include="Vista\Source\Img\ImagenesCG\IconoContraseñaRC.png" />
+    <Content Include="Vista\Source\Img\ImagenesCG\IconoCorreoRC.png" />
+    <Content Include="Vista\Source\Img\ImagenesCG\IconoDireccionRC.png" />
+    <Content Include="Vista\Source\Img\ImagenesCG\IconoDueñoSR.png" />
+    <Content Include="Vista\Source\Img\ImagenesCG\IconoGerenteSR.png" />
+    <Content Include="Vista\Source\Img\ImagenesCG\IconoTelefonoRC.png" />
+    <Content Include="Vista\Source\Img\ImagenesCG\IconoTrabajadorSR.png" />
+    <Content Include="Vista\Source\Img\ImagenesCG\IniciarSesionLG.png" />
+    <Content Include="Vista\Source\Img\ImagenesCG\Logo.png" />
+    <Content Include="Vista\Source\Img\ImagenesCG\FondoDatos.png" />
+    <Content Include="Vista\Source\Img\Perfiles\Cliente\fotoP.jpg" />
+    <Content Include="Vista\Source\JS\ScriptEstructura.js" />
+    <Content Include="Vista\Trabajador\InicioTrabajador.aspx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Datos\UsuarioD.cs" />
+    <Compile Include="Logica\UsuarioL.cs" />
+    <Compile Include="Modelo\Usuario.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vista\Auth\ControlDatos.Master.cs">
+      <DependentUpon>ControlDatos.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Auth\ControlDatos.Master.designer.cs">
+      <DependentUpon>ControlDatos.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Auth\InicioSesion.aspx.cs">
+      <DependentUpon>InicioSesion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Auth\InicioSesion.aspx.designer.cs">
+      <DependentUpon>InicioSesion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Auth\RecuperarContraseña.aspx.cs">
+      <DependentUpon>RecuperarContraseña.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Auth\RecuperarContraseña.aspx.designer.cs">
+      <DependentUpon>RecuperarContraseña.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Auth\RegistroCliente.aspx.cs">
+      <DependentUpon>RegistroCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Auth\RegistroCliente.aspx.designer.cs">
+      <DependentUpon>RegistroCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Auth\RestablecerContraseña.aspx.cs">
+      <DependentUpon>RestablecerContraseña.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Auth\RestablecerContraseña.aspx.designer.cs">
+      <DependentUpon>RestablecerContraseña.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Cliente\InicioCliente.aspx.cs">
+      <DependentUpon>InicioCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Cliente\InicioCliente.aspx.designer.cs">
+      <DependentUpon>InicioCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Dueño\InicioDueño.aspx.cs">
+      <DependentUpon>InicioDueño.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Dueño\InicioDueño.aspx.designer.cs">
+      <DependentUpon>InicioDueño.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Estructura.Master.cs">
+      <DependentUpon>Estructura.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Estructura.Master.designer.cs">
+      <DependentUpon>Estructura.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Gerente\InicioGerente.aspx.cs">
+      <DependentUpon>InicioGerente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Gerente\InicioGerente.aspx.designer.cs">
+      <DependentUpon>InicioGerente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Invitado\InicioInvitado.aspx.cs">
+      <DependentUpon>InicioInvitado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Invitado\InicioInvitado.aspx.designer.cs">
+      <DependentUpon>InicioInvitado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Trabajador\InicioTrabajador.aspx.cs">
+      <DependentUpon>InicioTrabajador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Trabajador\InicioTrabajador.aspx.designer.cs">
+      <DependentUpon>InicioTrabajador.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Vista\Estructura.Master" />
+    <Content Include="Vista\Auth\ControlDatos.Master" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>56480</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:56480/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+</Project>
