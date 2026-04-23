@@ -1,8 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vista/Auth/ControlDatos.Master" AutoEventWireup="true" CodeBehind="RecuperarContraseña.aspx.cs" Inherits="CumbreGanadera.Vista.Auth.RecuperarContraseña" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        <div class="login-card">
+    <div class="login-card">
 
         <!-- TITULO -->
         <h2 class="mb-2 fw-bold">Recuperar Contraseña</h2>
@@ -14,9 +15,9 @@
         <label class="form-label small">Correo electrónico</label>
         <div class="input-icon mb-3">
             <i class="bi bi-envelope"></i>
-            <asp:TextBox ID="txtCorreoRec" runat="server"
-                CssClass="form-control"
-                placeholder="usuario@gmail.com"></asp:TextBox>
+            <asp:TextBox
+                ID="txtCorreoRec" runat="server" CssClass="form-control" TextMode="SingleLine" placeholder="usuario@gmail.com" oninput="this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ ]/g, '')">
+            </asp:TextBox>         
         </div>
 
         <!-- BOTON -->
@@ -26,7 +27,7 @@
 
         <!-- FOOTER -->
         <div class="text-center mt-3 small">
-            <i class="bi bi-arrow-left"></i> Volver al 
+            <i class="bi bi-arrow-left"></i>Volver al 
             <a href="InicioSesion.aspx" class="text-link">inicio de sesión</a>
         </div>
 
