@@ -25,7 +25,8 @@ namespace CumbreGanadera.Datos
                     //Esto evita la Inyeccion SQL ya que solo muestra y almacena los parametros de la consulta de la parte superior
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Email", oDatosUsuario.Email);
-                    cmd.Parameters.AddWithValue("@PasswordUse", oDatosUsuario.PasswordUser);
+                    cmd.Parameters.AddWithValue("@Password", oDatosUsuario.PasswordUser);
+
 
                     using (SqlDataReader dr = cmd.ExecuteReader())
                     {
@@ -35,14 +36,19 @@ namespace CumbreGanadera.Datos
                             {
                                 Id = Convert.ToInt32(dr["ID"]),
                                 Nombre = dr["Nombre"].ToString(),
-                                Apellido = dr["Apellido"].ToString(),
-                                Email = dr["Email"].ToString(),
+                                Apellido = dr["Apellido"].ToString(),                                
                                 Estado = dr["Estado"].ToString(),
                                 //Se debe hacer una instacia para acceder al nombre del rol  ya que este es una objeto en la clase funcionario.
                                 CantidadRoles = Convert.ToInt32(dr["CantidadRoles"].ToString()),
-                                
-                                
-                            };                        }
+
+                                NombreRol = new Rol()
+                                {                                   
+                                    NombreRol = dr["Roles"].ToString()
+                                }
+
+
+                            };
+                        }
 
                     }
                 }

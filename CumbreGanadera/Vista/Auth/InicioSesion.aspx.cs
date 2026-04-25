@@ -24,18 +24,68 @@ namespace CumbreGanadera.Vista.Auth
                 DatosLoginUser oLoginUser = new DatosLoginUser()
                 {
                     Email = txtCorreo.Text,
-                    PasswordUser = txtPassword.Text,
+                    PasswordUser = txtPassword.Text
+
                 };
 
                 UsuarioL oUsuarioL = new UsuarioL();
                 Usuario oUsuarioDatos = oUsuarioL.MtLoginUsuario(oLoginUser);
 
-                //if () 
-                //{
+                int cantidadRoles = oUsuarioDatos.CantidadRoles;
 
-                //}
 
+
+                try
+                {
+                    switch (cantidadRoles)
+                    {
+                        case 1:
+                            Session["SessionUsuario"] = oLoginUser.Email;
+                            Session["Nombre"] = oUsuarioDatos.Nombre + " " + oUsuarioDatos.Apellido;
+                            Session["Rol"] = oUsuarioDatos.NombreRol.NombreRol;
+
+                            if (oUsuarioDatos.NombreRol.NombreRol == "Dueño")
+                            {
+                                Response.Redirect("../Dueño/InicioDueño.aspx");
+                            }
+                            else if (oUsuarioDatos.NombreRol.NombreRol == "Gerente")
+                            {
+                                Response.Redirect("../Gerente/InicioGerente.aspx");
+                            }
+                            else if (oUsuarioDatos.NombreRol.NombreRol == "Trabajador")
+                            {
+                                Response.Redirect("../Trabajador/InicioTrabajador.aspx");
+                            }
+                            else if (oUsuarioDatos.NombreRol.NombreRol == "Cliente")
+                            {
+                                Response.Redirect("../Cliente/InicioCliente.aspx");
+                            }
+
+                            break;
+
+                        case 2:
+                            Response.Redirect("../Auth/SeleccionRol.aspx");
+                            break;
+
+                        case 3:
+                            Response.Redirect("../Auth/SeleccionRol.aspx");
+                            break;
+                        case 4:
+                            Response.Redirect("../Auth/SeleccionRol.aspx");
+                            break;
+                        default:
+                            Session["Usuario"] = oUsuarioDatos;
+                            Response.Redirect("../Admin/IndexAdmin.aspx");
+                            break;
+                    }
+
+                }
+                catch
+                {
+                    
+                }
             }
         }
     }
 }
+

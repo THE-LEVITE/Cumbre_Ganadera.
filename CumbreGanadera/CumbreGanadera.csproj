@@ -71,6 +71,7 @@
     <Content Include="Vista\Auth\RecuperarContraseña.aspx" />
     <Content Include="Vista\Auth\RegistroCliente.aspx" />
     <Content Include="Vista\Auth\RestablecerContraseña.aspx" />
+    <Content Include="Vista\Auth\SeleccionRol.aspx" />
     <Content Include="Vista\Cliente\InicioCliente.aspx" />
     <Content Include="Vista\Dueño\InicioDueño.aspx" />
     <Content Include="Vista\Gerente\InicioGerente.aspx" />
@@ -106,6 +107,7 @@
     <Compile Include="Datos\UsuarioD.cs" />
     <Compile Include="Logica\UsuarioL.cs" />
     <Compile Include="Modelo\DatosLoginUser.cs" />
+    <Compile Include="Modelo\Rol.cs" />
     <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vista\Auth\ControlDatos.Master.cs">
@@ -142,6 +144,13 @@
     </Compile>
     <Compile Include="Vista\Auth\RestablecerContraseña.aspx.designer.cs">
       <DependentUpon>RestablecerContraseña.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Auth\SeleccionRol.aspx.cs">
+      <DependentUpon>SeleccionRol.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Auth\SeleccionRol.aspx.designer.cs">
+      <DependentUpon>SeleccionRol.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vista\Cliente\InicioCliente.aspx.cs">
       <DependentUpon>InicioCliente.aspx</DependentUpon>
