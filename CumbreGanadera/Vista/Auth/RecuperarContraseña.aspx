@@ -16,14 +16,14 @@
         <div class="input-icon mb-3">
             <i class="bi bi-envelope"></i>
             <asp:TextBox
-                ID="txtCorreoRec" runat="server" CssClass="form-control" TextMode="SingleLine" placeholder="usuario@gmail.com" oninput="this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ ]/g, '')">
+                ID="txtCorreoRec" runat="server" CssClass="form-control" TextMode="Email" placeholder="usuario@gmail.com" >
             </asp:TextBox>         
         </div>
 
         <!-- BOTON -->
         <asp:Button ID="btnLogin" runat="server"
             Text="Enviar Instrucciones"
-            CssClass="btn btn-main w-100" />
+            CssClass="btn btn-main w-100" OnClick="btnLogin_Click"/>
 
         <!-- FOOTER -->
         <div class="text-center mt-3 small">

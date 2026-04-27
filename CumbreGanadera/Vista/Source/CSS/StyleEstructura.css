@@ -64,7 +64,7 @@ body {
 /* ========== NAVBAR ========== */
 .custom-navbar {
     border-bottom: 1px solid #037f1b90;
-    background-color: transparent;
+    background-color: #00431a;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -76,14 +76,15 @@ body {
 
 /* ========== BARRA DE BÚSQUEDA ========== */
 .search-group {
-    background-color: #02552d95;
-    border-radius: 20px;
+    background-color: #026b3a; 
+    border-radius: 25px;
     overflow: hidden;
     align-items: center;
+    border: 1px solid #038f4a
 }
 
 .search-input {
-    background-color: transparent;
+    background-color: #026b3a; 
     border: none;
     box-shadow: none;
     height: 40px;
@@ -91,39 +92,43 @@ body {
 }
 
     .search-input:focus {
-        background-color: transparent;
+        background-color: #017a42; 
         box-shadow: none;
         outline: none;
     }
 
     .search-input::placeholder {
-        color: #9aa3af;
+        color: #c0d9cc; 
+        opacity: 0.8;
     }
 
 .btn-lupa {
-    background: transparent;
+    background-color: #026b3a; 
     border: none;
-    color: #8e9aaf;
+    color: white; 
     margin-right: 2px;
     padding: 0;
     display: flex;
     align-items: center;
     cursor: pointer;
-    width: 36px;
+    width: 45px;
     height: 40px;
     justify-content: center;
+    transition: background-color 0.2s ease;
 }
 
 .lupa-icone {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
 }
 
 .btn-lupa:hover {
-    color: #025988;
+    background-color: #028a4a;
+    color: white;
 }
 
 .search-wrapper {
     margin-left: 2rem !important;
+    min-width: 250px; 
 }
 
 /* ========== TEXTOS Y ROLES ========== */
@@ -400,3 +405,12 @@ html {
             background-color: rgb(3, 158, 3) !important;
             transform: scale(0.99);
         }
+
+.btn-lupa {
+    background: transparent;
+    border: none;
+    font-size: 18px;
+}
+
+
+

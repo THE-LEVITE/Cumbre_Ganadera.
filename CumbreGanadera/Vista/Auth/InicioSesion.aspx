@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vista/Auth/ControlDatos.Master" AutoEventWireup="true" CodeBehind="InicioSesion.aspx.cs" Inherits="CumbreGanadera.Vista.Auth.InicioSesion" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">    
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -18,7 +18,7 @@
         <div class="input-icon mb-3">
             <i class="bi bi-envelope"></i>
             <asp:TextBox
-               ID="txtCorreo" runat="server" CssClass="form-control" TextMode="SingleLine" placeholder="usuario@gmail.com"  oninput="this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ ]/g, '')">
+               ID="txtCorreo" runat="server" CssClass="form-control" placeholder="usuario@gmail.com" TextMode="Email">
             </asp:TextBox>           
         </div>
 
@@ -48,7 +48,7 @@
         <!-- BOTON -->
         <asp:Button ID="btnLogin" runat="server"
             Text="Iniciar sesión"
-            CssClass="mt-3 btn btn-main w-100" />
+            CssClass="mt-3 btn btn-main w-100" OnClick="btnLogin_Click" />
 
         <!-- FOOTER -->
         <div class="text-center mt-3 small">

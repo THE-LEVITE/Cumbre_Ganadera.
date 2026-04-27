@@ -40,7 +40,7 @@
                         <label class="form-label">Correo Electrónico</label>
                         <div class="input-icon mb-3">
                             <i class="bi bi-envelope"></i>
-                            <asp:TextBox runat="server" CssClass="form-control" placeholder="ejemplo@gmail.com"></asp:TextBox>
+                            <asp:TextBox runat="server" CssClass="form-control" placeholder="ejemplo@gmail.com" TextMode="Email"></asp:TextBox>
                         </div>
                     </div>
 
