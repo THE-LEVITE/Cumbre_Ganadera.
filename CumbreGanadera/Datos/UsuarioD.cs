@@ -42,7 +42,8 @@ namespace CumbreGanadera.Datos
                                 CantidadRoles = Convert.ToInt32(dr["CantidadRoles"].ToString()),
 
                                 NombreRol = new Rol()
-                                {                                   
+                                {         
+                                    
                                     NombreRol = dr["Roles"].ToString()
                                 }
 

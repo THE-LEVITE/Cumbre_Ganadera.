@@ -9,6 +9,8 @@ namespace CumbreGanadera.Modelo
     {
         public string Email { get; set; }
         public string PasswordUser { get; set; }
+        public string BusquedaProducto { get; set; }
+
 
     }
 }

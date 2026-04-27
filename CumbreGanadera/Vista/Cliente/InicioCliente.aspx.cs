@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using CumbreGanadera.Logica;
+using CumbreGanadera.Modelo;
+using CumbreGanadera.Vista;
 
 namespace CumbreGanadera.Vista.Cliente
 {
@@ -12,6 +15,14 @@ namespace CumbreGanadera.Vista.Cliente
         protected void Page_Load(object sender, EventArgs e)
         {
 
+           
+
+
+
         }
+
+        
+
+
     }
 }

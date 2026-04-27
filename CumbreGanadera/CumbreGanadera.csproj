@@ -72,6 +72,7 @@
     <Content Include="Vista\Auth\RegistroCliente.aspx" />
     <Content Include="Vista\Auth\RestablecerContraseña.aspx" />
     <Content Include="Vista\Auth\SeleccionRol.aspx" />
+    <Content Include="Vista\Cliente\BusquedaProducto.aspx" />
     <Content Include="Vista\Cliente\InicioCliente.aspx" />
     <Content Include="Vista\Dueño\InicioDueño.aspx" />
     <Content Include="Vista\Gerente\InicioGerente.aspx" />
@@ -104,9 +105,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Datos\ConexionBD.cs" />
+    <Compile Include="Datos\ProductoD.cs" />
     <Compile Include="Datos\UsuarioD.cs" />
+    <Compile Include="Logica\ProductoL.cs" />
     <Compile Include="Logica\UsuarioL.cs" />
     <Compile Include="Modelo\DatosLoginUser.cs" />
+    <Compile Include="Modelo\Producto.cs" />
     <Compile Include="Modelo\Rol.cs" />
     <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -151,6 +155,13 @@
     </Compile>
     <Compile Include="Vista\Auth\SeleccionRol.aspx.designer.cs">
       <DependentUpon>SeleccionRol.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Cliente\BusquedaProducto.aspx.cs">
+      <DependentUpon>BusquedaProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Cliente\BusquedaProducto.aspx.designer.cs">
+      <DependentUpon>BusquedaProducto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vista\Cliente\InicioCliente.aspx.cs">
       <DependentUpon>InicioCliente.aspx</DependentUpon>

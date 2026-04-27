@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CumbreGanadera.Logica;
+using CumbreGanadera.Modelo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,5 +15,34 @@ namespace CumbreGanadera.Vista
         {
 
         }
+
+        protected void lbCerrar_Click1(object sender, EventArgs e)
+        {
+            // Lógica para cerrar sesión
+        }
+
+        protected void btnlupa_Click(object sender, EventArgs e)
+        {
+
+
+            if (!string.IsNullOrEmpty(intCampoBusqueda.Text))
+            {
+                // Guardar en sesión
+                Session["TerminoBusqueda"] = intCampoBusqueda.Text;
+
+                // IMPORTANTE: Redirigir a la página de búsqueda, NO a InicioCliente
+                Response.Redirect("~/Vista/Cliente/BusquedaProducto.aspx");
+            }
+            else
+            {
+                // Opcional: Si está vacío, mostrar un mensaje o redirigir con parámetro vacío
+                Session["TerminoBusqueda"] = "";
+                Response.Redirect("~/Vista/Cliente/BusquedaProducto.aspx");
+            }
+
+        }
+
+
+
     }
 }

@@ -31,59 +31,97 @@ namespace CumbreGanadera.Vista.Auth
                 UsuarioL oUsuarioL = new UsuarioL();
                 Usuario oUsuarioDatos = oUsuarioL.MtLoginUsuario(oLoginUser);
 
-                int cantidadRoles = oUsuarioDatos.CantidadRoles;
 
 
 
-                try
+                if (oUsuarioDatos != null)
                 {
-                    switch (cantidadRoles)
+                    int cantidadRoles = oUsuarioDatos.CantidadRoles;
+
+
+
+                    try
                     {
-                        case 1:
-                            Session["SessionUsuario"] = oLoginUser.Email;
-                            Session["Nombre"] = oUsuarioDatos.Nombre + " " + oUsuarioDatos.Apellido;
-                            Session["Rol"] = oUsuarioDatos.NombreRol.NombreRol;
+                        switch (cantidadRoles)
+                        {
+                            case 1:
+                                Session["SessionUsuario"] = oLoginUser.Email;
+                                Session["Nombre"] = oUsuarioDatos.Nombre + " " + oUsuarioDatos.Apellido;
+                                Session["Rol"] = oUsuarioDatos.NombreRol.NombreRol;
 
-                            if (oUsuarioDatos.NombreRol.NombreRol == "Dueño")
-                            {
-                                Response.Redirect("../Dueño/InicioDueño.aspx");
-                            }
-                            else if (oUsuarioDatos.NombreRol.NombreRol == "Gerente")
-                            {
-                                Response.Redirect("../Gerente/InicioGerente.aspx");
-                            }
-                            else if (oUsuarioDatos.NombreRol.NombreRol == "Trabajador")
-                            {
-                                Response.Redirect("../Trabajador/InicioTrabajador.aspx");
-                            }
-                            else if (oUsuarioDatos.NombreRol.NombreRol == "Cliente")
-                            {
-                                Response.Redirect("../Cliente/InicioCliente.aspx");
-                            }
+                                if (oUsuarioDatos.NombreRol.NombreRol == "Dueño")
+                                {
+                                    string mensaje = @"Swal.fire({
+                                icon: 'success',
+                                title: '¡Bienvenid@!',
+                                text: 'Bienvenid@" + oUsuarioDatos.Nombre + " " + oUsuarioDatos.Apellido + " " + oUsuarioDatos.NombreRol.NombreRol + @"',
+                                timer: 2000,
+                                showConfirmButton: false
+                                }).then(() => {
+                                window.location.href = '../Dueño/InicioDueño.aspx';
+                                });";
 
-                            break;
+                                    ClientScript.RegisterStartupScript(this.GetType(), "Acceso", mensaje, true);
+                                }
+                                else if (oUsuarioDatos.NombreRol.NombreRol == "Gerente")
+                                {
+                                    Response.Redirect("../Gerente/InicioGerente.aspx");
+                                }
+                                else if (oUsuarioDatos.NombreRol.NombreRol == "Trabajador")
+                                {
+                                    Response.Redirect("../Trabajador/InicioTrabajador.aspx");
+                                }
+                                else if (oUsuarioDatos.NombreRol.NombreRol == "Cliente")
+                                {
+                                    Response.Redirect("../Cliente/InicioCliente.aspx");
+                                }
 
-                        case 2:
-                            Response.Redirect("../Auth/SeleccionRol.aspx");
-                            break;
+                                break;
 
-                        case 3:
-                            Response.Redirect("../Auth/SeleccionRol.aspx");
-                            break;
-                        case 4:
-                            Response.Redirect("../Auth/SeleccionRol.aspx");
-                            break;
-                        default:
-                            Session["Usuario"] = oUsuarioDatos;
-                            Response.Redirect("../Admin/IndexAdmin.aspx");
-                            break;
+                            case 2:
+                                Response.Redirect("../Auth/SeleccionRol.aspx");
+                                break;
+
+                            case 3:
+                                Response.Redirect("../Auth/SeleccionRol.aspx");
+                                break;
+                            case 4:
+                                Response.Redirect("../Auth/SeleccionRol.aspx");
+                                break;
+                                
+                        }
+
                     }
+                    catch
+                    {
+                        string mensaje4 = @"Swal.fire({
+                    icon: 'error',
+                    title: '¡Error!',
+                    text: 'Sus datos son incorrectos.',
+                    timer: 2000,
+                    showConfirmButton: false
+                    }).then(() => {
+                    window.location.href = '../Auth/InicioSesion.aspx';
+                    });";
 
+                        ClientScript.RegisterStartupScript(this.GetType(), "alert", mensaje4, true);
+                    }
                 }
-                catch
+                else
                 {
-                    
+                    string mensaje4 = @"Swal.fire({
+                    icon: 'error',
+                    title: '¡Error!',
+                    text: 'Sus datos son incorrectos.',
+                    timer: 2000,
+                    showConfirmButton: false
+                    }).then(() => {
+                    window.location.href = '../Auth/InicioSesion.aspx';
+                    });";
+
+                    ClientScript.RegisterStartupScript(this.GetType(), "alert", mensaje4, true);
                 }
+                
             }
         }
     }
