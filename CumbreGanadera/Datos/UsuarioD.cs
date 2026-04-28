@@ -12,15 +12,18 @@ namespace CumbreGanadera.Datos
 {
     public class UsuarioD
     {
+        //Se crea MtLogin en donde recibimos la informacion de los txt o datos usuario
         public Usuario MtLogin(DatosLoginUser oDatosUsuario)
         {
+            //Aca definimos un objeto de usuario con la propiedad null para validarlo despues
             Usuario oUsuario = null;
 
+            //se crea la conexion con su respectivo metodo
             using (SqlConnection cn = ConexionBD.MtAbrirConexion())
             {
                 cn.Open();
+                //Aca llamamos el procedimiento almacenado
                 string consulta = "SP_ValidacionLogin";
-
                 //El objeto Command esta reemplazando al adaptador, permitiendo hacer una conexion y consulta a la base de datos
                 using (SqlCommand cmd = new SqlCommand(consulta, cn))
                 {
@@ -29,24 +32,26 @@ namespace CumbreGanadera.Datos
                     cmd.Parameters.AddWithValue("@Email", oDatosUsuario.Email);
                     cmd.Parameters.AddWithValue("@Password", oDatosUsuario.PasswordUser);
 
-
+                    //Aca lee la consulta de la base de datos 
                     using (SqlDataReader dr = cmd.ExecuteReader())
                     {
                         if (dr.Read())
                         {
                             oUsuario = new Usuario()
                             {
-                                Id = Convert.ToInt32(dr["ID"]),
+                                Id = Convert.ToInt32(dr["Id"]),
                                 Nombre = dr["Nombre"].ToString(),
                                 Apellido = dr["Apellido"].ToString(),
                                 Estado = dr["Estado"].ToString(),
-                                //Se debe hacer una instacia para acceder al nombre del rol  ya que este es una objeto en la clase funcionario.
+                                //cantidadroles almacenara el numero de roles que tiene el usuario 
                                 CantidadRoles = Convert.ToInt32(dr["CantidadRoles"].ToString()),
 
+                                //Se debe hacer una instacia para acceder al nombre del rol  ya que este es una objeto en la clase Usuario
                                 NombreRol = new Rol()
                                 {
 
-                                    NombreRol = dr["Roles"].ToString()
+                                    NombreRol = dr["Roles"].ToString(),
+                                    IdRol = Convert.ToInt32(dr["IdRol"]),
                                 }
 
 
@@ -56,8 +61,10 @@ namespace CumbreGanadera.Datos
                     }
                 }
             }
+            //retornar los datos del usuario
             return oUsuario;
         }
+
         public Usuario MtRecuperarContraseña(string correo)
         {
             Usuario oUser = null;
@@ -72,7 +79,7 @@ namespace CumbreGanadera.Datos
                 {
                     //Esto evita la Inyeccion SQL ya que solo muestra y almacena los parametros de la consulta de la parte superior
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Email", correo);                   
+                    cmd.Parameters.AddWithValue("@Email", correo);
 
 
                     using (SqlDataReader dr = cmd.ExecuteReader())
@@ -93,7 +100,8 @@ namespace CumbreGanadera.Datos
             }
             return oUser;
         }
-    }
+    }    
+
 
 
 }

@@ -1,7 +1,11 @@
-﻿using System;
+﻿using CumbreGanadera.Datos;
+using CumbreGanadera.Logica;
+using CumbreGanadera.Modelo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.DynamicData;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -11,6 +15,72 @@ namespace CumbreGanadera.Vista.Auth
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+        }
+
+        protected void btnRegistrar_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtDocumento.Text) && !string.IsNullOrEmpty(txtNombre.Text) && !string.IsNullOrEmpty(txtApellido.Text) && !string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(txtCiudad.Text))
+            {
+                if (txtPassword.Text == txtConfirmarPassword.Text)
+                {
+                    RegistroUsuario oRegistroUser = new RegistroUsuario()
+                    {
+                        Nombre = txtNombre.Text,
+                        Apellido = txtApellido.Text,
+                        Documento = txtDocumento.Text,
+                        Email = txtEmail.Text,
+                        Telefono = txtTelefono.Text,
+                        Ciudad = txtCiudad.Text,
+                        Password = txtPassword.Text,
+                        FechaNacimiento = DateTime.Parse(txtFechaNacimiento.Text)
+                    };
+
+                    if (oRegistroUser.FechaNacimiento > DateTime.Now)
+                    {
+                        string fecha = @"Swal.fire({
+                                    title: 'La fecha de nacimiento no puede ser mayor a la fecha actual',
+                                    icon: 'error',
+                                    draggable: true
+                                    });";
+                        ClientScript.RegisterStartupScript(this.GetType(), "Acceso", fecha, true);
+                        return;
+                    }
+
+                    RegistroUsuarioL oRegistro = new RegistroUsuarioL();
+                    Usuario oRegistroUsuario = oRegistro.MTRegistro(oRegistroUser);
+
+                    string url = ResolveUrl("/Vista/Auth/InicioSesion.aspx");
+
+                    string script = $@"Swal.fire({{
+                                    icon: 'success',
+                                    title: 'Resgistrado',
+                                    text: 'Sus datos se ha registrado exitosamente',
+                                    timer: 3000,
+                                    showConfirmButton: false
+                                    }}).then(() => {{
+                                    window.location.href = '{url}';
+                                    }});";
+                    ClientScript.RegisterStartupScript(this.GetType(), "Acceso", script, true);
+
+                }
+                else
+                {
+                    string script = @"Swal.fire({
+                                    title: 'Las contraseñas no coinciden',
+                                    icon: 'error',
+                                    draggable: true
+                                    });";
+                    ClientScript.RegisterStartupScript(this.GetType(), "Acceso", script, true);
+
+                }
+            }
+            string script2 = @"Swal.fire({
+                                    title: 'Por favor complete los campos obligatorios',
+                                    icon: 'error',
+                                    draggable: true
+                                    });";
+            ClientScript.RegisterStartupScript(this.GetType(), "Acceso", script2, true);
 
         }
     }

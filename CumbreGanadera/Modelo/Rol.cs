@@ -9,6 +9,7 @@ namespace CumbreGanadera.Modelo
     {
         public int Id { get; set; }
         public string NombreRol { get; set; }
+        public int IdRol { get; set; }
 
     }
 }
