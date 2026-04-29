@@ -11,7 +11,7 @@ namespace CumbreGanadera.Vista.Auth
 {
 
 
-    public partial class SelecionRol
+    public partial class SeleccionRol
     {
 
         /// <summary>
