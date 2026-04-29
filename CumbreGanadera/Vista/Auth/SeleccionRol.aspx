@@ -1,11 +1,11 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vista/Auth/ControlDatos.Master" AutoEventWireup="true" CodeBehind="SeleccionRol.aspx.cs" Inherits="CumbreGanadera.Vista.Auth.SelecionRol" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vista/Auth/ControlDatos.Master" AutoEventWireup="true" CodeBehind="SeleccionRol.aspx.cs" Inherits="CumbreGanadera.Vista.Auth.SeleccionRol" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
-
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -134,7 +134,7 @@
         </div>
     </asp:LinkButton>
     <!-- Trabajador Card -->
-    <asp:LinkButton ID="btnTrabajador" runat="server" CssClass="logincardRol group w-full text-left cursor-pointer transition-all active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary/50 rounded-xl" OnClick="btnTrabajdor_Click">
+    <asp:LinkButton ID="btnTrabajador" runat="server" CssClass="logincardRol group w-full text-left cursor-pointer transition-all active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary/50 rounded-xl" OnClick="btnTrabajador_Click">
         <div class=" group">
             <div class="bg-primary-container/10 flex items-center justify-center group-hover:bg-primary-container transition-colors duration-500 w-10 h-10 rounded-lg">
                 <span class="material-symbols-outlined text-primary group-hover:text-on-primary text-xl" style="font-variation-settings: 'FILL' 1;">precision_manufacturing</span>
