@@ -129,7 +129,7 @@
                                         <asp:Label ID="lblRol" class="textRol" runat="server" Text=""></asp:Label>
 
                                     </div>
-                                    <a class="nav-link p-0" href="#" id="navbarPerfil" role="button">
+                                    <a class="nav-link p-0" href="PerfilCliente.aspx" id="navbarPerfil" role="button">
                                         <img src="../Source/Img/Perfiles/Clientes/fotoP.jpg" alt="Perfil"
                                             class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;">
                                     </a>

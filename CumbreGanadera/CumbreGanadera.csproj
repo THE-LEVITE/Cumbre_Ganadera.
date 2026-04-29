@@ -73,7 +73,11 @@
     <Content Include="Vista\Auth\RestablecerContraseña.aspx" />
     <Content Include="Vista\Auth\SeleccionRol.aspx" />
     <Content Include="Vista\Cliente\BusquedaProducto.aspx" />
+    <Content Include="Vista\Cliente\DatosCliente.aspx" />
+    <Content Include="Vista\Cliente\InformacionPersonal.aspx" />
     <Content Include="Vista\Cliente\InicioCliente.aspx" />
+    <Content Include="Vista\Cliente\PerfilCliente.aspx" />
+    <Content Include="Vista\Cliente\Seguridad.aspx" />
     <Content Include="Vista\Dueño\InicioDueño.aspx" />
     <Content Include="Vista\Gerente\InicioGerente.aspx" />
     <Content Include="Vista\Invitado\InicioInvitado.aspx" />
@@ -169,12 +173,40 @@
     <Compile Include="Vista\Cliente\BusquedaProducto.aspx.designer.cs">
       <DependentUpon>BusquedaProducto.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Vista\Cliente\DatosCliente.aspx.cs">
+      <DependentUpon>DatosCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Cliente\DatosCliente.aspx.designer.cs">
+      <DependentUpon>DatosCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Cliente\InformacionPersonal.aspx.cs">
+      <DependentUpon>InformacionPersonal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Cliente\InformacionPersonal.aspx.designer.cs">
+      <DependentUpon>InformacionPersonal.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vista\Cliente\InicioCliente.aspx.cs">
       <DependentUpon>InicioCliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Vista\Cliente\InicioCliente.aspx.designer.cs">
       <DependentUpon>InicioCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Cliente\PerfilCliente.aspx.cs">
+      <DependentUpon>PerfilCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Cliente\PerfilCliente.aspx.designer.cs">
+      <DependentUpon>PerfilCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Cliente\Seguridad.aspx.cs">
+      <DependentUpon>Seguridad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Cliente\Seguridad.aspx.designer.cs">
+      <DependentUpon>Seguridad.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vista\Dueño\InicioDueño.aspx.cs">
       <DependentUpon>InicioDueño.aspx</DependentUpon>
@@ -204,6 +236,13 @@
     <Compile Include="Vista\Invitado\InicioInvitado.aspx.designer.cs">
       <DependentUpon>InicioInvitado.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Vista\Perfiles.Master.cs">
+      <DependentUpon>Perfiles.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Perfiles.Master.designer.cs">
+      <DependentUpon>Perfiles.Master</DependentUpon>
+    </Compile>
     <Compile Include="Vista\Trabajador\InicioTrabajador.aspx.cs">
       <DependentUpon>InicioTrabajador.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -216,6 +255,7 @@
     <None Include="packages.config" />
     <Content Include="Vista\Estructura.Master" />
     <Content Include="Vista\Auth\ControlDatos.Master" />
+    <Content Include="Vista\Perfiles.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

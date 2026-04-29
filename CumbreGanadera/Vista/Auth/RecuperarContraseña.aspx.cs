@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Net.Mail;
-using System.Net;
+using System.Net;   
 using CumbreGanadera.Logica;
 using CumbreGanadera.Modelo;
 
@@ -27,7 +27,7 @@ namespace CumbreGanadera.Vista.Auth
 
             if (usuario == null)
             {
-                Console.WriteLine("El correo no existe");
+                Response.Write("El correo no existe");
                 return;
             }
 

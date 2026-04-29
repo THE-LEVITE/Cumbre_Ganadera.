@@ -31,5 +31,14 @@ namespace CumbreGanadera.Logica
             return oPass;
         }
 
+        private UsuarioD datos = new UsuarioD();
+        // Método que expone la obtención de un usuario por Id.
+        // No agrega validación extra, solo delega.
+        private UsuarioD usuarioD = new UsuarioD();
+
+        public Usuario ObtenerPorId(int id) => usuarioD.ObtenerPorId(id);
+        public bool ActualizarUsuario(Usuario usuario) => usuarioD.ActualizarUsuario(usuario);
+        
+        
     }
 }

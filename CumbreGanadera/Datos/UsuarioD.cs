@@ -99,9 +99,79 @@ namespace CumbreGanadera.Datos
                 }
             }
             return oUser;
+       }
+       
+    
+
+
+
+
+
+    public Usuario ObtenerPorId(int id)
+        {
+            Usuario usuario = null;
+            using (SqlConnection cn = ConexionBD.MtAbrirConexion()) // Se espera que la conexión ya esté abierta
+            {
+                cn.Open();
+                // Se usa el nombre del procedimiento almacenado
+                string sql = "sp_ObtenerPorId";
+                using (SqlCommand cmd = new SqlCommand(sql, cn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;  // ← Importante
+                    cmd.Parameters.AddWithValue("@Id", id);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            usuario = new Usuario();
+                            usuario.Id = Convert.ToInt32(reader["Id"]);
+                            usuario.Nombre = reader["Nombre"].ToString();
+                            usuario.Apellido = reader["Apellido"].ToString();
+                            usuario.Documento = reader["Documento"].ToString();
+                            usuario.Email = reader["Email"].ToString();
+                            usuario.Telefono = reader["Telefono"] == DBNull.Value ? "" : reader["Telefono"].ToString();
+                            usuario.FechaNacimiento = reader["FechaNacimiento"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["FechaNacimiento"]);
+                            usuario.Password = reader["PasswordUser"].ToString();
+                            usuario.Estado = reader["Estado"].ToString();
+                        }
+                    }
+                }
+            }
+            return usuario;
         }
-    }    
 
 
 
+
+        // Actualizar datos personales (UPDATE, usa ExecuteNonQuery)
+        public bool ActualizarUsuario(Usuario usuario)
+        {
+            using (SqlConnection cn = ConexionBD.MtAbrirConexion()) // conexión abierta
+            {
+                cn.Open();
+                string sql = "sp_ActualizarUsuario"; // nombre del procedimiento almacenado
+                using (SqlCommand cmd = new SqlCommand(sql, cn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Agregar parámetros con tipo explícito (mejor que AddWithValue)
+                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = usuario.Id;
+                    cmd.Parameters.Add("@Nombres", SqlDbType.NVarChar, 100).Value = (object)usuario.Nombre ?? DBNull.Value;
+                    cmd.Parameters.Add("@Apellidos", SqlDbType.NVarChar, 100).Value = (object)usuario.Apellido ?? DBNull.Value;
+                    cmd.Parameters.Add("@Identificacion", SqlDbType.NVarChar, 50).Value = (object)usuario.Documento ?? DBNull.Value;
+                    cmd.Parameters.Add("@Email", SqlDbType.NVarChar, 100).Value = (object)usuario.Email ?? DBNull.Value;
+                    cmd.Parameters.Add("@Telefono", SqlDbType.NVarChar, 20).Value = (object)usuario.Telefono ?? DBNull.Value;
+                    cmd.Parameters.Add("@FechaNacimiento", SqlDbType.Date).Value = (object)usuario.FechaNacimiento ?? DBNull.Value;
+
+
+                    int filas = cmd.ExecuteNonQuery();
+                    return filas > 0;
+                }
+            }
+
+
+
+        }
+    }
 }

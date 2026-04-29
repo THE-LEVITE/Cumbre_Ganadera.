@@ -43,6 +43,7 @@ namespace CumbreGanadera.Vista.Auth
                         {
                             case 1:
                                 //hacemos las variables de sesion par almacenar valores del usuario
+                                Session["Id"] = oUsuarioDatos.Id;
                                 Session["SessionUsuario"] = oLoginUser.Email;
                                 Session["Nombre"] = oUsuarioDatos.Nombre + " " + oUsuarioDatos.Apellido;
                                 Session["Rol"] = oUsuarioDatos.NombreRol.NombreRol;

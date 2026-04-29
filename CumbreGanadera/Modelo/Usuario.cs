@@ -17,7 +17,7 @@ namespace CumbreGanadera.Modelo
         public string Password { get; set; }
         public string Documento { get; set; }
         public string Ciudad { get; set; }
-        public DateTime FechaNacimiento { get; set; }
+        public DateTime? FechaNacimiento { get; set; }
         public string Telefono { get; set; }
         public DateTime FechaIngreso { get; set; }
 
