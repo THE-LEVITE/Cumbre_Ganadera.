@@ -30,115 +30,90 @@ namespace CumbreGanadera.Vista.Auth
                 //creamos un nuevo objeto de oUsuariosL 
                 UsuarioL oUsuarioL = new UsuarioL();
                 //instanciamos un objeto de tipo usuario y le asignamos la informacion del MtLoginUsuario
-                Usuario oUsuarioDatos = oUsuarioL.MtLoginUsuario(oLoginUser);
+                List<Usuario> lUsuarioDatos = oUsuarioL.MtLoginUsuario(oLoginUser);
                 //Se hace una condicion por si el objeto llega null
-                if (oUsuarioDatos != null)
+                var roles = lUsuarioDatos.Select(u => u.NombreRol.NombreRol).ToList();
+                Session["listausuarios"] = roles;
+                if (lUsuarioDatos != null)
                 {
-                    //hacemos una variable de cantidad roles que va a almacenar el valor de los roles que tiene cada usuario
-                    int cantidadRoles = oUsuarioDatos.CantidadRoles;
-                    try
-                    //se realiza un try catch y un swich para ejecutar el codigo y captar errores 
+                    if (lUsuarioDatos.Count > 1)
                     {
-                        switch (cantidadRoles)
+                        Usuario oUsuario = lUsuarioDatos.FirstOrDefault();
+
+                        Session["Id"] = oUsuario.Id;
+                        Session["Nombre"] = oUsuario.Nombre + " " + oUsuario.Apellido;
+                        Response.Redirect("~/Vista/Auth/SeleccionRol.aspx");
+                    }
+                    else
+                    {
+                        Session["SessionUsuario"] = oLoginUser.Email;
+
+                        Usuario oUsuario = lUsuarioDatos.FirstOrDefault();
+
+                        Session["Id"] = oUsuario.Id;
+                        Session["Nombre"] = oUsuario.Nombre + " " + oUsuario.Apellido;
+                        Session["Rol"] = oUsuario.NombreRol.NombreRol;
+                        Session["IdRol"] = oUsuario.NombreRol.IdRol;
+
+                        if (oUsuario.NombreRol.NombreRol == "Dueño")
                         {
-                            case 1:
-                                //hacemos las variables de sesion par almacenar valores del usuario
-                                Session["Id"] = oUsuarioDatos.Id;
-                                Session["SessionUsuario"] = oLoginUser.Email;
-                                Session["Nombre"] = oUsuarioDatos.Nombre + " " + oUsuarioDatos.Apellido;
-                                Session["Rol"] = oUsuarioDatos.NombreRol.NombreRol;
-                                Session["IdRol"] = oUsuarioDatos.NombreRol.IdRol;
-                                
+                            string mensaje = @"Swal.fire({
+                        icon: 'success',
+                        title: '¡Bienvenid@!',
+                        text: 'Bienvenid@ " + oUsuario.Nombre + " " + oUsuario.Apellido + " - " + oUsuario.NombreRol.NombreRol + @"',
+                        timer: 2000,
+                        showConfirmButton: false
+                        }).then(() => {
+                        window.location.href = '../Dueño/InicioDueño.aspx';
+                        });";
 
-                                if (oUsuarioDatos.NombreRol.NombreRol == "Dueño")
-                                {
-                                    string mensaje = @"Swal.fire({
-                                icon: 'success',
-                                title: '¡Bienvenid@!',
-                                text: 'Bienvenid@ " + oUsuarioDatos.Nombre + " " + oUsuarioDatos.Apellido + " - " + oUsuarioDatos.NombreRol.NombreRol + @"',
-                                timer: 2000,
-                                showConfirmButton: false
-                                }).then(() => {
-                                window.location.href = '../Dueño/InicioDueño.aspx';
-                                });";
-
-                                    ClientScript.RegisterStartupScript(this.GetType(), "Acceso", mensaje, true);
-                                }
-                                else if (oUsuarioDatos.NombreRol.NombreRol == "Gerente")
-                                {
-                                    string mensaje = @"Swal.fire({
-                                icon: 'success',
-                                title: '¡Bienvenid@!',
-                                text: 'Bienvenid@ " + oUsuarioDatos.Nombre + " " + oUsuarioDatos.Apellido + " - " + oUsuarioDatos.NombreRol.NombreRol + @"',
-                                timer: 2000,
-                                showConfirmButton: false
-                                }).then(() => {
-                                window.location.href = '../Gerente/InicioGerente.aspx';
-                                });";
-
-                                    ClientScript.RegisterStartupScript(this.GetType(), "Acceso", mensaje, true);
-                                }
-                                else if (oUsuarioDatos.NombreRol.NombreRol == "Trabajador")
-                                {
-                                    string mensaje = @"Swal.fire({
-                                icon: 'success',
-                                title: '¡Bienvenid@!',
-                                text: 'Bienvenid@ " + oUsuarioDatos.Nombre + " " + oUsuarioDatos.Apellido + " - " + oUsuarioDatos.NombreRol.NombreRol + @"',
-                                timer: 2000,
-                                showConfirmButton: false
-                                }).then(() => {
-                                window.location.href = '../Trabajador/InicioTrabajador.aspx';
-                                });";
-
-                                    ClientScript.RegisterStartupScript(this.GetType(), "Acceso", mensaje, true);
-                                }
-                                else if (oUsuarioDatos.NombreRol.NombreRol == "Cliente")
-                                {
-                                    string mensaje = @"Swal.fire({
-                                icon: 'success',
-                                title: '¡Bienvenid@!',
-                                text: 'Bienvenid@ " + oUsuarioDatos.Nombre + " " + oUsuarioDatos.Apellido + " - " + oUsuarioDatos.NombreRol.NombreRol + @"',
-                                timer: 2000,
-                                showConfirmButton: false
-                                }).then(() => {
-                                window.location.href = '../Cliente/InicioCliente.aspx';
-                                });";
-
-                                    ClientScript.RegisterStartupScript(this.GetType(), "Acceso", mensaje, true);
-                                }
-                                break;
-
-                            case 2:
-                                Response.Redirect("../Auth/SeleccionRol.aspx");
-                                break;
-
-                            case 3:
-                                Response.Redirect("../Auth/SeleccionRol.aspx");
-                                break;
-                            case 4:
-                                Response.Redirect("../Auth/SeleccionRol.aspx");
-                                break;
+                            ClientScript.RegisterStartupScript(this.GetType(), "Acceso", mensaje, true);
                         }
+                        else if (oUsuario.NombreRol.NombreRol == "Gerente")
+                        {
+                            string mensaje = @"Swal.fire({
+                        icon: 'success',
+                        title: '¡Bienvenid@!',
+                        text: 'Bienvenid@ " + oUsuario.Nombre + " " + oUsuario.Apellido + " - " + oUsuario.NombreRol.NombreRol + @"',
+                        timer: 2000,
+                        showConfirmButton: false
+                        }).then(() => {
+                        window.location.href = '../Gerente/InicioGerente.aspx';
+                        });";
 
-                    }
-                    catch
-                    {
-                        string mensaje4 = @"Swal.fire({
-                    icon: 'error',
-                    title: '¡Error!',
-                    text: 'Ocurrio un problema inesperado.',
-                    timer: 2000,
-                    showConfirmButton: false
-                    }).then(() => {
-                    window.location.href = '../Auth/InicioSesion.aspx';
-                    });";
+                            ClientScript.RegisterStartupScript(this.GetType(), "Acceso", mensaje, true);
+                        }
+                        else if (oUsuario.NombreRol.NombreRol == "Trabajador")
+                        {
+                            string mensaje = @"Swal.fire({
+                        icon: 'success',
+                        title: '¡Bienvenid@!',
+                        text: 'Bienvenid@ " + oUsuario.Nombre + " " + oUsuario.Apellido + " - " + oUsuario.NombreRol.NombreRol + @"',
+                        timer: 2000,
+                        showConfirmButton: false
+                        }).then(() => {
+                        window.location.href = '../Trabajador/InicioTrabajador.aspx';
+                        });";
 
-                        ClientScript.RegisterStartupScript(this.GetType(), "alert", mensaje4, true);
-                    }
-                }
-                else
-                {
-                    string mensaje4 = @"Swal.fire({
+                            ClientScript.RegisterStartupScript(this.GetType(), "Acceso", mensaje, true);
+                        }
+                        else if (oUsuario.NombreRol.NombreRol == "Cliente")
+                        {
+                            string mensaje = @"Swal.fire({
+                        icon: 'success',
+                        title: '¡Bienvenid@!',
+                        text: 'Bienvenid@ " + oUsuario.Nombre + " " + oUsuario.Apellido + " - " + oUsuario.NombreRol.NombreRol + @"',
+                        timer: 2000,
+                        showConfirmButton: false
+                        }).then(() => {
+                        window.location.href = '../Cliente/InicioCliente.aspx';
+                        });";
+
+                            ClientScript.RegisterStartupScript(this.GetType(), "Acceso", mensaje, true);
+                        }
+                        else
+                        {
+                            string mensaje4 = @"Swal.fire({
                     icon: 'error',
                     title: '¡Error!',
                     text: 'Sus datos son incorrectos.',
@@ -147,11 +122,13 @@ namespace CumbreGanadera.Vista.Auth
                     }).then(() => {
                     window.location.href = '../Auth/InicioSesion.aspx';
                     });";
-                    ClientScript.RegisterStartupScript(this.GetType(), "alert", mensaje4, true);
+                            ClientScript.RegisterStartupScript(this.GetType(), "alert", mensaje4, true);
 
-                  
+
+                        }
+                    }
+
                 }
-
             }
         }
     }

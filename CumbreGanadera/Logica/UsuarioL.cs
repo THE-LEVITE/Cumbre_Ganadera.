@@ -13,12 +13,12 @@ namespace CumbreGanadera.Logica
         UsuarioD oUsuarioD = new UsuarioD();
 
         //Se crea un nuevo metodo con la clase Usuario llamando los datos de password y email
-        public Usuario MtLoginUsuario(DatosLoginUser oUsuario)
+        public List<Usuario> MtLoginUsuario(DatosLoginUser oUsuario)
         {
             //Asignamos a oUser el retorno de UsuarioD
-            Usuario oUser = oUsuarioD.MtLogin(oUsuario);
+            List<Usuario> ltUser = oUsuarioD.MtLogin(oUsuario);
             //Se retorna los datos del usuario
-            return oUser;
+            return ltUser;
 
         }
 

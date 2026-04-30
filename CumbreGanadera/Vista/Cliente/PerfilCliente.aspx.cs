@@ -15,9 +15,7 @@ namespace CumbreGanadera.Vista.Cliente
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Quita o comenta las líneas de prueba
-            // Response.Write("Sesión ID: " + Session["IdUsuario"]);
-            // Response.End();
+            
 
             if (Session["Id"] == null)
             {
@@ -31,10 +29,7 @@ namespace CumbreGanadera.Vista.Cliente
             }
         }
 
-        //private void RedirigirLogin()
-        //{
-        //    Response.Redirect("~/Vista/Auth/InicioSesion.aspx");
-        //}
+       
 
         private void CargarPerfil()
         {

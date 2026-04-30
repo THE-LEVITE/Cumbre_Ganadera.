@@ -53,7 +53,7 @@
         <!-- FOOTER -->
         <div class="text-center mt-3 small">
             ¿No tienes cuenta?
-            <a href="#" class="text-link">Regístrate</a>
+            <a href="RegistroCliente.aspx" class="text-link">Regístrate</a>
         </div>
 
     </div>
