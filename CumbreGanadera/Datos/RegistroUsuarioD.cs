@@ -15,17 +15,17 @@ namespace CumbreGanadera.Datos
     {
         public Usuario MTRegistro(RegistroUsuario oRegistro)
         {
-            Usuario oRegistroUser = null;
-
             using (SqlConnection cn = ConexionBD.MtAbrirConexion())
             {
                 cn.Open();
 
                 string procedimiento = "sp_InsertarRegistro";
+                int resultado = 0;
 
                 using (SqlCommand cmd = new SqlCommand(procedimiento, cn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
+
                     cmd.Parameters.AddWithValue("@Nombre", oRegistro.Nombre);
                     cmd.Parameters.AddWithValue("@Apellido", oRegistro.Apellido);
                     cmd.Parameters.AddWithValue("@Documento", oRegistro.Documento);
@@ -38,32 +38,18 @@ namespace CumbreGanadera.Datos
                     cmd.Parameters.AddWithValue("@Ciudad", oRegistro.Ciudad);
                     cmd.Parameters.AddWithValue("@Rol", 4);
 
+                    resultado = Convert.ToInt32(cmd.ExecuteScalar());
+                }
 
-
-                    using (SqlDataReader dr = cmd.ExecuteReader())
-                    {
-                        if (dr.Read())
-                        {
-                            oRegistroUser = new Usuario()
-                            {
-                                Id = Convert.ToInt32(dr["Id"]),
-                                Documento = dr["Documento"].ToString(),
-                                Nombre = dr["Nombre"].ToString(),
-                                Apellido = dr["Apellido"].ToString(),
-                                Email = dr["Email"].ToString(),
-                                Ciudad = dr["Ciudad"].ToString(),
-                                FechaNacimiento = Convert.ToDateTime(dr["FechaNacimiento"]),
-                                Telefono = dr["Telefono"].ToString(),
-                                FechaIngreso = Convert.ToDateTime(dr["FechaIngreso"]),
-                                Estado = dr["Estado"].ToString()
-
-                            };
-                        }
-                    }
+                if (resultado == -1)
+                {
+                    return null;
+                }
+                else
+                {
+                    return new Usuario() { Id = resultado };
                 }
             }
-            return oRegistroUser;
-
         }
 
     }
