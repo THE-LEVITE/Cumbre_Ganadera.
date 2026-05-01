@@ -39,11 +39,11 @@ namespace CumbreGanadera.Vista.Auth
                     if (oRegistroUser.FechaNacimiento > DateTime.Now)
                     {
                         string fecha = @"Swal.fire({
-                                    title: 'La fecha de nacimiento no puede ser mayor a la fecha actual',
-                                    icon: 'error',
-                                    draggable: true
-                                    });";
-                        ClientScript.RegisterStartupScript(this.GetType(), "Acceso", fecha, true);
+                        title: 'La fecha de nacimiento no puede ser mayor a la fecha actual',
+                        icon: 'error'
+                        });";
+
+                        ClientScript.RegisterStartupScript(this.GetType(), "fecha", fecha, true);
                         return;
                     }
 
@@ -52,35 +52,50 @@ namespace CumbreGanadera.Vista.Auth
 
                     string url = ResolveUrl("/Vista/Auth/InicioSesion.aspx");
 
-                    string script = $@"Swal.fire({{
-                                    icon: 'success',
-                                    title: 'Resgistrado',
-                                    text: 'Sus datos se ha registrado exitosamente',
-                                    timer: 3000,
-                                    showConfirmButton: false
-                                    }}).then(() => {{
-                                    window.location.href = '{url}';
-                                    }});";
-                    ClientScript.RegisterStartupScript(this.GetType(), "Acceso", script, true);
+                    if (oRegistroUsuario != null)
+                    {
+                        string script = $@"Swal.fire({{
+                        icon: 'success',
+                        title: 'Registrado',
+                        text: 'Sus datos se han registrado exitosamente',
+                        timer: 3000,
+                        showConfirmButton: false
+                        }}).then(() => {{
+                        window.location.href = '{url}';
+                        }});";
 
+                        ClientScript.RegisterStartupScript(this.GetType(), "success", script, true);
+                    }
+                    else
+                    {
+                        string script = @"Swal.fire({
+                        title: 'Error al registrar',
+                        icon: 'error',
+                        text: 'El usuario ya está registrado'
+                        });";
+
+                        ClientScript.RegisterStartupScript(this.GetType(), "error", script, true);
+                    }
                 }
                 else
                 {
                     string script = @"Swal.fire({
-                                    title: 'Las contraseñas no coinciden',
-                                    icon: 'error',
-                                    draggable: true
-                                    });";
-                    ClientScript.RegisterStartupScript(this.GetType(), "Acceso", script, true);
+                    title: 'Las contraseñas no coinciden',
+                    icon: 'error'
+                    });";
 
+                    ClientScript.RegisterStartupScript(this.GetType(), "pass", script, true);
                 }
             }
-            string script2 = @"Swal.fire({
-                                    title: 'Por favor complete los campos obligatorios',
-                                    icon: 'error',
-                                    draggable: true
-                                    });";
-            ClientScript.RegisterStartupScript(this.GetType(), "Acceso", script2, true);
+            else
+            {
+                string script2 = @"Swal.fire({
+                title: 'Por favor complete los campos obligatorios',
+                icon: 'error'
+                });";
+
+                ClientScript.RegisterStartupScript(this.GetType(), "campos", script2, true);
+            }
 
         }
     }

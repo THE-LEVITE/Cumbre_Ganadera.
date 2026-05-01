@@ -1,13 +1,14 @@
-﻿using CumbreGanadera.Modelo;
-using CumbreGanadera.Logica;
+﻿using CumbreGanadera.Logica;
+using CumbreGanadera.Modelo;
+using Microsoft.Win32;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Web;
-using System.CodeDom;
 using System.Runtime.Remoting.Metadata;
+using System.Web;
 
 namespace CumbreGanadera.Datos
 {
@@ -23,8 +24,12 @@ namespace CumbreGanadera.Datos
 
                 string procedimiento = "sp_InsertarRegistro";
 
+                int resultado = 0;
+
                 using (SqlCommand cmd = new SqlCommand(procedimiento, cn))
                 {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Nombre", oRegistro.Nombre);
                     cmd.Parameters.AddWithValue("@Apellido", oRegistro.Apellido);
@@ -38,33 +43,20 @@ namespace CumbreGanadera.Datos
                     cmd.Parameters.AddWithValue("@Ciudad", oRegistro.Ciudad);
                     cmd.Parameters.AddWithValue("@Rol", 4);
 
+                    resultado = Convert.ToInt32(cmd.ExecuteScalar());
 
-
-                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    if (resultado == -1)
                     {
-                        if (dr.Read())
-                        {
-                            oUsuario = new Usuario()
-                            {
-                                Id = Convert.ToInt32(dr["Id"]),
-                                Documento = dr["Documento"].ToString(),
-                                Nombre = dr["Nombre"].ToString(),
-                                Apellido = dr["Apellido"].ToString(),
-                                Email = dr["Email"].ToString(),
-                                Ciudad = dr["Ciudad"].ToString(),
-                                FechaNacimiento = Convert.ToDateTime(dr["FechaNacimiento"]),
-                                Telefono = dr["Telefono"].ToString(),
-                                FechaIngreso = Convert.ToDateTime(dr["FechaIngreso"]),
-                                Estado = dr["Estado"].ToString()
-
-                            };
-                        }
+                        return null; // usuario ya existe
+                    }
+                    else
+                    {
+                        return new Usuario() { Id = resultado };
                     }
                 }
             }
             return oUsuario;
 
         }
-
     }
 }
