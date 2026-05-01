@@ -52,16 +52,29 @@ namespace CumbreGanadera.Vista.Auth
 
                     string url = ResolveUrl("/Vista/Auth/InicioSesion.aspx");
 
-                    string script = $@"Swal.fire({{
+                    if (oRegistroUsuario != null)
+                    {
+                        string script = $@"Swal.fire({{
                                     icon: 'success',
                                     title: 'Resgistrado',
-                                    text: 'Sus datos se ha registrado exitosamente',
+                                    text: 'Sus datos se han registrado exitosamente',
                                     timer: 3000,
                                     showConfirmButton: false
                                     }}).then(() => {{
                                     window.location.href = '{url}';
                                     }});";
-                    ClientScript.RegisterStartupScript(this.GetType(), "Acceso", script, true);
+                        ClientScript.RegisterStartupScript(this.GetType(), "Acceso", script, true);
+                    }
+                    else 
+                    {
+                        string script = @"Swal.fire({
+                                    title: 'Error',
+                                    text: 'Los datos ingresados ya han sido registrados',
+                                    icon: 'error',
+                                    draggable: true
+                                    });";
+                        ClientScript.RegisterStartupScript(this.GetType(), "Acceso", script, true);
+                    }
 
                 }
                 else

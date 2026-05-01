@@ -15,7 +15,7 @@ namespace CumbreGanadera.Datos
     {
         public Usuario MTRegistro(RegistroUsuario oRegistro)
         {
-            Usuario oUsuario = null;
+            Usuario oRegistroUser = null;
 
             using (SqlConnection cn = ConexionBD.MtAbrirConexion())
             {
@@ -44,7 +44,7 @@ namespace CumbreGanadera.Datos
                     {
                         if (dr.Read())
                         {
-                            oUsuario = new Usuario()
+                            oRegistroUser = new Usuario()
                             {
                                 Id = Convert.ToInt32(dr["Id"]),
                                 Documento = dr["Documento"].ToString(),
@@ -62,7 +62,7 @@ namespace CumbreGanadera.Datos
                     }
                 }
             }
-            return oUsuario;
+            return oRegistroUser;
 
         }
 
