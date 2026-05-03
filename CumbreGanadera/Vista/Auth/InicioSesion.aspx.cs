@@ -44,7 +44,7 @@ namespace CumbreGanadera.Vista.Auth
                         Session["Nombre"] = oUsuario.Nombre + " " + oUsuario.Apellido;
                         Response.Redirect("~/Vista/Auth/SeleccionRol.aspx");
                     }
-                    else
+                    else if(lUsuarioDatos.Count == 1)
                     {
                         Session["SessionUsuario"] = oLoginUser.Email;
 
@@ -111,9 +111,11 @@ namespace CumbreGanadera.Vista.Auth
 
                             ClientScript.RegisterStartupScript(this.GetType(), "Acceso", mensaje, true);
                         }
-                        else
-                        {
-                            string mensaje4 = @"Swal.fire({
+                        
+                    }
+                    else
+                    {
+                        string mensaje4 = @"Swal.fire({
                     icon: 'error',
                     title: '¡Error!',
                     text: 'Sus datos son incorrectos.',
@@ -122,10 +124,7 @@ namespace CumbreGanadera.Vista.Auth
                     }).then(() => {
                     window.location.href = '../Auth/InicioSesion.aspx';
                     });";
-                            ClientScript.RegisterStartupScript(this.GetType(), "alert", mensaje4, true);
-
-
-                        }
+                        ClientScript.RegisterStartupScript(this.GetType(), "alert", mensaje4, true);
                     }
 
                 }

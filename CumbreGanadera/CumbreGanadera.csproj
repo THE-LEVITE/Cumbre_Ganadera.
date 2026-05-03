@@ -74,6 +74,7 @@
     <Content Include="Vista\Auth\SeleccionRol.aspx" />
     <Content Include="Vista\Cliente\BusquedaProducto.aspx" />
     <Content Include="Vista\Cliente\DatosCliente.aspx" />
+    <Content Include="Vista\Cliente\Historial.aspx" />
     <Content Include="Vista\Cliente\InformacionPersonal.aspx" />
     <Content Include="Vista\Cliente\InicioCliente.aspx" />
     <Content Include="Vista\Cliente\PerfilCliente.aspx" />
@@ -81,6 +82,7 @@
     <Content Include="Vista\Dueño\InicioDueño.aspx" />
     <Content Include="Vista\Gerente\InicioGerente.aspx" />
     <Content Include="Vista\Invitado\InicioInvitado.aspx" />
+    <Content Include="Vista\Source\CSS\StyleCliente.css" />
     <Content Include="Vista\Source\CSS\StyleDatos.css" />
     <Content Include="Vista\Source\CSS\StyleEstructura.css" />
     <Content Include="Vista\Source\CSS\StyleRegistroCliente.css" />
@@ -102,6 +104,8 @@
     <Content Include="Vista\Source\Img\ImagenesCG\IniciarSesionLG.png" />
     <Content Include="Vista\Source\Img\ImagenesCG\Logo.png" />
     <Content Include="Vista\Source\Img\ImagenesCG\FondoDatos.png" />
+    <Content Include="Vista\Source\Img\ImgProductos\LecheCasera.png" />
+    <Content Include="Vista\Source\Img\ImgProductos\Vaca.png" />
     <Content Include="Vista\Source\Img\Perfiles\Cliente\fotoP.jpg" />
     <Content Include="Vista\Source\JS\ScriptEstructura.js" />
     <Content Include="Vista\Trabajador\InicioTrabajador.aspx" />
@@ -117,6 +121,7 @@
     <Compile Include="Logica\ProductoL.cs" />
     <Compile Include="Logica\RegistroUsuarioL.cs" />
     <Compile Include="Logica\UsuarioL.cs" />
+    <Compile Include="Modelo\Compra.cs" />
     <Compile Include="Modelo\DatosLoginUser.cs" />
     <Compile Include="Modelo\MenuM.cs" />
     <Compile Include="Modelo\Producto.cs" />
@@ -179,6 +184,13 @@
     </Compile>
     <Compile Include="Vista\Cliente\DatosCliente.aspx.designer.cs">
       <DependentUpon>DatosCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Cliente\Historial.aspx.cs">
+      <DependentUpon>Historial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Cliente\Historial.aspx.designer.cs">
+      <DependentUpon>Historial.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vista\Cliente\InformacionPersonal.aspx.cs">
       <DependentUpon>InformacionPersonal.aspx</DependentUpon>
