@@ -37,13 +37,11 @@ namespace CumbreGanadera.Vista.Cliente
             Usuario usuario = usuarioL.ObtenerPorId(Id);
             if (usuario != null)
             {
-                lblNombreCompleto.Text = $"{usuario.Nombre} {usuario.Apellido}";  // ← muestra el nombre real
+                lblNombreCompleto.Text = $"{usuario.Nombre} {usuario.Apellido}";  
             }
             else
             {
-                // Si no se encuentra el usuario, cerrar sesión
-                Session.Clear();
-               
+                Session.Clear();               
             }
         }
 

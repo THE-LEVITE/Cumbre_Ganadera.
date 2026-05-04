@@ -31,9 +31,8 @@ namespace CumbreGanadera.Vista.Cliente
             if (usuario != null)
             {
                 txtEmail.Text = usuario.Email;
-                txtTelefono.Text = usuario.Telefono;
-                // Si no tienes NombreUsuario, usa el Email o elimina este campo
-                txtNombreUsuario.Text = usuario.Email; // O crea la propiedad en Usuario
+                txtTelefono.Text = usuario.Telefono;                
+                txtNombreUsuario.Text = usuario.Email; 
             }
             else
             {
@@ -45,7 +44,7 @@ namespace CumbreGanadera.Vista.Cliente
 
         protected void btnActualizar_Click(object sender, EventArgs e)
         {
-            // **** CORRECCIÓN 1: Usar "IdUsuario" ****
+            
             if (Session["Id"] == null)
             {
                 Response.Redirect("~/Vista/Auth/InicioSesion.aspx");
@@ -58,7 +57,7 @@ namespace CumbreGanadera.Vista.Cliente
                 return;
             }
 
-            // **** CORRECCIÓN 2: Obtener ID correctamente ****
+            
             int id = Convert.ToInt32(Session["Id"]);
             Usuario usuario = usuarioL.ObtenerPorId(id);
             if (usuario == null)
@@ -69,15 +68,12 @@ namespace CumbreGanadera.Vista.Cliente
 
             // Actualizar solo los campos editables en esta página
             usuario.Email = txtEmail.Text.Trim();
-            usuario.Telefono = txtTelefono.Text.Trim();
-            // Si tienes campo 'NombreUsuario' en tu tabla, descomenta:
-            // usuario.NombreUsuario = txtNombreUsuario.Text.Trim();
-
-            // Llamar a ActualizarUsuario (que debe incluir el campo Telefono)
+            usuario.Telefono = txtTelefono.Text.Trim();  
+            
             bool ok = usuarioL.ActualizarUsuario(usuario);
             lblMensaje.Text = ok ? "✅ Actualizado correctamente." : "❌ Error al actualizar.";
 
-            if (ok) CargarDatos(); // recargar datos actualizados
+            if (ok) CargarDatos(); 
         }
 
 

@@ -116,14 +116,14 @@ namespace CumbreGanadera.Datos
         public Usuario ObtenerPorId(int id)
         {
             Usuario usuario = null;
-            using (SqlConnection cn = ConexionBD.MtAbrirConexion()) // Se espera que la conexión ya esté abierta
+            using (SqlConnection cn = ConexionBD.MtAbrirConexion()) 
             {
                 cn.Open();
                 // Se usa el nombre del procedimiento almacenado
                 string sql = "sp_ObtenerPorId";
                 using (SqlCommand cmd = new SqlCommand(sql, cn))
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;  // ← Importante
+                    cmd.CommandType = CommandType.StoredProcedure;  
                     cmd.Parameters.AddWithValue("@Id", id);
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -150,18 +150,17 @@ namespace CumbreGanadera.Datos
 
 
 
-        // Actualizar datos personales (UPDATE, usa ExecuteNonQuery)
+        // Actualizar datos personales 
         public bool ActualizarUsuario(Usuario usuario)
         {
-            using (SqlConnection cn = ConexionBD.MtAbrirConexion()) // conexión abierta
+            using (SqlConnection cn = ConexionBD.MtAbrirConexion()) 
             {
                 cn.Open();
-                string sql = "sp_ActualizarUsuario"; // nombre del procedimiento almacenado
+                string sql = "sp_ActualizarUsuario"; 
                 using (SqlCommand cmd = new SqlCommand(sql, cn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-
-                    // Agregar parámetros con tipo explícito (mejor que AddWithValue)
+                                        
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = usuario.Id;
                     cmd.Parameters.Add("@Nombres", SqlDbType.NVarChar, 100).Value = (object)usuario.Nombre ?? DBNull.Value;
                     cmd.Parameters.Add("@Apellidos", SqlDbType.NVarChar, 100).Value = (object)usuario.Apellido ?? DBNull.Value;

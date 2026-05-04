@@ -74,7 +74,7 @@ namespace CumbreGanadera.Vista
 
             if (!string.IsNullOrEmpty(intCampoBusqueda.Text))
             {
-                // Guardar en sesión
+                // Guardar el texto de la barra de busqueda en una variable de sesion
                 Session["TerminoBusqueda"] = intCampoBusqueda.Text;
 
 
@@ -82,7 +82,7 @@ namespace CumbreGanadera.Vista
             }
             else
             {
-
+                
                 Session["TerminoBusqueda"] = "";
                 Response.Redirect("~/Vista/Cliente/BusquedaProducto.aspx");
             }

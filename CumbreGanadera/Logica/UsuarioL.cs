@@ -32,8 +32,7 @@ namespace CumbreGanadera.Logica
         }
 
         private UsuarioD datos = new UsuarioD();
-        // Método que expone la obtención de un usuario por Id.
-        // No agrega validación extra, solo delega.
+        
         private UsuarioD usuarioD = new UsuarioD();
 
         public Usuario ObtenerPorId(int id) => usuarioD.ObtenerPorId(id);
