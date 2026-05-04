@@ -36,12 +36,17 @@ namespace CumbreGanadera.Vista.Cliente
                         rptBusqueda.DataSource = listProducto;
                         rptBusqueda.DataBind();
                         lblSinProductos.Visible = false;
-                    }                   
+                    }
+                    else
+                    {
+                        // Si no hay búsqueda relacinada se muestra el label
+                        lblSinProductos.Visible = true;
+                    }
                 }
                 else
                 {
                     // Si no hay búsqueda, mostrar el label
-                    lblSinProductos.Visible = true;
+                    lblBusquedaVacia.Visible = true;
                     
                 }
                 Session.Remove("TerminoBusqueda");

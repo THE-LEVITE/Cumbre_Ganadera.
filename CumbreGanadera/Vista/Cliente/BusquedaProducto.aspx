@@ -17,7 +17,7 @@
                             <img src="<%# Eval("FotoProducto") %>" class="card-img-top" alt="ImgProducto">
                             <div class="card-body">
                                 <h5 class="card-title fw-bold"><%# Eval("Nombre") %></h5>
-                                <p class="card-text text-white fw-bold"><%# Eval("Descripcion") %></p>                               
+                                <p class="card-text text-white fw-bold"><%# Eval("Descripcion") %></p>
                                 <div class="card-footer-content">
                                     <p class="card-text-precio fw-bold">Precio: $<%# Eval("Precio") %></p>
                                     <button class="btn-comprar">Agregar</button>
@@ -32,7 +32,12 @@
         <asp:Label ID="lblSinProductos" runat="server"
             CssClass="alert alert-success text-center d-block"
             Visible="false"
-            Text="📢 No hay productos relacionados con la búsqueda." />
+            Text="❌ No hay productos relacionados con la búsqueda." />
+
+        <asp:Label ID="lblBusquedaVacia" runat="server"
+            CssClass="alert alert-success text-center d-block"
+            Visible="false"
+            Text="🔍 Ingrese un producto para buscar" />
 
     </div>
 
