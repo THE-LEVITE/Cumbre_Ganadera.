@@ -81,10 +81,12 @@
     <Content Include="Vista\Cliente\Seguridad.aspx" />
     <Content Include="Vista\Dueño\InicioDueño.aspx" />
     <Content Include="Vista\Gerente\InicioGerente.aspx" />
+    <Content Include="Vista\Gerente\ReportesGerentes.aspx" />
     <Content Include="Vista\Invitado\InicioInvitado.aspx" />
     <Content Include="Vista\Source\CSS\StyleCliente.css" />
     <Content Include="Vista\Source\CSS\StyleDatos.css" />
     <Content Include="Vista\Source\CSS\StyleEstructura.css" />
+    <Content Include="Vista\Source\CSS\StyleGerente.css" />
     <Content Include="Vista\Source\CSS\StyleRegistroCliente.css" />
     <Content Include="Vista\Source\Img\Iconos\Logo.png" />
     <Content Include="Vista\Source\Img\ImagenesCG\ConstraseñaLG.png" />
@@ -127,6 +129,7 @@
     <Compile Include="Modelo\Producto.cs" />
     <Compile Include="Modelo\RegistroUsusario.cs" />
     <Compile Include="Modelo\Rol.cs" />
+    <Compile Include="Modelo\Solicitud.cs" />
     <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vista\Auth\ControlDatos.Master.cs">
@@ -240,6 +243,13 @@
     </Compile>
     <Compile Include="Vista\Gerente\InicioGerente.aspx.designer.cs">
       <DependentUpon>InicioGerente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Gerente\ReportesGerentes.aspx.cs">
+      <DependentUpon>ReportesGerentes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Gerente\ReportesGerentes.aspx.designer.cs">
+      <DependentUpon>ReportesGerentes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vista\Invitado\InicioInvitado.aspx.cs">
       <DependentUpon>InicioInvitado.aspx</DependentUpon>
