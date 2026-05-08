@@ -3,11 +3,13 @@ using CumbreGanadera.Logica;
 using CumbreGanadera.Modelo;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.DynamicData;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
 
 namespace CumbreGanadera.Vista.Auth
 {
@@ -15,12 +17,78 @@ namespace CumbreGanadera.Vista.Auth
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                using (SqlConnection cn = ConexionBD.MtAbrirConexion())
+                {
+                    string consultaTipoDocumentos = "select Id, Nombre from TipoDocumento";
 
+                    cn.Open();
+
+                    using (SqlCommand cmd = new SqlCommand(consultaTipoDocumentos, cn))
+                    {
+                        SqlDataReader dr = cmd.ExecuteReader();
+                        {
+                            dlTipoDocumento.DataSource = dr;
+                            dlTipoDocumento.DataTextField = "Nombre";
+                            dlTipoDocumento.DataValueField = "Id";
+                            dlTipoDocumento.DataBind();
+                        }
+                    }
+                    cn.Close();
+                }
+
+                using (SqlConnection cn = ConexionBD.MtAbrirConexion())
+                {
+                    string consultaDepartamentos = "select Id, Departamento from Departamento";
+
+                    cn.Open();
+
+                    using (SqlCommand cmd = new SqlCommand(consultaDepartamentos, cn))
+                    {
+                        SqlDataReader dr = cmd.ExecuteReader();
+                        {
+                            dlDepartamento.DataSource = dr;
+                            dlDepartamento.DataTextField = "Departamento";
+                            dlDepartamento.DataValueField = "Id";
+                            dlDepartamento.DataBind();
+                        }
+                    }
+                    cn.Close();
+                }
+            }
         }
+
+        private void CargarCiudades(string IdDepartamento)
+        {
+            dlCiudad.Items.Clear();
+
+            if(string.IsNullOrEmpty(IdDepartamento))
+                return;
+
+            using (SqlConnection cn = ConexionBD.MtAbrirConexion())
+            {
+                string consultaCiudades = "select Id, NombreCiudad from Ciudad where IdDepartamento = @IdDepartamento";
+                cn.Open();
+                using (SqlCommand cmd = new SqlCommand(consultaCiudades, cn))
+                {
+                    cmd.Parameters.AddWithValue("@IdDepartamento", dlDepartamento.SelectedValue);
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    {
+                        dlCiudad.DataSource = dr;
+                        dlCiudad.DataTextField = "NombreCiudad";
+                        dlCiudad.DataValueField = "Id";
+                        dlCiudad.DataBind();
+                    }
+                }
+                cn.Close();
+            }
+        }
+        
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtDocumento.Text) && !string.IsNullOrEmpty(txtNombre.Text) && !string.IsNullOrEmpty(txtApellido.Text) && !string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(txtCiudad.Text))
+            if (!string.IsNullOrEmpty(txtDocumento.Text) && !string.IsNullOrWhiteSpace(dlTipoDocumento.SelectedItem.Text) && !string.IsNullOrEmpty(txtNombre.Text) && !string.IsNullOrEmpty(txtApellido.Text) && !string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(dlCiudad.SelectedItem.Text) && !string.IsNullOrEmpty(dlDepartamento.SelectedItem.Text))
             {
                 if (txtPassword.Text == txtConfirmarPassword.Text)
                 {
@@ -29,9 +97,11 @@ namespace CumbreGanadera.Vista.Auth
                         Nombre = txtNombre.Text,
                         Apellido = txtApellido.Text,
                         Documento = txtDocumento.Text,
+                        TipoDocumento = dlTipoDocumento.SelectedItem.Text,
                         Email = txtEmail.Text,
                         Telefono = txtTelefono.Text,
-                        Ciudad = txtCiudad.Text,
+                        Ciudad = dlCiudad.SelectedItem.Text,
+                        Departamento = dlDepartamento.SelectedItem.Text,
                         Password = txtPassword.Text,
                         FechaNacimiento = DateTime.Parse(txtFechaNacimiento.Text)
                     };
@@ -48,11 +118,11 @@ namespace CumbreGanadera.Vista.Auth
                     }
 
                     RegistroUsuarioL oRegistro = new RegistroUsuarioL();
-                    Usuario oRegistroUsuario = oRegistro.MTRegistro(oRegistroUser);
+                    int oRegistroUsuario = oRegistro.MTRegistro(oRegistroUser);
 
                     string url = ResolveUrl("/Vista/Auth/InicioSesion.aspx");
 
-                    if (oRegistroUsuario != null)
+                    if (oRegistroUsuario > 0)
                     {
                         string script = $@"Swal.fire({{
                                     icon: 'success',
@@ -95,6 +165,11 @@ namespace CumbreGanadera.Vista.Auth
                                     });";
             ClientScript.RegisterStartupScript(this.GetType(), "Acceso", script2, true);
 
+        }
+
+        protected void dlDepartamento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarCiudades(dlDepartamento.SelectedValue);
         }
     }
 }
