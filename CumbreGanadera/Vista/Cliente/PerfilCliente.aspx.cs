@@ -15,9 +15,7 @@ namespace CumbreGanadera.Vista.Cliente
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Quita o comenta las líneas de prueba
-            // Response.Write("Sesión ID: " + Session["IdUsuario"]);
-            // Response.End();
+            
 
             if (Session["Id"] == null)
             {
@@ -31,10 +29,7 @@ namespace CumbreGanadera.Vista.Cliente
             }
         }
 
-        //private void RedirigirLogin()
-        //{
-        //    Response.Redirect("~/Vista/Auth/InicioSesion.aspx");
-        //}
+       
 
         private void CargarPerfil()
         {
@@ -42,13 +37,11 @@ namespace CumbreGanadera.Vista.Cliente
             Usuario usuario = usuarioL.ObtenerPorId(Id);
             if (usuario != null)
             {
-                lblNombreCompleto.Text = $"{usuario.Nombre} {usuario.Apellido}";  // ← muestra el nombre real
+                lblNombreCompleto.Text = $"{usuario.Nombre} {usuario.Apellido}";  
             }
             else
             {
-                // Si no se encuentra el usuario, cerrar sesión
-                Session.Clear();
-               
+                Session.Clear();               
             }
         }
 

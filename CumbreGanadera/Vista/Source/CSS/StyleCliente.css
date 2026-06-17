@@ -1,0 +1,201 @@
+﻿/* ============================================
+   CONTENEDOR PRINCIPAL DEL HISTORIAL
+   ============================================ */
+
+.historial-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+/* ============================================
+   CARD DE CADA COMPRA
+   ============================================ */
+
+.pedido-card {
+    background-color: #254506;
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    
+}
+
+    /* Efecto hover - movimiento y sombra */
+    .pedido-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+    }
+
+/* ============================================
+   ENCABEZADO DEL PEDIDO
+   ============================================ */
+
+.pedido-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.pedido-info {
+    flex: 1;
+}
+
+/* ID del pedido */
+.pedido-id {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #c4c9c9;
+    margin: 0 0 0.25rem 0;
+    letter-spacing: -0.3px;
+}
+
+    .pedido-id::before {
+        content: "#";
+        font-weight: 400;
+        color: #6c757d;
+    }
+
+/* Fecha del pedido */
+.pedido-fecha {
+    font-size: 0.85rem;
+    color: #7a8795;
+    margin: 0;
+}
+
+/* Total del pedido */
+.pedido-total {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #4ebd16;
+    text-align: right;
+    white-space: nowrap;
+    font-family: monospace;
+    
+}
+
+
+
+/* ============================================
+   LISTA DE PRODUCTOS (STRING_AGG)
+   ============================================ */
+
+.productos-agrupados {
+    font-size: 0.95rem;
+    color: #495057;
+    line-height: 1.6;
+    padding: 0.5rem 0;
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+}
+
+/* Estilo para resaltar la cantidad de cada producto */
+.productos-agrupados {
+    word-break: break-word;
+    background-color: #001d28;
+    color: #c4c9c9;
+}
+
+
+
+/* ============================================
+   RESPONSIVE (MÓVILES)
+   ============================================ */
+
+@media (max-width: 768px) {
+    .historial-container {
+        padding: 12px;
+    }
+
+    .pedido-card {
+        padding: 1rem;
+        border-radius: 16px;
+    }
+
+    .pedido-header {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .pedido-total {
+        text-align: left;
+        font-size: 1.3rem;
+    }
+
+    .pedido-id {
+        font-size: 1rem;
+    }
+
+    .productos-agrupados {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.75rem;
+    }
+
+    .historial-titulo {
+        font-size: 1.4rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
+.TituloCompra{
+    color: #7a8795;
+    font-size: 30px;
+}
+
+.TextoHistorial{
+    color: #626d7c;
+}
+
+/* ==== Cards Busqueda ==== */
+.card {
+    border-radius: 10px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    background-color: #12467f44 !important;
+    border: 2px solid #030303 !important;
+}
+
+    .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .card img {
+        width: 100%;
+        height: 330px;
+        object-fit: cover;
+        aspect-ratio: 16 / 9;
+    }
+
+.card-footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    gap: 1rem;
+}
+
+.TextoBusqueda {
+    color: aqua;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.btn-comprar {   
+    color: lawngreen !important;
+}
+
+.card-text-precio {
+    color: lawngreen !important;
+}
+
+.card-img-top{
+    background-color: transparent !important;
+}
+

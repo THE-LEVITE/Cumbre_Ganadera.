@@ -13,10 +13,10 @@ namespace CumbreGanadera.Datos
     public class UsuarioD
     {
         //Se crea MtLogin en donde recibimos la informacion de los txt o datos usuario
-        public Usuario MtLogin(DatosLoginUser oDatosUsuario)
+        public List<Usuario> MtLogin(DatosLoginUser oDatosUsuario)
         {
             //Aca definimos un objeto de usuario con la propiedad null para validarlo despues
-            Usuario oUsuario = null;
+            List<Usuario> ltUsuario = new List<Usuario>();
 
             //se crea la conexion con su respectivo metodo
             using (SqlConnection cn = ConexionBD.MtAbrirConexion())
@@ -33,37 +33,43 @@ namespace CumbreGanadera.Datos
                     cmd.Parameters.AddWithValue("@Password", oDatosUsuario.PasswordUser);
 
                     //Aca lee la consulta de la base de datos 
-                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    DataTable dt = new DataTable();
+
+                    SqlDataAdapter dr = new SqlDataAdapter(cmd);
+                    dr.Fill(dt);
+
+                    foreach (DataRow dr2 in dt.Rows)
                     {
-                        if (dr.Read())
+                        Usuario oUsuario = new Usuario()
                         {
-                            oUsuario = new Usuario()
+                            Id = Convert.ToInt32(dr2["Id"]),
+                            Nombre = dr2["Nombre"].ToString(),
+                            Apellido = dr2["Apellido"].ToString(),
+                            Estado = dr2["Estado"].ToString(),
+                            //cantidadroles almacenara el numero de roles que tiene el usuario 
+                            CantidadRoles = Convert.ToInt32(dr2["CantidadRoles"].ToString()),
+
+                            //Se debe hacer una instacia para acceder al nombre del rol  ya que este es una objeto en la clase Usuario
+                            NombreRol = new Rol()
                             {
-                                Id = Convert.ToInt32(dr["Id"]),
-                                Nombre = dr["Nombre"].ToString(),
-                                Apellido = dr["Apellido"].ToString(),
-                                Estado = dr["Estado"].ToString(),
-                                //cantidadroles almacenara el numero de roles que tiene el usuario 
-                                CantidadRoles = Convert.ToInt32(dr["CantidadRoles"].ToString()),
 
-                                //Se debe hacer una instacia para acceder al nombre del rol  ya que este es una objeto en la clase Usuario
-                                NombreRol = new Rol()
-                                {
+                                NombreRol = dr2["Roles"].ToString(),
+                                IdRol = Convert.ToInt32(dr2["IdRol"]),
+                            }
 
-                                    NombreRol = dr["Roles"].ToString(),
-                                    IdRol = Convert.ToInt32(dr["IdRol"]),
-                                }
-
-
-                            };
-                        }
-
+                        };
+                        ltUsuario.Add(oUsuario);
                     }
+
+
                 }
             }
             //retornar los datos del usuario
-            return oUsuario;
+            return ltUsuario;
         }
+
+
+
 
         public Usuario MtRecuperarContraseña(string correo)
         {
@@ -99,25 +105,25 @@ namespace CumbreGanadera.Datos
                 }
             }
             return oUser;
-       }
-       
-    
+        }
 
 
 
 
 
-    public Usuario ObtenerPorId(int id)
+
+
+        public Usuario ObtenerPorId(int id)
         {
             Usuario usuario = null;
-            using (SqlConnection cn = ConexionBD.MtAbrirConexion()) // Se espera que la conexión ya esté abierta
+            using (SqlConnection cn = ConexionBD.MtAbrirConexion()) 
             {
                 cn.Open();
                 // Se usa el nombre del procedimiento almacenado
                 string sql = "sp_ObtenerPorId";
                 using (SqlCommand cmd = new SqlCommand(sql, cn))
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;  // ← Importante
+                    cmd.CommandType = CommandType.StoredProcedure;  
                     cmd.Parameters.AddWithValue("@Id", id);
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -144,18 +150,17 @@ namespace CumbreGanadera.Datos
 
 
 
-        // Actualizar datos personales (UPDATE, usa ExecuteNonQuery)
+        // Actualizar datos personales 
         public bool ActualizarUsuario(Usuario usuario)
         {
-            using (SqlConnection cn = ConexionBD.MtAbrirConexion()) // conexión abierta
+            using (SqlConnection cn = ConexionBD.MtAbrirConexion()) 
             {
                 cn.Open();
-                string sql = "sp_ActualizarUsuario"; // nombre del procedimiento almacenado
+                string sql = "sp_ActualizarUsuario"; 
                 using (SqlCommand cmd = new SqlCommand(sql, cn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-
-                    // Agregar parámetros con tipo explícito (mejor que AddWithValue)
+                                        
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = usuario.Id;
                     cmd.Parameters.Add("@Nombres", SqlDbType.NVarChar, 100).Value = (object)usuario.Nombre ?? DBNull.Value;
                     cmd.Parameters.Add("@Apellidos", SqlDbType.NVarChar, 100).Value = (object)usuario.Apellido ?? DBNull.Value;

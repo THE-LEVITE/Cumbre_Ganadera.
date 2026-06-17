@@ -11,34 +11,34 @@ namespace CumbreGanadera.Vista.Cliente
 {
 
 
-    public partial class BusuqedaProducto
+    public partial class Historial
     {
 
         /// <summary>
-        /// Control rptBusqueda.
+        /// Control rptPedidos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptBusqueda;
+        protected global::System.Web.UI.WebControls.Repeater rptPedidos;
 
         /// <summary>
-        /// Control lblSinProductos.
+        /// Control lblSinCompras.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSinProductos;
+        protected global::System.Web.UI.WebControls.Label lblSinCompras;
 
         /// <summary>
-        /// Control lblBusquedaVacia.
+        /// Control lblSinId.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBusquedaVacia;
+        protected global::System.Web.UI.WebControls.Label lblSinId;
     }
 }

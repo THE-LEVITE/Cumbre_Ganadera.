@@ -13,12 +13,12 @@ namespace CumbreGanadera.Logica
         UsuarioD oUsuarioD = new UsuarioD();
 
         //Se crea un nuevo metodo con la clase Usuario llamando los datos de password y email
-        public Usuario MtLoginUsuario(DatosLoginUser oUsuario)
+        public List<Usuario> MtLoginUsuario(DatosLoginUser oUsuario)
         {
             //Asignamos a oUser el retorno de UsuarioD
-            Usuario oUser = oUsuarioD.MtLogin(oUsuario);
+            List<Usuario> ltUser = oUsuarioD.MtLogin(oUsuario);
             //Se retorna los datos del usuario
-            return oUser;
+            return ltUser;
 
         }
 
@@ -32,8 +32,7 @@ namespace CumbreGanadera.Logica
         }
 
         private UsuarioD datos = new UsuarioD();
-        // Método que expone la obtención de un usuario por Id.
-        // No agrega validación extra, solo delega.
+        
         private UsuarioD usuarioD = new UsuarioD();
 
         public Usuario ObtenerPorId(int id) => usuarioD.ObtenerPorId(id);

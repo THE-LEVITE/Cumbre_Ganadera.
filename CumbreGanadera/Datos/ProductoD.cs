@@ -54,5 +54,44 @@ namespace CumbreGanadera.Datos
             return listProducto;
         }
 
+        public List<Compra> MtBuscarCompras(int IdUser)
+        {
+            List<Compra> listHistorial = new List<Compra>();
+
+            using (SqlConnection cn = ConexionBD.MtAbrirConexion())
+            {
+                cn.Open();
+                string consulta = "Sp_ConsultaHistorial";
+
+                //El objeto Command esta reemplazando al adaptador, permitiendo hacer una conexion y consulta a la base de datos
+                using (SqlCommand cmd = new SqlCommand(consulta, cn))
+                {
+                    //Esto evita la Inyeccion SQL ya que solo muestra y almacena los parametros de la consulta de la parte superior
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@IdUsuario", IdUser);
+
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            Compra oCompras = new Compra()
+                            {
+                                Id = Convert.ToInt32(dr["Id"]),
+                                Codigo = dr["CodigoCompra"].ToString(),
+                                ValorCompra = Convert.ToDouble(dr["ValorCompra"]),
+                                FechaPedido = Convert.ToDateTime(dr["FechaPedido"]),
+                                Productos = dr["Productos"].ToString()
+                            };
+                            listHistorial.Add(oCompras);
+                        }                 
+                        
+                    }
+                }
+            }
+            return listHistorial;
+        }
+
     }
 }

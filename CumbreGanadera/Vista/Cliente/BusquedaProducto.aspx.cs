@@ -39,13 +39,14 @@ namespace CumbreGanadera.Vista.Cliente
                     }
                     else
                     {
+                        // Si no hay búsqueda relacinada se muestra el label
                         lblSinProductos.Visible = true;
                     }
                 }
                 else
                 {
-                    // Si no hay búsqueda, mostrar todos los productos o un mensaje
-                    lblSinProductos.Visible = true;
+                    // Si no hay búsqueda, mostrar el label
+                    lblBusquedaVacia.Visible = true;
                     
                 }
                 Session.Remove("TerminoBusqueda");

@@ -97,11 +97,11 @@
 
 </asp:Content>
 <asp:Content class="bg-surface text-on-surface antialiased min-h-screen flex flex-col" ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:LinkButton ID="btnDueño" runat="server" CssClass="logincardRol group w-full text-left cursor-pointer transition-all active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary/50 rounded-xl" OnClick="btnDueño_Click">
+    <asp:LinkButton ID="btnDueño" runat="server" CssClass="logincardRol group w-full text-left cursor-pointer transition-all active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary/50 rounded-xl" OnClick="btnDueño_Click" Visible="false">
 
     <div class="group">
         <!-- Dueño Card -->
-        <div class="bg-primary-container/10 flex items-center justify-center group-hover:bg-primary-container transition-colors duration-500 w-10 h-10 rounded-lg">
+        <div class="bg-primary-container/10 flex items-center justify-center group-hover:bg-primary-container transition-colors duration-500 w-10 h-10 rounded-lg" >
             <span class="material-symbols-outlined text-primary group-hover:text-on-primary text-xl" style="font-variation-settings: 'FILL' 1;">account_balance</span>
         </div>
 
@@ -118,7 +118,7 @@
 
   
     <!-- Gerente Card -->
-       <asp:LinkButton ID="btnGerente" runat="server" CssClass="logincardRol group w-full text-left cursor-pointer transition-all active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary/50 rounded-xl" OnClick="btnGerente_Click">
+       <asp:LinkButton ID="btnGerente" runat="server" CssClass="logincardRol group w-full text-left cursor-pointer transition-all active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary/50 rounded-xl" OnClick="btnGerente_Click" Visible="false">
        
       <div class="group">
    
@@ -134,7 +134,7 @@
         </div>
     </asp:LinkButton>
     <!-- Trabajador Card -->
-    <asp:LinkButton ID="btnTrabajador" runat="server" CssClass="logincardRol group w-full text-left cursor-pointer transition-all active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary/50 rounded-xl" OnClick="btnTrabajador_Click">
+    <asp:LinkButton ID="btnTrabajador" runat="server" CssClass="logincardRol group w-full text-left cursor-pointer transition-all active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary/50 rounded-xl" OnClick="btnTrabajador_Click" Visible="false">
         <div class=" group">
             <div class="bg-primary-container/10 flex items-center justify-center group-hover:bg-primary-container transition-colors duration-500 w-10 h-10 rounded-lg">
                 <span class="material-symbols-outlined text-primary group-hover:text-on-primary text-xl" style="font-variation-settings: 'FILL' 1;">precision_manufacturing</span>
@@ -150,7 +150,7 @@
     </asp:LinkButton>
 
     <!-- Cliente Card -->
-     <asp:LinkButton ID="btnCliente" runat="server" CssClass="logincardRol group w-full text-left cursor-pointer transition-all active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary/50 rounded-xl" OnClick="btnCliente_Click">
+     <asp:LinkButton ID="btnCliente" runat="server" CssClass="logincardRol group w-full text-left cursor-pointer transition-all active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary/50 rounded-xl" OnClick="btnCliente_Click" Visible="false">
 
         <div class=" group">
             <div class="bg-primary-container/10 flex items-center justify-center group-hover:bg-primary-container transition-colors duration-500 w-10 h-10 rounded-lg">

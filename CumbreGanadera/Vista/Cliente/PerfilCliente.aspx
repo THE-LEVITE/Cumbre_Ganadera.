@@ -55,7 +55,7 @@
     <div class="container py-4">
         <div class="row justify-content-center">
             <div class="col-lg-8 col-xl-7">
-                <!-- Tarjeta de perfil (cabecera) -->
+                <!-- Tarjeta de perfil -->
                 <div class="profile-header-bg p-4 mb-4 shadow-sm">
                     <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
                         <div>
@@ -68,7 +68,7 @@
                 </div>
 
 
-                <!-- Botones de opciones como LinkButton -->
+                <!-- Botones de opciones -->
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body p-0">
                         <div class="list-group list-group-flush">
@@ -112,6 +112,6 @@
             </div>
         </div>
     </div>
-    <!-- Bootstrap JS (para el funcionamiento del navbar toggler) -->
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </asp:Content>

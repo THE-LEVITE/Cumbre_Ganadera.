@@ -20,11 +20,7 @@ namespace CumbreGanadera.Vista.Cliente
                     Response.Redirect("~/Vista/Auth/InicioSesion.aspx");
                 else
                     CargarDatosUsuario();
-
-
             }
-
-
         }
 
 
@@ -94,7 +90,7 @@ namespace CumbreGanadera.Vista.Cliente
             if (actualizado)
             {
                 lblMensaje.Text = "✅ Información actualizada correctamente.";
-                CargarDatosUsuario(); // Recargar
+                CargarDatosUsuario(); 
             }
             else
             {

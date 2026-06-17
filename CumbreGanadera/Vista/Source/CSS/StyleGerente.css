@@ -1,0 +1,136 @@
+﻿/* ===== RESET BÁSICO (evita conflictos con la master) ===== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+/* ===== CONTENEDOR PRINCIPAL ===== */
+.container {
+    width: 100%;
+    padding: 5px 40px;
+    background: transparent;
+    color: #ffffff;
+}
+
+    /* ===== TÍTULOS ===== */
+    .container h3 {
+        margin: 0 0 5px 0;
+        font-size: 26px;
+        font-weight: 700;
+    }
+
+.subtitle {
+    color: #b5d6c3;
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+/* ===== CARD PRINCIPAL ===== */
+.card {
+    background: #1c1f1d !important; 
+    color: #ffffff !important;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    width: 100%;
+}
+
+    /* ===== TÍTULO DE LA CARD ===== */
+    .card h4 {
+        margin: 0 0 20px 0;
+        font-size: 16px;
+        font-weight: 600;
+        color: #d4f5df !important;
+    }
+
+/* ===== FILAS DEL FORM ===== */
+.form-row {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+/* ===== GRUPOS ===== */
+.form-group {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== LABELS ===== */
+label {
+    font-size: 11px;
+    margin-bottom: 5px;
+    color: #9ec3ad !important;
+    font-weight: 500;
+    margin-top: 20px;
+    
+}
+
+/* ===== INPUTS Y SELECT ===== */
+.input,
+select,
+textarea {
+    width: 100%;
+    background: #2a2d2b !important;
+    border: none !important;
+    border-radius: 8px;
+    padding: 10px;
+    color: #ffffff !important;
+    font-size: 13px;
+}
+
+    /* ===== FOCUS ===== */
+    .input:focus,
+    select:focus,
+    textarea:focus {
+        outline: 1px solid #00c853;
+    }
+
+/* ===== TEXTAREA ===== */
+.textarea {
+    height: 80px;
+    resize: none;
+}
+
+/* ===== DROPDOWN OPTIONS ===== */
+select option {
+    background: #1c1f1d;
+    color: #ffffff;
+}
+
+/* ===== BOTÓN ===== */
+.btn-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    
+}
+
+.btnEnviar {
+    background-color: #00c853 !important;
+    background: #00c853;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+    .btn:hover {
+        background: #00b248;
+    }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+    }
+}

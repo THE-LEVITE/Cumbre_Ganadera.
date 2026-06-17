@@ -20,5 +20,12 @@ namespace CumbreGanadera.Logica
 
         }
 
+
+        public List<Compra> MtBusquedaCompras(int IdUser)
+        {
+            List<Compra> listHistorial = oPrudocutoD.MtBuscarCompras(IdUser);
+            return listHistorial;
+        }
+
     }
 }
