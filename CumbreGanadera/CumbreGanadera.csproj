@@ -79,29 +79,21 @@
     <Content Include="Vista\Cliente\PerfilCliente.aspx" />
     <Content Include="Vista\Cliente\Seguridad.aspx" />
     <Content Include="Vista\Dueño\InicioDueño.aspx" />
+    <Content Include="Vista\Dueño\MisHaciendas.aspx" />
+    <Content Include="Vista\Dueño\ResumenHacienda.aspx" />
+    <Content Include="Vista\Dueño\RegistroGerente.aspx" />
     <Content Include="Vista\Gerente\InicioGerente.aspx" />
     <Content Include="Vista\Invitado\InicioInvitado.aspx" />
     <Content Include="Vista\Source\CSS\StyleDatos.css" />
     <Content Include="Vista\Source\CSS\StyleEstructura.css" />
     <Content Include="Vista\Source\CSS\StyleRegistroCliente.css" />
+    <Content Include="Vista\Source\CSS\StyleCRUDGerentes.css" />
+    <Content Include="Vista\Source\CSS\StyleResumenHacienda.css" />
+    <Content Include="Vista\Source\CSS\StyleVerHacienda.css" />
+    <Content Include="Vista\Source\Img\Haciendas\descarga.png" />
+    <Content Include="Vista\Source\Img\Haciendas\Hacienda1.png" />
+    <Content Include="Vista\Source\Img\Haciendas\Hacienda3.png" />
     <Content Include="Vista\Source\Img\Iconos\Logo.png" />
-    <Content Include="Vista\Source\Img\ImagenesCG\ConstraseñaLG.png" />
-    <Content Include="Vista\Source\Img\ImagenesCG\CorreoLG.png" />
-    <Content Include="Vista\Source\Img\ImagenesCG\FondoRC.png" />
-    <Content Include="Vista\Source\Img\ImagenesCG\gradientLG.png" />
-    <Content Include="Vista\Source\Img\ImagenesCG\IconoCampoDocumentoRC.png" />
-    <Content Include="Vista\Source\Img\ImagenesCG\IconoClienteSR.png" />
-    <Content Include="Vista\Source\Img\ImagenesCG\IconoConfirmarContraseñaRC.png" />
-    <Content Include="Vista\Source\Img\ImagenesCG\IconoContraseñaRC.png" />
-    <Content Include="Vista\Source\Img\ImagenesCG\IconoCorreoRC.png" />
-    <Content Include="Vista\Source\Img\ImagenesCG\IconoDireccionRC.png" />
-    <Content Include="Vista\Source\Img\ImagenesCG\IconoDueñoSR.png" />
-    <Content Include="Vista\Source\Img\ImagenesCG\IconoGerenteSR.png" />
-    <Content Include="Vista\Source\Img\ImagenesCG\IconoTelefonoRC.png" />
-    <Content Include="Vista\Source\Img\ImagenesCG\IconoTrabajadorSR.png" />
-    <Content Include="Vista\Source\Img\ImagenesCG\IniciarSesionLG.png" />
-    <Content Include="Vista\Source\Img\ImagenesCG\Logo.png" />
-    <Content Include="Vista\Source\Img\ImagenesCG\FondoDatos.png" />
     <Content Include="Vista\Source\Img\Perfiles\Cliente\fotoP.jpg" />
     <Content Include="Vista\Source\JS\ScriptEstructura.js" />
     <Content Include="Vista\Trabajador\InicioTrabajador.aspx" />
@@ -109,15 +101,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Datos\ConexionBD.cs" />
+    <Compile Include="Datos\HaciendaD.cs" />
     <Compile Include="Datos\MenuD.cs" />
     <Compile Include="Datos\ProductoD.cs" />
     <Compile Include="Datos\RegistroUsuarioD.cs" />
     <Compile Include="Datos\UsuarioD.cs" />
+    <Compile Include="Logica\HaciendaL.cs" />
     <Compile Include="Logica\MenuL.cs" />
     <Compile Include="Logica\ProductoL.cs" />
     <Compile Include="Logica\RegistroUsuarioL.cs" />
     <Compile Include="Logica\UsuarioL.cs" />
     <Compile Include="Modelo\DatosLoginUser.cs" />
+    <Compile Include="Modelo\Hacienda.cs" />
     <Compile Include="Modelo\MenuM.cs" />
     <Compile Include="Modelo\Producto.cs" />
     <Compile Include="Modelo\RegistroUsusario.cs" />
@@ -215,6 +210,27 @@
     <Compile Include="Vista\Dueño\InicioDueño.aspx.designer.cs">
       <DependentUpon>InicioDueño.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Vista\Dueño\MisHaciendas.aspx.cs">
+      <DependentUpon>MisHaciendas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Dueño\MisHaciendas.aspx.designer.cs">
+      <DependentUpon>MisHaciendas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Dueño\ResumenHacienda.aspx.cs">
+      <DependentUpon>ResumenHacienda.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Dueño\ResumenHacienda.aspx.designer.cs">
+      <DependentUpon>ResumenHacienda.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Dueño\RegistroGerente.aspx.cs">
+      <DependentUpon>RegistroGerente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Dueño\RegistroGerente.aspx.designer.cs">
+      <DependentUpon>RegistroGerente.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vista\Estructura.Master.cs">
       <DependentUpon>Estructura.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -256,6 +272,8 @@
     <Content Include="Vista\Estructura.Master" />
     <Content Include="Vista\Auth\ControlDatos.Master" />
     <Content Include="Vista\Perfiles.Master" />
+    <None Include="Properties\PublishProfiles\CumbreGanadera20260515133006 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

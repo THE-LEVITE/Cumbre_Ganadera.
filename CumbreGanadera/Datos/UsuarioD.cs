@@ -175,9 +175,42 @@ namespace CumbreGanadera.Datos
                     return filas > 0;
                 }
             }
+        }
 
+        public List<Usuario> MTListarGerentes(int HaciendaId)
+        {
+            using (SqlConnection cn = ConexionBD.MtAbrirConexion())
+            {
+                cn.Open();
 
+                string procedimiento = "sp_ListarGerentes";
 
+                using (SqlCommand cmd = new SqlCommand(procedimiento, cn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@IdHacienda", HaciendaId);
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        List<Usuario> gerentes = new List<Usuario>();
+                        while (dr.Read())
+                        {
+                            Usuario gerente = new Usuario
+                            {
+                                Id = Convert.ToInt32(dr["Id"]),
+                                Nombre = dr["Nombre"].ToString(),
+                                Apellido = dr["Apellido"].ToString(),
+                                Telefono = dr["Telefono"].ToString(),
+                                AreaAsignada = dr["AreaAsignada"].ToString(),
+                                Estado = dr["Estado"].ToString()
+                            };
+                            gerentes.Add(gerente);
+                        }
+                        return gerentes;
+                    }
+                }
+            }
         }
     }
 }

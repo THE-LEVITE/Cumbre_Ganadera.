@@ -7,11 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace CumbreGanadera.Vista.Auth
+namespace CumbreGanadera.Vista.Dueño
 {
 
 
-    public partial class RegistroCliente
+    public partial class RegistroGerente
     {
 
         /// <summary>
@@ -33,15 +33,6 @@ namespace CumbreGanadera.Vista.Auth
         protected global::System.Web.UI.WebControls.DropDownList dlTipoDocumento;
 
         /// <summary>
-        /// Control txtNombre.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNombre;
-
-        /// <summary>
         /// Control txtApellido.
         /// </summary>
         /// <remarks>
@@ -49,6 +40,15 @@ namespace CumbreGanadera.Vista.Auth
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtApellido;
+
+        /// <summary>
+        /// Control txtNombre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNombre;
 
         /// <summary>
         /// Control txtEmail.
@@ -69,15 +69,6 @@ namespace CumbreGanadera.Vista.Auth
         protected global::System.Web.UI.WebControls.TextBox txtTelefono;
 
         /// <summary>
-        /// Control txtFechaNacimiento.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFechaNacimiento;
-
-        /// <summary>
         /// Control dlDepartamento.
         /// </summary>
         /// <remarks>
@@ -96,21 +87,30 @@ namespace CumbreGanadera.Vista.Auth
         protected global::System.Web.UI.WebControls.DropDownList dlCiudad;
 
         /// <summary>
-        /// Control txtPassword.
+        /// Control txtFechaNacimiento.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPassword;
+        protected global::System.Web.UI.WebControls.TextBox txtFechaNacimiento;
 
         /// <summary>
-        /// Control txtConfirmarPassword.
+        /// Control txtFechaAsignacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtConfirmarPassword;
+        protected global::System.Web.UI.WebControls.TextBox txtFechaAsignacion;
+
+        /// <summary>
+        /// Control dlArea.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dlArea;
     }
 }

@@ -1,0 +1,67 @@
+﻿body {
+    .Titulo {
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+        margin-bottom: 20px;
+        text-align: left;
+        margin-left: 100px;
+    }
+
+    .TextoRecuadros {
+        color: black;
+        font-size: 20px;
+    }
+
+    .Indicador {
+        color: blue;
+        font-size: 50px;
+        text-align: center;
+    }
+
+    .Margen {
+        margin-left: 90px;
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
+
+    .FormatoRecuadro {
+        padding: 10px;
+        background-color: white;
+        border-radius: 18px;
+        display: inline-block;
+    }
+
+    .TituloGerentes {
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+        margin-bottom: 20px;
+        text-align: left;
+        margin-left: 100px;
+    }
+
+    .data-grid {
+        grid-template-columns: 80px 1fr 1fr;
+        gap: 1px; /* Línea de división entre celdas */
+        background-color: #e0e0e0; /* Color de los bordes */
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        overflow: hidden; /* Mantiene las esquinas redondeadas */
+        padding: 10px;
+        margin-top: 30px;
+    }
+
+    .grid-header {
+        background-color: #2c3e50; /* Azul oscuro */
+        color: white;
+        font-weight: bold;
+        padding: 12px;
+        text-align: left;
+    }
+
+    .grid-cell {
+        background-color: #ffffff; /* Fondo blanco para las celdas */
+        padding: 12px;
+    }
+}

@@ -19,7 +19,8 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="../Source/CSS/StyleDatos.css" />
-    <link rel="stylesheet" href="../Source/CSS/StyleRegistroCliente.css" />
+    <link href="../Source/CSS/StyleRegistroCliente.css" rel="stylesheet" />
+
 
     <asp:ContentPlaceHolder ID="head" runat="server" />
 

@@ -1,4 +1,6 @@
-﻿using CumbreGanadera.Modelo;
+﻿using CumbreGanadera.Logica;
+using CumbreGanadera.Modelo;
+using CumbreGanadera.Datos;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -27,10 +27,13 @@ namespace CumbreGanadera.Vista.Auth
                     Email = txtCorreo.Text,
                     PasswordUser = txtPassword.Text
                 };
+
                 //creamos un nuevo objeto de oUsuariosL 
                 UsuarioL oUsuarioL = new UsuarioL();
+
                 //instanciamos un objeto de tipo usuario y le asignamos la informacion del MtLoginUsuario
                 List<Usuario> lUsuarioDatos = oUsuarioL.MtLoginUsuario(oLoginUser);
+
                 //Se hace una condicion por si el objeto llega null
                 var roles = lUsuarioDatos.Select(u => u.NombreRol.NombreRol).ToList();
                 Session["listausuarios"] = roles;
@@ -43,6 +46,19 @@ namespace CumbreGanadera.Vista.Auth
                         Session["Id"] = oUsuario.Id;
                         Session["Nombre"] = oUsuario.Nombre + " " + oUsuario.Apellido;
                         Response.Redirect("~/Vista/Auth/SeleccionRol.aspx");
+                    }
+                    else if (lUsuarioDatos.Count == 0)
+                    {
+                        string mensaje4 = @"Swal.fire({
+                    icon: 'error',
+                    title: '¡Error!',
+                    text: 'Sus datos son incorrectos.',
+                    timer: 2000,
+                    showConfirmButton: false
+                    }).then(() => {
+                    window.location.href = '../Auth/InicioSesion.aspx';
+                    });";
+                        ClientScript.RegisterStartupScript(this.GetType(), "alert", mensaje4, true);
                     }
                     else
                     {
@@ -111,23 +127,8 @@ namespace CumbreGanadera.Vista.Auth
 
                             ClientScript.RegisterStartupScript(this.GetType(), "Acceso", mensaje, true);
                         }
-                        else
-                        {
-                            string mensaje4 = @"Swal.fire({
-                    icon: 'error',
-                    title: '¡Error!',
-                    text: 'Sus datos son incorrectos.',
-                    timer: 2000,
-                    showConfirmButton: false
-                    }).then(() => {
-                    window.location.href = '../Auth/InicioSesion.aspx';
-                    });";
-                            ClientScript.RegisterStartupScript(this.GetType(), "alert", mensaje4, true);
-
-
-                        }
+                      
                     }
-
                 }
             }
         }

@@ -17,20 +17,25 @@ namespace CumbreGanadera.Vista
             if (Session["Rol"] != null && Session["Rol"].ToString() == "Dueño")
             {
                 lblUsuario.Text = Session["Nombre"].ToString();
-                lblPanel.Text = "Panel de " + Session["NombreRol"].ToString();
+                lblPanel.Text = "Panel de " + Session["Rol"].ToString();
                 lblRol.Text = "Administrador Principal";
+                barraBusqueda.Visible = false;
             }
             else if (Session["Rol"] != null && Session["Rol"].ToString() == "Gerente")
             {
                 lblUsuario.Text = Session["Nombre"].ToString();
                 lblPanel.Text = "Panel de " + Session["Rol"].ToString();
                 lblRol.Text = Session["Rol"].ToString();
+                barraBusqueda.Visible = false;
+
             }
             else if (Session["Rol"] != null && Session["Rol"].ToString() == "Trabajador")
             {
                 lblUsuario.Text = Session["Nombre"].ToString();
                 lblPanel.Text = "Panel de " + Session["Rol"].ToString();
                 lblRol.Text = Session["Rol"].ToString();
+                barraBusqueda.Visible = false;
+
             }
             else if (Session["Rol"] != null && Session["Rol"].ToString() == "Cliente")
             {

@@ -8,6 +8,7 @@ namespace CumbreGanadera.Datos
 {
     public class ConexionBD
     {
+
         private static readonly string cadena = System.Configuration.ConfigurationManager.ConnectionStrings["ConexionBD"].ConnectionString;
         //Abre y cierra la conexion
         public static SqlConnection MtAbrirConexion()

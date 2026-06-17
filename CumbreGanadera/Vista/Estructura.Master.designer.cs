@@ -69,6 +69,15 @@ namespace CumbreGanadera.Vista
         protected global::System.Web.UI.WebControls.LinkButton lbCerrar;
 
         /// <summary>
+        /// Control barraBusqueda.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl barraBusqueda;
+
+        /// <summary>
         /// Control btnLupa.
         /// </summary>
         /// <remarks>

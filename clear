@@ -1,0 +1,19 @@
+[33md366ae2[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mDilanLopez[m[33m, [m[1;31morigin/DilanLopez[m[33m)[m V0.3_Cambios en clase RegistroUsuarioD_DissMax_300426
+[33m7ba60c5[m V0.2_Correcion en cadena de conexion y carga de objetos en registro_DissMax_300426
+[33m2525705[m V0.2_Correcion en cadena de conexion y carga de objetos en registro_DissMax_300426
+[33m12c8fc3[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m v0.4_Actualizacion del inicio de sesion para mas de un rol_TheJotaro777_300423
+[33m94d0c68[m v0.1_Correccion en mensaje al registrar usuario_DissMax_290426
+[33m94e818a[m V0.3_Verificacion de archivos_TheJotaro777_290426
+[33ma06e855[m[33m ([m[1;31morigin/TheJotaro777[m[33m)[m V0.3_perfil cliente Editar informacion de usuario oscarraveloxt3-debug_290426
+[33m76edd8f[m v0.2_Retoques en la base del codigo_TheJotaro777_280426
+[33m602c5af[m v0.1_Creacion del repositorio y su contenido_TheJotaro777_280426
+[33m377b5ba[m v0.3_Creacion basica de la logica RecuperacionContraseña_THE-LEVITE_270426
+[33m4166e03[m v0.1_Creacion de la base para la correcta funsion de la busqueda productos_THE-LEVITE_270426
+[33m6cd2f19[m v0.3_Adelanto del inicio de session para los usuarios_ShaiAru90_250426
+[33m852fc43[m v0.2_Adelanto de la logica para validar numero de roles_ShaiAru90_230426
+[33mfa1a8c4[m Merge pull request #1 from THE-LEVITE/ShaiAru90
+[33m9a49130[m v0.1_Se arreglo aspx  condicionando los texbox para que reciba un tipo de dato especifico_ShaiAru90_230426
+[33m377dda5[m Arreglo del Style
+[33m88ed6e7[m Actualizacion del README
+[33m663db13[m Agregar archivos de proyecto.
+[33mb317bdc[m Agregar .gitattributes, .gitignore y README.md.

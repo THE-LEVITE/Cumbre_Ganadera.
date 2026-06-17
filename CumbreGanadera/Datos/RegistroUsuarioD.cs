@@ -45,7 +45,7 @@ namespace CumbreGanadera.Datos
                         return filas;
 
                     }
-                    catch (SqlException ex)
+                    catch (SqlException)
                     {
                         int filas = 0;
                         return filas;
@@ -54,43 +54,45 @@ namespace CumbreGanadera.Datos
             }
         }
 
-        public Usuario MTRegistroGerente(RegistroUsuario oRegistroGer)
+        public int MTInsertarGerente(RegistroUsuario gerente)
         {
             using (SqlConnection cn = ConexionBD.MtAbrirConexion())
             {
                 cn.Open();
 
-                string procedimiento = "sp_CrearGerente";
-                int resultado = 0;
+                string procedimiento = "sp_InsertarGerente";
 
                 using (SqlCommand cmd = new SqlCommand(procedimiento, cn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.AddWithValue("@Nombre", oRegistroGer.Nombre);
-                    cmd.Parameters.AddWithValue("@Apellido", oRegistroGer.Apellido);
-                    cmd.Parameters.AddWithValue("@Documento", oRegistroGer.Documento);
-                    cmd.Parameters.AddWithValue("@TipoDocumento", oRegistroGer.TipoDocumento);
-                    cmd.Parameters.AddWithValue("@Email", oRegistroGer.Email);
-                    cmd.Parameters.AddWithValue("@Telefono", oRegistroGer.Telefono);
-                    cmd.Parameters.AddWithValue("@FechaNacimiento", oRegistroGer.FechaNacimiento);
+                    cmd.Parameters.AddWithValue("@Documento", gerente.Documento);
+                    cmd.Parameters.AddWithValue("@TipoDocumento", gerente.TipoDocumento);
+                    cmd.Parameters.AddWithValue("@Nombre", gerente.Nombre);
+                    cmd.Parameters.AddWithValue("@Apellido", gerente.Apellido);
+                    cmd.Parameters.AddWithValue("@Email", gerente.Email);
+                    cmd.Parameters.AddWithValue("@FechaNacimiento", gerente.FechaNacimiento);
+                    cmd.Parameters.AddWithValue("@Telefono", gerente.Telefono);
+                    cmd.Parameters.AddWithValue("@Ciudad", gerente.Ciudad);
+                    cmd.Parameters.AddWithValue("@AreaAsignada", gerente.Area);
+                    cmd.Parameters.AddWithValue("@FechaAsignacion", gerente.FechaAsignacion);
+                    cmd.Parameters.AddWithValue("@IdHacienda", gerente.IdHacienda);
                     cmd.Parameters.AddWithValue("@FechaIngreso", DateTime.Now);
-                    cmd.Parameters.AddWithValue("@Ciudad", oRegistroGer.Ciudad);
-                    cmd.Parameters.AddWithValue("@Area", oRegistroGer.Area);
-                    cmd.Parameters.AddWithValue("@FechaAsignacion", oRegistroGer.FechaAsignacion);
+                    cmd.Parameters.AddWithValue("@Estado", "Activo");
 
-                    resultado = Convert.ToInt32(cmd.ExecuteScalar());
-                }
+                    try
+                    {
+                        int filas = cmd.ExecuteNonQuery();
+                        return filas;
 
-                if (resultado == -1)
-                {
-                    return null;
-                }
-                else
-                {
-                    return new Usuario() { Id = resultado };
+                    }
+                    catch (SqlException)
+                    {
+                        int filas = 0;
+                        return filas;
+                    }
                 }
             }
-        }      
+        }
     }
 }

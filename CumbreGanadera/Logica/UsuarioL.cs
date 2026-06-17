@@ -17,6 +17,7 @@ namespace CumbreGanadera.Logica
         {
             //Asignamos a oUser el retorno de UsuarioD
             List<Usuario> ltUser = oUsuarioD.MtLogin(oUsuario);
+
             //Se retorna los datos del usuario
             return ltUser;
 
@@ -38,7 +39,11 @@ namespace CumbreGanadera.Logica
 
         public Usuario ObtenerPorId(int id) => usuarioD.ObtenerPorId(id);
         public bool ActualizarUsuario(Usuario usuario) => usuarioD.ActualizarUsuario(usuario);
-        
-        
+
+        public List<Usuario> MTListaGerentes(int HaciendaId)
+        {
+            List<Usuario> gerentes = oUsuarioD.MTListarGerentes(HaciendaId);
+            return gerentes;
+        }
     }
 }

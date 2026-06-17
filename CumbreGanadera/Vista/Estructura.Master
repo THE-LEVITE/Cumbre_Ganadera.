@@ -20,8 +20,12 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 
+    <link href="Source/CSS/StyleCRUDGerentes.css" rel="stylesheet" />
     <link rel="stylesheet" href="Source/CSS/StyleEstructura.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="Source/CSS/StyleResumenHacienda.css" rel="stylesheet" />
+    <link href="Source/CSS/StyleVerHacienda.css" rel="stylesheet" />
+
 
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -108,7 +112,7 @@
                             </span>
 
                             <!-- Barra de búsqueda -->
-                            <div class="search-wrapper ms-4 ms-md-5" runat="server">
+                            <div id="barraBusqueda" class="search-wrapper ms-4 ms-md-5" runat="server" visible="false">
                                 <div class="input-group search-group">
                                     <asp:Button ID="btnLupa" runat="server" CssClass="btn-lupa" OnClick="btnlupa_Click"
                                         UseSubmitBehavior="false" />
