@@ -90,6 +90,7 @@
     <Content Include="Vista\Source\CSS\StyleCRUDGerentes.css" />
     <Content Include="Vista\Source\CSS\StyleResumenHacienda.css" />
     <Content Include="Vista\Source\CSS\StyleVerHacienda.css" />
+    <Content Include="Vista\Source\Img\Haciendas\FondoDatos.png" />
     <Content Include="Vista\Source\Img\Haciendas\descarga.png" />
     <Content Include="Vista\Source\Img\Haciendas\Hacienda1.png" />
     <Content Include="Vista\Source\Img\Haciendas\Hacienda3.png" />

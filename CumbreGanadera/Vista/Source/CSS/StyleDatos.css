@@ -11,7 +11,7 @@ body {
    FONDO
 ========================= */
 .bg-auth {
-    background: url('../Img/ImagenesCG/FondoDatos.png') no-repeat center center;
+    background: url(../Img/Haciendas/FondoDatos.png) no-repeat center center;
     background-size: cover;
     height: 100vh;
     position: relative;
