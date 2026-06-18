@@ -56,7 +56,46 @@ namespace CumbreGanadera.Datos
                 }
             }
             return oRegistroUser;
+        }
+        public int MTInsertarGerente(RegistroUsuario gerente)
+        {
+            using (SqlConnection cn = ConexionBD.MtAbrirConexion())
+            {
+                cn.Open();
 
+                string procedimiento = "sp_InsertarGerente";
+
+                using (SqlCommand cmd = new SqlCommand(procedimiento, cn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@Documento", gerente.Documento);
+                    cmd.Parameters.AddWithValue("@TipoDocumento", gerente.TipoDocumento);
+                    cmd.Parameters.AddWithValue("@Nombre", gerente.Nombre);
+                    cmd.Parameters.AddWithValue("@Apellido", gerente.Apellido);
+                    cmd.Parameters.AddWithValue("@Email", gerente.Email);
+                    cmd.Parameters.AddWithValue("@FechaNacimiento", gerente.FechaNacimiento);
+                    cmd.Parameters.AddWithValue("@Telefono", gerente.Telefono);
+                    cmd.Parameters.AddWithValue("@Ciudad", gerente.Ciudad);
+                    cmd.Parameters.AddWithValue("@AreaAsignada", gerente.Area);
+                    cmd.Parameters.AddWithValue("@FechaAsignacion", gerente.FechaAsignacion);
+                    cmd.Parameters.AddWithValue("@IdHacienda", gerente.IdHacienda);
+                    cmd.Parameters.AddWithValue("@FechaIngreso", DateTime.Now);
+                    cmd.Parameters.AddWithValue("@Estado", "Activo");
+
+                    try
+                    {
+                        int filas = cmd.ExecuteNonQuery();
+                        return filas;
+
+                    }
+                    catch (SqlException)
+                    {
+                        int filas = 0;
+                        return filas;
+                    }
+                }
+            }
         }
     }
 }

@@ -60,17 +60,11 @@ namespace CumbreGanadera.Datos
                         };
                         ltUsuario.Add(oUsuario);
                     }
-
-
                 }
             }
             //retornar los datos del usuario
             return ltUsuario;
         }
-
-
-
-
         public Usuario MtRecuperarContraseña(string correo)
         {
             Usuario oUser = null;
@@ -107,23 +101,17 @@ namespace CumbreGanadera.Datos
             return oUser;
         }
 
-
-
-
-
-
-
         public Usuario ObtenerPorId(int id)
         {
             Usuario usuario = null;
-            using (SqlConnection cn = ConexionBD.MtAbrirConexion()) 
+            using (SqlConnection cn = ConexionBD.MtAbrirConexion())
             {
                 cn.Open();
                 // Se usa el nombre del procedimiento almacenado
                 string sql = "sp_ObtenerPorId";
                 using (SqlCommand cmd = new SqlCommand(sql, cn))
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;  
+                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Id", id);
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -147,20 +135,17 @@ namespace CumbreGanadera.Datos
             return usuario;
         }
 
-
-
-
         // Actualizar datos personales 
         public bool ActualizarUsuario(Usuario usuario)
         {
-            using (SqlConnection cn = ConexionBD.MtAbrirConexion()) 
+            using (SqlConnection cn = ConexionBD.MtAbrirConexion())
             {
                 cn.Open();
-                string sql = "sp_ActualizarUsuario"; 
+                string sql = "sp_ActualizarUsuario";
                 using (SqlCommand cmd = new SqlCommand(sql, cn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                                        
+
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = usuario.Id;
                     cmd.Parameters.Add("@Nombres", SqlDbType.NVarChar, 100).Value = (object)usuario.Nombre ?? DBNull.Value;
                     cmd.Parameters.Add("@Apellidos", SqlDbType.NVarChar, 100).Value = (object)usuario.Apellido ?? DBNull.Value;
@@ -174,9 +159,42 @@ namespace CumbreGanadera.Datos
                     return filas > 0;
                 }
             }
-
-
-
         }
+        public List<Usuario> MTListarGerentes(int HaciendaId)
+        {
+            using (SqlConnection cn = ConexionBD.MtAbrirConexion())
+            {
+                cn.Open();
+
+                string procedimiento = "sp_ListarGerentes";
+
+                using (SqlCommand cmd = new SqlCommand(procedimiento, cn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@IdHacienda", HaciendaId);
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        List<Usuario> gerentes = new List<Usuario>();
+                        while (dr.Read())
+                        {
+                            Usuario gerente = new Usuario
+                            {
+                                Id = Convert.ToInt32(dr["Id"]),
+                                Nombre = dr["Nombre"].ToString(),
+                                Apellido = dr["Apellido"].ToString(),
+                                Telefono = dr["Telefono"].ToString(),
+                                AreaAsignada = dr["AreaAsignada"].ToString(),
+                                Estado = dr["Estado"].ToString()
+                            };
+                            gerentes.Add(gerente);
+                        }
+                        return gerentes;
+                    }
+                }
+            }
+        }
+
     }
 }

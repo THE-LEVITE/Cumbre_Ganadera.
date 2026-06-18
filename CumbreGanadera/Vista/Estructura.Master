@@ -110,7 +110,7 @@
                             </span>
 
                             <!-- Barra de búsqueda -->
-                            <div class="search-wrapper ms-4 ms-md-5" runat="server">
+                            <div id="BarraBusqueda" class="search-wrapper ms-4 ms-md-5" runat="server" visible="false">
                                 <div class="input-group search-group">
                                     <asp:Button ID="btnLupa" runat="server" CssClass="btn-lupa" OnClick="btnlupa_Click"
                                         UseSubmitBehavior="false" />

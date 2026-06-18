@@ -20,6 +20,7 @@ namespace CumbreGanadera.Modelo
         public DateTime? FechaNacimiento { get; set; }
         public string Telefono { get; set; }
         public DateTime FechaIngreso { get; set; }
+        public string AreaAsignada { get; set; }
 
     }
 }

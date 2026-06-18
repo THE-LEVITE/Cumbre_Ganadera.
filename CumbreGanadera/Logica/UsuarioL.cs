@@ -21,23 +21,22 @@ namespace CumbreGanadera.Logica
             return ltUser;
 
         }
-
-
-
         public Usuario MtRecuperarContraseña(string correo)
         {
             Usuario oPass = oUsuarioD.MtRecuperarContraseña(correo);
-
             return oPass;
         }
 
         private UsuarioD datos = new UsuarioD();
-        
         private UsuarioD usuarioD = new UsuarioD();
 
         public Usuario ObtenerPorId(int id) => usuarioD.ObtenerPorId(id);
         public bool ActualizarUsuario(Usuario usuario) => usuarioD.ActualizarUsuario(usuario);
-        
-        
+
+        public List<Usuario> MTListaGerentes(int HaciendaId)
+        {
+            List<Usuario> gerentes = oUsuarioD.MTListarGerentes(HaciendaId);
+            return gerentes;
+        }
     }
 }

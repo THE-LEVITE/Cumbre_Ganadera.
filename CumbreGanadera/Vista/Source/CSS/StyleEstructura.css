@@ -25,7 +25,7 @@ body {
 
 /* ========== SIDEBAR ========== */
 #sidebar {
-    background-color: rgb(0, 29, 40);
+    background-color: rgb(200 203 204);
     color: rgb(255, 255, 255);
     height: 100vh;
     position: sticky;
@@ -57,14 +57,14 @@ body {
 
 /* ========== CONTENIDO PRINCIPAL ========== */
 #ContePrinci {
-    background-color: #00431a;
+    background-color: #ffffff;
     min-height: 100vh;
 }
 
 /* ========== NAVBAR ========== */
 .custom-navbar {
     border-bottom: 1px solid #037f1b90;
-    background-color: #00431a;
+    background-color: #ffffff;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -76,7 +76,7 @@ body {
 
 /* ========== BARRA DE BÚSQUEDA ========== */
 .search-group {
-    background-color: #026b3a; 
+    background-color: #026b3a;
     border-radius: 25px;
     overflow: hidden;
     align-items: center;
@@ -84,7 +84,7 @@ body {
 }
 
 .search-input {
-    background-color: #026b3a; 
+    background-color: #026b3a;
     border: none;
     box-shadow: none;
     height: 40px;
@@ -92,20 +92,20 @@ body {
 }
 
     .search-input:focus {
-        background-color: #017a42; 
+        background-color: #017a42;
         box-shadow: none;
         outline: none;
     }
 
     .search-input::placeholder {
-        color: #c0d9cc; 
+        color: #c0d9cc;
         opacity: 0.8;
     }
 
 .btn-lupa {
-    background-color: #026b3a; 
+    background-color: #026b3a;
     border: none;
-    color: white; 
+    color: white;
     margin-right: 2px;
     padding: 0;
     display: flex;
@@ -128,7 +128,7 @@ body {
 
 .search-wrapper {
     margin-left: 2rem !important;
-    min-width: 250px; 
+    min-width: 250px;
 }
 
 /* ========== TEXTOS Y ROLES ========== */
@@ -411,9 +411,3 @@ html {
     border: none;
     font-size: 18px;
 }
-
-
-
-
-
-

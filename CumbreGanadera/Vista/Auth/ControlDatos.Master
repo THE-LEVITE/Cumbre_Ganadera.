@@ -1,5 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="ControlDatos.master.cs" Inherits="CumbreGanadera.Vista.Auth.ControlDatos" %>
-
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="ControlDatos.master.cs" Inherits="CumbreGanadera.Vista.Auth.ControlDatos" %>
 <!DOCTYPE html>
 <html>
 <head runat="server">

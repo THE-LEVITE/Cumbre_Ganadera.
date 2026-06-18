@@ -18,5 +18,9 @@ namespace CumbreGanadera.Modelo
         public DateTime FechaIngreso { get; set; }
         public string Ciudad { get; set; }
         public int Rol { get; set; }
+        public string Area { get; set; }
+        public DateTime FechaAsignacion { get; set; }
+        public int IdHacienda { get; set; }
+        public string TipoDocumento { get; set; }
     }
 }

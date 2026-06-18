@@ -1,0 +1,81 @@
+﻿body {
+    .fondotxt {
+        background-color: #2f4029;
+        border-radius: 10px;
+        border-color: #999595;
+        border-width: 1px;
+    }
+
+    .colorTexto {
+        color: gray;
+    }
+
+    .colorTextoLabel {
+        color: red;
+        padding-left: 20px;
+        font-size: 15px;
+    }
+
+
+    .labelTitulo {
+        padding-left: 150px;
+        font-size: 30px;
+        color: white;
+    }
+
+    .labelDescripcion {
+        font-size: 15px;
+        color: white;
+        padding-left: 50px;
+        margin: 20px;
+    }
+
+    .contenedorTextbox {
+        background-color: #1f351e;
+        padding: 30px;
+        margin: 10px;
+        border-radius: 10px;
+        border-color: #555555;
+        border-width: 2px;
+    }
+
+    .boronesCrudRegistrar {
+        background-color: #0FBD2C;
+        border-radius: 10px;
+        border-color: #999595;
+        border-width: 1px;
+    }
+
+    .boronesCrudCancelar {
+        background-color: #DC2626;
+        border-radius: 10px;
+        border-color: #999595;
+        border-width: 1px;
+    }
+
+    .margenBotones {
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+
+    .form-control::placeholder {
+        color: white;
+    }
+
+    .form-control:focus {
+        outline: none;
+        border-color: #00e676;
+        background: rgba(255,255,255,0.12);
+        color: white;
+    }
+
+    .form-control {
+        width: 100%;
+        height: 42px;
+        border-radius: 10px;
+        border: 1px solid rgba(255,255,255,0.2);
+        background: rgba(255,255,255,0.08);
+        color: white;
+        padding-left: 10px;
+    }
+}
