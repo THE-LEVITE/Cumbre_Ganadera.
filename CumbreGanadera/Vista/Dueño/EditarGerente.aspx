@@ -1,8 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vista/Estructura.Master" AutoEventWireup="true" CodeBehind="RegistroGerente.aspx.cs" Inherits="CumbreGanadera.Vista.Dueño.RegistroGerente" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vista/Estructura.Master" AutoEventWireup="true" CodeBehind="EditarGerente.aspx.cs" Inherits="CumbreGanadera.Vista.Dueño.EditarGerente" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+
     <div>
         <label class="labelTitulo mt-2">Registro de gerentes </label>
         <br>
@@ -93,11 +95,14 @@
 
     <div class="row">
         <div class="col mt-4 margenBotones">
-            <asp:Button ID="btnRegistrar" runat ="server" Text="Completar registro" CssClass="btn w-100 boronesCrudRegistrar" OnClick="btnRegistrar_Click" />
+            <asp:Button ID="btnRegistrar" runat="server" Text="Completar registro" CssClass="btn w-100 boronesCrudRegistrar" />
         </div>
         <div class="col mt-4 margenBotones">
-            <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn w-100 boronesCrudCancelar" OnClick="btnCancelar_Click" />
+            <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn w-100 boronesCrudCancelar" />
 
         </div>
     </div>
+
+
+
 </asp:Content>

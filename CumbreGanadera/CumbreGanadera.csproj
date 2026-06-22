@@ -79,6 +79,7 @@
     <Content Include="Vista\Cliente\InicioCliente.aspx" />
     <Content Include="Vista\Cliente\PerfilCliente.aspx" />
     <Content Include="Vista\Cliente\Seguridad.aspx" />
+    <Content Include="Vista\Dueño\EditarGerente.aspx" />
     <Content Include="Vista\Dueño\InicioDueño.aspx" />
     <Content Include="Vista\Dueño\MisHaciendas.aspx" />
     <Content Include="Vista\Dueño\RegistroGerente.aspx" />
@@ -231,6 +232,13 @@
     </Compile>
     <Compile Include="Vista\Cliente\Seguridad.aspx.designer.cs">
       <DependentUpon>Seguridad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Dueño\EditarGerente.aspx.cs">
+      <DependentUpon>EditarGerente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Dueño\EditarGerente.aspx.designer.cs">
+      <DependentUpon>EditarGerente.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vista\Dueño\InicioDueño.aspx.cs">
       <DependentUpon>InicioDueño.aspx</DependentUpon>

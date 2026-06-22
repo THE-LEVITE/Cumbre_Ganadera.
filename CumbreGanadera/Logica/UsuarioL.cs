@@ -38,5 +38,11 @@ namespace CumbreGanadera.Logica
             List<Usuario> gerentes = oUsuarioD.MTListarGerentes(HaciendaId);
             return gerentes;
         }
+
+        public int MTEliminarUsuario(int IdUsuario)
+        {
+            int filas = oUsuarioD.MTEliminarUsuario(IdUsuario);
+            return filas;
+        }
     }
 }

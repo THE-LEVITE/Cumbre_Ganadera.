@@ -25,8 +25,8 @@ body {
 
 /* ========== SIDEBAR ========== */
 #sidebar {
-    background-color: rgb(200 203 204);
-    color: rgb(255, 255, 255);
+    background-color: rgb(200 203 204) !important;
+    color: rgb(255, 255, 255) !important;
     height: 100vh;
     position: sticky;
     top: 0;
@@ -42,11 +42,11 @@ body {
     }
 
     #sidebar::-webkit-scrollbar-track {
-        background: rgb(0, 20, 30);
+        background: rgb(0, 20, 30) !important;
     }
 
     #sidebar::-webkit-scrollbar-thumb {
-        background: rgb(5, 198, 5);
+        background: rgb(200 203 204) !important;
         border-radius: 5px;
     }
 
@@ -57,7 +57,7 @@ body {
 
 /* ========== CONTENIDO PRINCIPAL ========== */
 #ContePrinci {
-    background-color: #ffffff;
+    background-color: #ffffff !important;
     min-height: 100vh;
 }
 

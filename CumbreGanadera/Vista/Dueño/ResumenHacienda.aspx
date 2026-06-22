@@ -38,19 +38,33 @@
     </div>
 
     <div>
-        <asp:Button ID="btnVerHacienda" runat="server" CssClass="btn btn-success" Text="Registrar Gerente" OnClick="btnVerHacienda_Click" />
+        <asp:Button ID="btnRegistrarGerente" runat="server" CssClass="btn btn-success" Text="Registrar Gerente" OnClick="btnRegistrarGerente_Click" />
     </div>
 
 
-    <div class="data-grid">
+    <div class="data-grid" style="width:100%">
         <asp:GridView ID="gdGerentes" runat="server" AutoGenerateColumns="false">
 
             <Columns>
-                <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
-                <asp:BoundField DataField="Apellido" HeaderText="Apellido" />
-                <asp:BoundField DataField="Telefono" HeaderText="Telefono" />
-                <asp:BoundField DataField="AreaAsignada" HeaderText="Area a cargo" />
-                <asp:BoundField DataField="Estado" HeaderText="Estado" />
+                <asp:BoundField DataField="Nombre" HeaderText="Nombre" ItemStyle-Width="20%" ItemStyle-Height="50px" />
+                <asp:BoundField DataField="Apellido" HeaderText="Apellido" ItemStyle-Width="20%" />
+                <asp:BoundField DataField="Telefono" HeaderText="Telefono" ItemStyle-Width="15%" />
+                <asp:BoundField DataField="AreaAsignada" HeaderText="Area a cargo" ItemStyle-Width="20%" />
+                <asp:BoundField DataField="Estado" HeaderText="Estado" ItemStyle-Width="10%" />
+
+                <asp:TemplateField HeaderText="">
+                    <ItemTemplate>
+                        <div class="row">
+                            <div class="col">
+                                <asp:Button CssClass="btn btn-danger" ID="btnEliminar" runat="server" Text="Eliminar" CommandArgument='<%# Eval("Id") %>' OnCommand="btnEliminar_Command" />
+                            </div>
+                            <div class="col">
+                                <asp:Button CssClass="btn btn-warning" ID="bntEditar" runat="server" Text="Editar" CommandArgument='<%# Eval("Id") %>' OnCommand="bntEditar_Command" />
+                            </div>
+                        </div>
+                    </ItemTemplate>
+                </asp:TemplateField>
+
             </Columns>
 
         </asp:GridView>

@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Net.Mail;
 using System.Web;
+using System.Web.UI.WebControls;
 
 namespace CumbreGanadera.Datos
 {
@@ -196,5 +197,24 @@ namespace CumbreGanadera.Datos
             }
         }
 
+        public int MTEliminarUsuario(int Idusuario)
+        {
+            using (SqlConnection cn = ConexionBD.MtAbrirConexion())
+            {
+                cn.Open();
+
+                string procedimiento = "sp_EliminarUsuario";
+
+                using (SqlCommand cmd = new SqlCommand(procedimiento, cn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@IdUsuario", Idusuario);
+
+                    int filas = cmd.ExecuteNonQuery();
+                    return filas;
+                }
+            }
+        }
     }
 }

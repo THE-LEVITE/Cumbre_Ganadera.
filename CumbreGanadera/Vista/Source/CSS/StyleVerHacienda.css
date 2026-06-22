@@ -37,4 +37,17 @@
         flex-direction: column;
         align-items: center;
     }
+
+    .FormatoRecuadro {
+        background-color: #979797;
+        padding: 10px;
+        text-align: center;
+        border-radius: 18px;
+    }
+
+    .Indicador {
+        color: #fa994e;
+        font-size: 30px;
+    }
+}
 }
