@@ -83,6 +83,7 @@
     <Content Include="Vista\Dueño\InicioDueño.aspx" />
     <Content Include="Vista\Dueño\MisHaciendas.aspx" />
     <Content Include="Vista\Dueño\RegistroGerente.aspx" />
+    <Content Include="Vista\Dueño\ReportesDueño.aspx" />
     <Content Include="Vista\Dueño\ResumenHacienda.aspx" />
     <Content Include="Vista\Gerente\InicioGerente.aspx" />
     <Content Include="Vista\Gerente\ReportesGerentes.aspx" />
@@ -138,6 +139,7 @@
     <Compile Include="Modelo\MenuM.cs" />
     <Compile Include="Modelo\Producto.cs" />
     <Compile Include="Modelo\RegistroUsusario.cs" />
+    <Compile Include="Modelo\Reporte.cs" />
     <Compile Include="Modelo\Rol.cs" />
     <Compile Include="Modelo\Solicitud.cs" />
     <Compile Include="Modelo\Usuario.cs" />
@@ -260,6 +262,13 @@
     </Compile>
     <Compile Include="Vista\Dueño\RegistroGerente.aspx.designer.cs">
       <DependentUpon>RegistroGerente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Dueño\ReportesDueño.aspx.cs">
+      <DependentUpon>ReportesDueño.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Dueño\ReportesDueño.aspx.designer.cs">
+      <DependentUpon>ReportesDueño.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vista\Dueño\ResumenHacienda.aspx.cs">
       <DependentUpon>ResumenHacienda.aspx</DependentUpon>

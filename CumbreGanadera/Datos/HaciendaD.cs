@@ -1,4 +1,5 @@
-﻿using CumbreGanadera.Modelo;
+﻿using CumbreGanadera.Logica;
+using CumbreGanadera.Modelo;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -89,6 +90,45 @@ namespace CumbreGanadera.Datos
                     }
                 }
             }
+        }
+
+        public List<Reporte> MtListarReportesD(int idDueño)
+        {
+            List<Reporte> ListaReporte = new List<Reporte>();
+
+            using (SqlConnection cn = ConexionBD.MtAbrirConexion())
+            {
+                cn.Open();
+
+                string procedimiento = "Sp_ListarReportes";
+
+                using (SqlCommand cmd = new SqlCommand(procedimiento, cn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@IdDueño", idDueño);
+                    cmd.Parameters.AddWithValue("@NombreRol", "Dueño");
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            Reporte oReportes = new Reporte()
+                            {
+                                Id = Convert.ToInt32(dr["Id"]),
+                                Descripcion = dr["Descripcion"].ToString(),
+                                Titulo = dr["Titulo"].ToString(),
+                                Motivo = dr["Motivo"].ToString(),
+                                FechaCreacion = Convert.ToDateTime(dr["FechaCreacion"]) ,
+                                Hacienda = dr["NombreHacienda"].ToString()
+
+                            };
+                            ListaReporte.Add(oReportes);
+                        }
+                    }
+                }
+            }
+
+            return ListaReporte;
         }
     }
 }

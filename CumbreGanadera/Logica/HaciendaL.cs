@@ -21,5 +21,11 @@ namespace CumbreGanadera.Logica
             List<Hacienda> cantidades = oDatosHacienda.MTObtenerCantidades(haciendaId);
             return cantidades;
         }
+
+
+        public List<Reporte> MtListarReportesL(int idDueño)
+        {
+            return oDatosHacienda.MtListarReportesD(idDueño);
+        }
     }
 }

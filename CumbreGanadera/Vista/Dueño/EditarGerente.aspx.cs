@@ -11,9 +11,7 @@ namespace CumbreGanadera.Vista.Dueño
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            ResumenHacienda oResumenHacienda = new ResumenHacienda();
-
-            int IdGerente = oResumenHacienda.MTGerenteEditar();
+          
         }
     }
 }
