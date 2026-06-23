@@ -39,5 +39,24 @@ namespace CumbreGanadera.Vista.Dueño
 
             gdReportesHacienda();
         }
+
+        protected void btnResponder_Click(object sender, EventArgs e)
+        {
+            // Obtener el botón que disparó el evento
+            Button btn = (Button)sender;
+
+            // Obtener el ID del reporte desde el CommandArgument
+            string idReporte = btn.CommandArgument;
+
+            // Guardar el ID en una variable para usarlo después
+            IdReporteSeleccionado = Convert.ToInt32(idReporte);
+
+            // Limpiar el TextBox por si tenía texto anterior
+            txtRespuesta.Text = "";
+
+            // ABRIR EL MODAL con JavaScript
+            string script = "$('#modalResponder').modal('show');";
+            ScriptManager.RegisterStartupScript(this, GetType(), "ShowModal", script, true);
+        }
     }
 }
