@@ -37,7 +37,14 @@ namespace CumbreGanadera.Vista.Dueño
         {
             gdReportesHacienda.PageIndex = e.NewPageIndex;
 
-            gdReportesHacienda();
+            MtCargarReportes();
+        }
+
+
+
+        protected void btnEnviarRespuesta_Click(object sender, EventArgs e)
+        {
+           
         }
 
         protected void btnResponder_Click(object sender, EventArgs e)
@@ -49,14 +56,18 @@ namespace CumbreGanadera.Vista.Dueño
             string idReporte = btn.CommandArgument;
 
             // Guardar el ID en una variable para usarlo después
-            IdReporteSeleccionado = Convert.ToInt32(idReporte);
-
-            // Limpiar el TextBox por si tenía texto anterior
-            txtRespuesta.Text = "";
+            int IdReporte = Convert.ToInt32(idReporte);           
+            
 
             // ABRIR EL MODAL con JavaScript
-            string script = "$('#modalResponder').modal('show');";
-            ScriptManager.RegisterStartupScript(this, GetType(), "ShowModal", script, true);
+            string script = @"
+                var modalElement = document.getElementById('modalEditar');
+                var modal = new bootstrap.Modal(modalElement);
+                modal.show();";
+
+            ClientScript.RegisterStartupScript(this.GetType(), "AbrirModalEditar", script, true);
+
+
         }
     }
 }

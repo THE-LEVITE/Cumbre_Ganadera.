@@ -5,11 +5,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <asp:GridView ID="gdReportesHacienda" runat="server"
-        AutoGenerateColumns="true"
+        AutoGenerateColumns="false"
         AllowPaging="true"
         PageSize="3"
         OnPageIndexChanging="gdReportesHacienda_PageIndexChanging"
-        CssClass="table table-bordered">
+        CssClass="table table-hover table-striped table-bordered">
 
         <Columns>
             <asp:BoundField DataField="Id" HeaderText="ID" />
@@ -29,32 +29,48 @@
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
-
+        
         <PagerSettings Mode="NumericFirstLast" />
     </asp:GridView>
 
     <!-- MODAL SIMPLE -->
-    <div class="modal fade" id="modalResponder" tabindex="-1" role="dialog" aria-labelledby="modalResponderLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalResponderLabel">Responder Reporte</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+    <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="modalLabelEditar" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabelEditar">Editar Instructor</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <asp:HiddenField ID="hdnIdEdit" runat="server" Value="0" />
+
+                <div class="mb-3">
+                    <label class="form-label">Nombre</label>
+                    <input type="text" id="txtNombreEdit" class="form-control" runat="server" />
                 </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="txtRespuesta" class="font-weight-bold">Respuesta:</label>
-                        <asp:TextBox ID="txtRespuesta" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="4" placeholder="Escriba su respuesta aquí..."></asp:TextBox>
-                    </div>
+                <div class="mb-3">
+                    <label class="form-label">Apellido</label>
+                    <input type="text" id="txtApellidoEdit" class="form-control" runat="server" />
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <asp:Button ID="btnEnviarRespuesta" runat="server" Text="Enviar Respuesta" CssClass="btn btn-primary" OnClick="btnEnviarRespuesta_Click" />
+                <div class="mb-3">
+                    <label class="form-label">Correo</label>
+                    <input type="text" id="txtCorreoEdit" class="form-control" runat="server" />
                 </div>
+                <div class="mb-3">
+                    <label class="form-label">Contraseña</label>
+                    <input type="text" id="txtContraEdit" class="form-control" runat="server" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Especialidad</label>
+                    <input type="text" id="txtEspecialidadEdit" class="form-control" runat="server" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <asp:Button ID="btnEnviarRespuesta" runat="server" Text="Guardar" CssClass="btn btn-success" OnClick="btnEnviarRespuesta_Click" />
             </div>
         </div>
     </div>
+</div>
 
 </asp:Content>
