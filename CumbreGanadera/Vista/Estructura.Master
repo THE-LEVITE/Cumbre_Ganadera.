@@ -106,8 +106,7 @@
                         <div class="container-fluid">
 
                             <!-- Título -->
-                            <span class="navbar-brand fw-bold text-white">Portal del Cliente - HaciendaPro
-                            </span>
+                           <asp:Label class="navbar-brand fw-bold text-black" runat="server" id="lblTituloRol"></asp:Label>                          
 
                             <!-- Barra de búsqueda -->
                             <div id="BarraBusqueda" class="search-wrapper ms-4 ms-md-5" runat="server" visible="false">
@@ -127,7 +126,7 @@
                                 </button>
                                 <div class="d-flex align-items-center">
                                     <div class="text-end me-2 d-none d-sm-block">
-                                        <asp:Label ID="lblUsuario" class="fw-semibold fw-bold text-white small" runat="server" Text=""></asp:Label>
+                                        <asp:Label ID="lblUsuario" class="fw-semibold fw-bold text-black small" runat="server" Text=""></asp:Label>
                                         <asp:Label ID="lblRol" class="textRol" runat="server" Text=""></asp:Label>
 
                                     </div>

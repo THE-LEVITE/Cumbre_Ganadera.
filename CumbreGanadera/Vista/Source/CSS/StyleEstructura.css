@@ -8,10 +8,13 @@
 html, body {
     height: 100%;
     overflow-x: hidden;
+    scroll-behavior: smooth;
+    font-family: 'Inter', 'Poppins', sans-serif;
 }
 
 body {
-    background-color: #00431a;
+    background-color: #F8F9F8;
+    color: #2E2E2E;
 }
 
 /* Contenedor principal */
@@ -25,124 +28,52 @@ body {
 
 /* ========== SIDEBAR ========== */
 #sidebar {
-    background-color: rgb(200 203 204) !important;
-    color: rgb(255, 255, 255) !important;
+    background-color: #F5F5F5 !important;
+    color: #4B6043 !important;
     height: 100vh;
     position: sticky;
     top: 0;
     overflow-y: auto;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
+    transition: transform 0.3s ease-in-out;
 }
 
-    /* Scrollbar del sidebar */
     #sidebar::-webkit-scrollbar {
         width: 5px;
     }
 
     #sidebar::-webkit-scrollbar-track {
-        background: rgb(0, 20, 30) !important;
+        background: #E0E0E0 !important;
     }
 
     #sidebar::-webkit-scrollbar-thumb {
-        background: rgb(200 203 204) !important;
+        background: #4B6043 !important;
         border-radius: 5px;
     }
-
 
 #menuAccordion {
     flex: 1;
 }
 
-/* ========== CONTENIDO PRINCIPAL ========== */
-#ContePrinci {
-    background-color: #ffffff !important;
-    min-height: 100vh;
-}
-
-/* ========== NAVBAR ========== */
-.custom-navbar {
-    border-bottom: 1px solid #037f1b90;
-    background-color: #ffffff;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-.navbar-brand {
-    font-size: 20px;
-}
-
-/* ========== BARRA DE BÚSQUEDA ========== */
-.search-group {
-    background-color: #026b3a;
-    border-radius: 25px;
-    overflow: hidden;
-    align-items: center;
-    border: 1px solid #038f4a
-}
-
-.search-input {
-    background-color: #026b3a;
-    border: none;
-    box-shadow: none;
-    height: 40px;
-    color: white;
-}
-
-    .search-input:focus {
-        background-color: #017a42;
-        box-shadow: none;
-        outline: none;
+    #menuAccordion .nav-link {
+        padding: 10px 15px;
+        margin: 2px 0;
+        border-radius: 8px;
+        color: #4B6043;
+        font-weight: 500;
+        transition: background-color 0.3s, color 0.3s;
     }
 
-    .search-input::placeholder {
-        color: #c0d9cc;
-        opacity: 0.8;
-    }
+        #menuAccordion .nav-link:hover {
+            background-color: #4B6043;
+            color: #fff;
+        }
 
-.btn-lupa {
-    background-color: #026b3a;
-    border: none;
-    color: white;
-    margin-right: 2px;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    width: 45px;
-    height: 40px;
-    justify-content: center;
-    transition: background-color 0.2s ease;
-}
-
-.lupa-icone {
-    font-size: 1.2rem;
-}
-
-.btn-lupa:hover {
-    background-color: #028a4a;
-    color: white;
-}
-
-.search-wrapper {
-    margin-left: 2rem !important;
-    min-width: 250px;
-}
-
-/* ========== TEXTOS Y ROLES ========== */
-.PanelesRol {
-    color: chartreuse;
-}
-
-.textRol {
-    color: rgb(0, 128, 49);
-}
-
-/* ========== BOTÓN CERRAR SESIÓN ========== */
+/* Botón cerrar sesión */
 .cerrar-sesion-container {
-    border-top: 2px solid #00256a;
+    border-top: 2px solid #E0E0E0;
     padding-top: 12px;
     margin-top: auto;
 }
@@ -152,29 +83,17 @@ body {
     border: none;
     cursor: pointer;
     width: 100%;
+    color: #4B6043;
+    font-weight: 600;
 }
 
     .cerrar-btn:hover {
-        background-color: transparent;
-        color: #dc3545;
-        cursor: pointer;
+        color: #C0392B;
     }
 
-    .cerrar-btn:active,
-    .cerrar-btn:focus {
-        background-color: transparent;
-        color: #dc3545;
-        box-shadow: none;
-        outline: none;
-    }
-
-#btnNoti {
-    color: #a1b0be;
-}
-
-/* ========== SIDEBAR ICONO ========== */
+/* Iconos del sidebar */
 .sidebar-icono {
-    background-color: rgb(5, 198, 5) !important;
+    background-color: #4B6043 !important;
     width: 50px;
     height: 50px;
     display: flex;
@@ -188,226 +107,198 @@ body {
         font-size: 1.5rem;
     }
 
-/* ========== RESPONSIVIDAD MÓVIL (<768px) ========== */
+/* ========== NAVBAR ========== */
+.custom-navbar {
+    border-bottom: 1px solid #E0E0E0;
+    background-color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+    font-size: 20px;
+    font-weight: 600;
+    color: #4B6043;
+}
+
+/* ========== BARRA DE BÚSQUEDA ========== */
+.search-group {
+    background-color: #E8EFE8;
+    border-radius: 25px;
+    overflow: hidden;
+    align-items: center;
+    border: 1px solid #4B6043;
+}
+
+.search-input {
+    background-color: #E8EFE8;
+    border: none;
+    box-shadow: none;
+    height: 40px;
+    color: #4B6043;
+}
+
+    .search-input:focus {
+        background-color: #DDE6DD;
+        outline: none;
+    }
+
+    .search-input::placeholder {
+        color: #6B6B6B;
+        opacity: 0.8;
+    }
+
+.btn-lupa {
+    background-color: #4B6043;
+    border: none;
+    color: white;
+    width: 45px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+    .btn-lupa:hover {
+        background-color: #3E5E3A;
+    }
+
+/* ========== CONTENIDO PRINCIPAL ========== */
+#ContePrinci {
+    background-color: #ffffff !important;
+    min-height: 100vh;
+    padding: 30px;
+}
+
+    #ContePrinci h1 {
+        font-size: 24px;
+        font-weight: 700;
+        color: #2E2E2E;
+    }
+
+    #ContePrinci p {
+        color: #6B6B6B;
+        margin-bottom: 30px;
+    }
+
+/* ========== TARJETAS DE HACIENDAS ========== */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+    }
+
+.card-content {
+    padding: 15px;
+}
+
+    .card-content h3 {
+        font-size: 18px;
+        color: #2E2E2E;
+        margin-bottom: 8px;
+    }
+
+    .card-content p {
+        font-size: 14px;
+        color: #6B6B6B;
+        margin-bottom: 15px;
+    }
+
+    .card-content .btn-ver {
+        background-color: #4B6043;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 8px 16px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: background-color 0.3s;
+    }
+
+        .card-content .btn-ver:hover {
+            background-color: #3E5E3A;
+        }
+
+/* ========== BOTÓN FLOTANTE ========== */
+.floating-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: #4B6043;
+    color: #fff;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+
+    .floating-btn .badge {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background-color: #C0392B;
+        color: #fff;
+        font-size: 12px;
+        border-radius: 50%;
+        width: 18px;
+        height: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+/* ========== RESPONSIVIDAD ========== */
 @media (max-width: 768px) {
-    /* Sidebar oculto por defecto */
     #sidebar {
         position: fixed;
-        top: 0;
         left: 0;
-        bottom: 0;
-        z-index: 1050;
         width: 280px !important;
         transform: translateX(-100%);
         transition: transform 0.3s ease;
-        height: 100vh !important;
     }
 
         #sidebar.sidebar-visible {
             transform: translateX(0);
         }
 
-    /* Overlay */
-    .sidebar-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.6);
-        z-index: 1040;
-        display: none;
+    .sidebar-overlay.active {
+        display: block;
     }
 
-        .sidebar-overlay.active {
-            display: block;
-        }
-
-    /* Contenido principal */
-    #ContePrinci {
-        width: 100% !important;
-    }
-
-    /* Barra de búsqueda */
     .search-wrapper {
-        margin-left: 0 !important;
-        width: 100%;
-    }
-
-    .search-group {
         width: 100% !important;
+        margin-left: 0 !important;
     }
 
-    /* Navbar en columna */
     .custom-navbar .container-fluid {
         flex-direction: column;
         gap: 10px;
-    }
+    }      
 
-    .ms-auto {
-        margin-left: 0 !important;
-    }
-
-    /* Botón cerrar sesión centrado */
-    .cerrar-btn {
-        justify-content: center;
-    }
-}
-
-/* ========== DESKTOP (769px y superiores) ========== */
-@media (min-width: 769px) {
-    #sidebar {
-        display: flex !important;
-        transform: none !important;
-        position: sticky;
-        top: 0;
-        height: 100vh;
-    }
-
-    .sidebar-overlay {
-        display: none !important;
-    }
-
-    .d-md-none {
-        display: none !important;
-    }
-}
-
-/* ========== TABLETS (769px a 991px) ========== */
-@media (min-width: 769px) and (max-width: 991px) {
-    #sidebar {
-        width: 240px !important;
-    }
-
-    .navbar-brand {
-        font-size: 15px !important;
-    }
-
-    .textRol {
-        font-size: 10px;
-    }
-
-    .fw-semibold {
-        font-size: 12px;
-    }
-
-    .search-wrapper {
-        width: 200px !important;
-    }
-}
-
-/* ========== DESKTOP NORMAL (992px+) ========== */
-@media (min-width: 992px) {
-    .search-wrapper {
-        margin-left: 4rem !important;
-    }
-}
-
-/* ========== MÓVILES PEQUEÑOS (<480px) ========== */
-@media (max-width: 480px) {
-    .sidebar-icono {
-        width: 35px !important;
-        height: 35px !important;
-        border-radius: 10px !important;
-    }
-
-        .sidebar-icono i {
-            font-size: 1rem;
-        }
-
-    .navbar-brand {
-        font-size: 11px !important;
-        text-align: center;
-    }
-
-    .lupa-icone {
-        font-size: 0.8rem;
-    }
-
-    .btn-lupa {
-        width: 28px;
-        height: 32px;
-    }
-
-    .search-input {
-        height: 32px;
-        font-size: 11px;
-    }
-
-    .textRol {
-        font-size: 7px;
-    }
-
-    .fw-semibold {
-        font-size: 9px;
-    }
-
-    #sidebar {
-        width: 85% !important;
-    }
-}
-
-
-.navbar .text-white {
-    color: white !important;
-}
-
-.rounded-circle {
-    object-fit: cover;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-}
-
-#sidebar {
-    transition: transform 0.3s ease-in-out;
-}
-
-button:focus,
-.btn:focus,
-.nav-link:focus {
-    outline: none !important;
-    box-shadow: none !important;
-}
-
-#menuAccordion .nav-link {
-    padding: 10px 15px;
-    margin: 2px 0;
-    border-radius: 8px;
-}
-
-    #menuAccordion .nav-link:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-    }
-
-.p-3 {
-    padding: 1rem !important;
-}
-
-.p-md-4 {
-    padding: 1.5rem !important;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-/* Botón de menú móvil */
-.mobile-menu-button {
-    background-color: transparent;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-    .mobile-menu-button .btn {
-        font-size: 16px;
-        font-weight: 500;
-    }
-
-        .mobile-menu-button .btn:hover {
-            background-color: rgb(3, 158, 3) !important;
-            transform: scale(0.99);
-        }
-
-.btn-lupa {
-    background: transparent;
-    border: none;
-    font-size: 18px;
 }

@@ -22,7 +22,7 @@
 
         <!-- BOTON -->
         <asp:Button ID="btnLogin" runat="server"
-            Text="Enviar Instrucciones"
+            Text="Enviar Codigo"
             CssClass="btn btn-main w-100" OnClick="btnLogin_Click"/>
 
         <!-- FOOTER -->

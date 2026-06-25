@@ -21,6 +21,6 @@ namespace CumbreGanadera.Modelo
         public string Telefono { get; set; }
         public DateTime FechaIngreso { get; set; }
         public string AreaAsignada { get; set; }
-
+        public string CodigoRecuperacion { get; set; }
     }
 }

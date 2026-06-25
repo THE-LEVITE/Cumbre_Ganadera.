@@ -9,11 +9,11 @@ namespace CumbreGanadera.Vista.Dueño
 {
     public partial class EditarGerente : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            ResumenHacienda oResumenHacienda = new ResumenHacienda();
+        //protected void Page_Load(object sender, EventArgs e)
+        //{
+        //    ResumenHacienda oResumenHacienda = new ResumenHacienda();
 
-            int IdGerente = oResumenHacienda.MTGerenteEditar();
-        }
+        //    int IdGerente = oResumenHacienda.MTGerenteEditar();
+        //}
     }
 }
