@@ -83,6 +83,7 @@
     <Content Include="Vista\Dueño\MisHaciendas.aspx" />
     <Content Include="Vista\Dueño\RegistroGerente.aspx" />
     <Content Include="Vista\Dueño\ResumenHacienda.aspx" />
+    <Content Include="Vista\Gerente\CrudTareas\Tareas.aspx" />
     <Content Include="Vista\Gerente\InicioGerente.aspx" />
     <Content Include="Vista\Gerente\ReportesGerentes.aspx" />
     <Content Include="Vista\Invitado\InicioInvitado.aspx" />
@@ -125,11 +126,13 @@
     <Compile Include="Datos\MenuD.cs" />
     <Compile Include="Datos\ProductoD.cs" />
     <Compile Include="Datos\RegistroUsuarioD.cs" />
+    <Compile Include="Datos\TareasD.cs" />
     <Compile Include="Datos\UsuarioD.cs" />
     <Compile Include="Logica\HaciendaL.cs" />
     <Compile Include="Logica\MenuL.cs" />
     <Compile Include="Logica\ProductoL.cs" />
     <Compile Include="Logica\RegistroUsuarioL.cs" />
+    <Compile Include="Logica\TareasL.cs" />
     <Compile Include="Logica\UsuarioL.cs" />
     <Compile Include="Modelo\Compra.cs" />
     <Compile Include="Modelo\DatosLoginUser.cs" />
@@ -139,6 +142,7 @@
     <Compile Include="Modelo\RegistroUsusario.cs" />
     <Compile Include="Modelo\Rol.cs" />
     <Compile Include="Modelo\Solicitud.cs" />
+    <Compile Include="Modelo\TareasM.cs" />
     <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vista\Auth\ControlDatos.Master.cs">
@@ -266,6 +270,13 @@
     </Compile>
     <Compile Include="Vista\Estructura.Master.designer.cs">
       <DependentUpon>Estructura.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Gerente\CrudTareas\Tareas.aspx.cs">
+      <DependentUpon>Tareas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Gerente\CrudTareas\Tareas.aspx.designer.cs">
+      <DependentUpon>Tareas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vista\Gerente\InicioGerente.aspx.cs">
       <DependentUpon>InicioGerente.aspx</DependentUpon>
