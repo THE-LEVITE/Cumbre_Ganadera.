@@ -15,6 +15,24 @@ namespace CumbreGanadera.Vista.Dueño
     {
 
         /// <summary>
+        /// Control ddlHaciendas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlHaciendas;
+
+        /// <summary>
+        /// Control tablaReportes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tablaReportes;
+
+        /// <summary>
         /// Control gdReportesHacienda.
         /// </summary>
         /// <remarks>
@@ -33,49 +51,40 @@ namespace CumbreGanadera.Vista.Dueño
         protected global::System.Web.UI.WebControls.HiddenField hdnIdEdit;
 
         /// <summary>
-        /// Control txtNombreEdit.
+        /// Control lblGerente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtNombreEdit;
+        protected global::System.Web.UI.WebControls.Label lblGerente;
 
         /// <summary>
-        /// Control txtApellidoEdit.
+        /// Control txtTitulo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtApellidoEdit;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtTitulo;
 
         /// <summary>
-        /// Control txtCorreoEdit.
+        /// Control txtMotivo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtCorreoEdit;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtMotivo;
 
         /// <summary>
-        /// Control txtContraEdit.
+        /// Control txtDescripcion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtContraEdit;
-
-        /// <summary>
-        /// Control txtEspecialidadEdit.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtEspecialidadEdit;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtDescripcion;
 
         /// <summary>
         /// Control btnEnviarRespuesta.
@@ -85,5 +94,23 @@ namespace CumbreGanadera.Vista.Dueño
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnEnviarRespuesta;
+
+        /// <summary>
+        /// Control lblSinHacienda.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSinHacienda;
+
+        /// <summary>
+        /// Control lblSinSolicitudes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSinSolicitudes;
     }
 }

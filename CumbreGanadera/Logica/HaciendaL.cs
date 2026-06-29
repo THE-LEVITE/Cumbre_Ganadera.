@@ -23,9 +23,24 @@ namespace CumbreGanadera.Logica
         }
 
 
-        public List<Reporte> MtListarReportesL(int idDueño)
+        public List<Reporte> MtListarReportesL(int idHacienda)
         {
-            return oDatosHacienda.MtListarReportesD(idDueño);
+            return oDatosHacienda.MtListarReportesD(idHacienda);
+        }
+
+        public string MtTraerGerenteL(int idReporte)
+        {
+            return oDatosHacienda.MtTraerGerenteD(idReporte);
+        }
+
+        public int MtResponderSolicutudL(Reporte oReport,int idDueño,int IdReporte, int idHacienda)
+        {
+            return oDatosHacienda.MtResponderSolicutudD(oReport, idDueño, IdReporte, idHacienda);
+        }
+
+        public bool MtActualizarSolicitudL(int IdReporte)
+        {
+            return oDatosHacienda.MtActualizarSolicitudD(IdReporte);
         }
     }
 }

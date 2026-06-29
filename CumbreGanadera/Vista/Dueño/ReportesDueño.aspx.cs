@@ -16,21 +16,49 @@ namespace CumbreGanadera.Vista.Dueño
         {
             if (!IsPostBack)
             {
+                int dueñoId = Convert.ToInt32(Session["Id"].ToString());
+                Usuario oDueño = new Usuario { Id = dueñoId };
+
+                List<Hacienda> oListaHaciendas = oHaciL.MTDueñoHacienda(oDueño);
+                ddlHaciendas.DataSource = oListaHaciendas;
+                ddlHaciendas.DataTextField = "NombreHacienda";
+                ddlHaciendas.DataValueField = "Id";                
+                ddlHaciendas.DataBind();
+                ddlHaciendas.Items.Insert(0, new ListItem("-- Seleccione una Hacienda --", "0"));
+
                 MtCargarReportes();
             }
         }
 
         public void MtCargarReportes()
-        {
-            int idDueño = Convert.ToInt32(Session["Id"]);
-
-            List<Reporte> listReportes = oHaciL.MtListarReportesL(idDueño);
-
-            if (listReportes.Count > 0)
+       {           
+            int idHacienda = Convert.ToInt32(Session["IdHacienda"]);
+            if (idHacienda == 0)
             {
-                gdReportesHacienda.DataSource = listReportes;
-                gdReportesHacienda.DataBind();
+                tablaReportes.Visible = false;
+                lblSinHacienda.Visible = true;
+                lblSinSolicitudes.Visible = false;
             }
+            else
+            {
+                List<Reporte> listReportes = oHaciL.MtListarReportesL(idHacienda);
+
+                if (listReportes.Count > 0)
+                {
+                    gdReportesHacienda.DataSource = listReportes;
+                    gdReportesHacienda.DataBind();
+                    tablaReportes.Visible = true;
+                    lblSinHacienda.Visible = false;
+                    lblSinSolicitudes.Visible = false;
+                }
+                else if (listReportes.Count == 0)
+                {
+                    tablaReportes.Visible = false;
+                    lblSinHacienda.Visible = false;
+                    lblSinSolicitudes.Visible = true;
+                }
+            }
+           
         }
 
         protected void gdReportesHacienda_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -44,30 +72,79 @@ namespace CumbreGanadera.Vista.Dueño
 
         protected void btnEnviarRespuesta_Click(object sender, EventArgs e)
         {
-           
+
+            Reporte oReport = new Reporte()
+            {
+                Titulo = txtTitulo.Value,
+                Descripcion = txtDescripcion.Value,
+                Motivo = txtMotivo.Value,
+                FechaCreacion = DateTime.Now
+            };
+
+            int idDueño = Convert.ToInt32(Session["Id"]);
+            int IdReporte = Convert.ToInt32(Session["idReporte"]);
+            int idHacienda = Convert.ToInt32(Session["IdHacienda"]);
+
+            int num = oHaciL.MtResponderSolicutudL(oReport, idDueño, IdReporte, idHacienda);
+
+            if (num == 2)
+            {
+                bool actu = oHaciL.MtActualizarSolicitudL(IdReporte);
+                if (actu)
+                {
+                    MostrarMensaje("Respuesta Enviada","La respuesta de la solicitud se envio correctamente", "success");
+                    txtTitulo.Value = "";
+                    txtDescripcion.Value = "";
+                    txtMotivo.Value = "";
+                    MtCargarReportes();
+                }
+                else
+                {
+                    MostrarMensaje("Error al Enviar", "La respuesta de la solicitud no se puedo enviar correctamente", "error");
+
+                }
+            }
         }
 
         protected void btnResponder_Click(object sender, EventArgs e)
         {
-            // Obtener el botón que disparó el evento
             Button btn = (Button)sender;
 
-            // Obtener el ID del reporte desde el CommandArgument
-            string idReporte = btn.CommandArgument;
+            string idReporte = btn.CommandArgument;             
 
-            // Guardar el ID en una variable para usarlo después
-            int IdReporte = Convert.ToInt32(idReporte);           
-            
+            int IdReporte = Convert.ToInt32(idReporte);
 
-            // ABRIR EL MODAL con JavaScript
+            Session["idReporte"] = IdReporte;
+
+            string Nombregerente = oHaciL.MtTraerGerenteL(IdReporte);
+
+            lblGerente.Text = Nombregerente;
+
             string script = @"
-                var modalElement = document.getElementById('modalEditar');
+                var modalElement = document.getElementById('modalResponder');
                 var modal = new bootstrap.Modal(modalElement);
                 modal.show();";
 
-            ClientScript.RegisterStartupScript(this.GetType(), "AbrirModalEditar", script, true);
+            ClientScript.RegisterStartupScript(this.GetType(), "AbrirModalRespuesta", script, true);
 
 
+        }
+
+        protected void ddlHaciendas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            string idHacienda = ddlHaciendas.SelectedValue;
+            Session["IdHacienda"] = Convert.ToInt32(idHacienda);
+
+            MtCargarReportes();
+            
+        }
+
+
+        private void MostrarMensaje(string titulo, string mensaje, string icono)
+        {
+            ScriptManager.RegisterStartupScript(this, GetType(), "Mensaje",
+                $"Swal.fire({{ title: '{titulo}', text: '{mensaje}', icon: '{icono}' }});", true);
         }
     }
 }

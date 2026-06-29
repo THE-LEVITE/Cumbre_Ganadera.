@@ -92,7 +92,7 @@ namespace CumbreGanadera.Datos
             }
         }
 
-        public List<Reporte> MtListarReportesD(int idDueño)
+        public List<Reporte> MtListarReportesD(int idHacienda)
         {
             List<Reporte> ListaReporte = new List<Reporte>();
 
@@ -105,8 +105,7 @@ namespace CumbreGanadera.Datos
                 using (SqlCommand cmd = new SqlCommand(procedimiento, cn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@IdDueño", idDueño);
-                    cmd.Parameters.AddWithValue("@NombreRol", "Dueño");
+                    cmd.Parameters.AddWithValue("@IdHacienda", idHacienda);
 
                     using (SqlDataReader dr = cmd.ExecuteReader())
                     {
@@ -118,8 +117,7 @@ namespace CumbreGanadera.Datos
                                 Descripcion = dr["Descripcion"].ToString(),
                                 Titulo = dr["Titulo"].ToString(),
                                 Motivo = dr["Motivo"].ToString(),
-                                FechaCreacion = Convert.ToDateTime(dr["FechaCreacion"]) ,
-                                Hacienda = dr["NombreHacienda"].ToString()
+                                FechaCreacion = Convert.ToDateTime(dr["FechaCreacion"])
 
                             };
                             ListaReporte.Add(oReportes);
@@ -130,5 +128,82 @@ namespace CumbreGanadera.Datos
 
             return ListaReporte;
         }
+
+        public string MtTraerGerenteD(int idReporte)
+        {
+            using (SqlConnection conn = ConexionBD.MtAbrirConexion())
+            {
+                conn.Open();
+                string Nombre = "";
+                string consulta = "Sp_BuscarGerenteReporte";
+                using (SqlCommand cmd = new SqlCommand(consulta, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@IdReporte", idReporte);
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr.Read())
+                        {
+                            Nombre = dr["NombreCompleto"].ToString();
+
+                        }
+
+                        return Nombre;
+                    }
+                }
+            }
+        }
+
+
+        public int MtResponderSolicutudD(Reporte oReport, int idDueño, int IdReporte, int idHacienda)
+        {
+            using (SqlConnection conn = ConexionBD.MtAbrirConexion())
+            {
+                conn.Open();
+                int num = 0;
+                string consulta = "Sp_ResponderSolicitud";
+                using (SqlCommand cmd = new SqlCommand(consulta, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Titulo", oReport.Titulo);
+                    cmd.Parameters.AddWithValue("@Descripcion", oReport.Descripcion);
+                    cmd.Parameters.AddWithValue("@Motivo", oReport.Motivo);
+                    cmd.Parameters.AddWithValue("@Fecha", oReport.FechaCreacion);
+                    cmd.Parameters.AddWithValue("@IdHacienda", idHacienda);
+                    cmd.Parameters.AddWithValue("@IdUsuario", idDueño);
+                    cmd.Parameters.AddWithValue("@EstadoReporte", "Respuesta");
+                    cmd.Parameters.AddWithValue("@IdReporteRespuesta", IdReporte);
+
+                    num = cmd.ExecuteNonQuery();
+
+                    return num;
+
+
+                }
+            }
+        }
+
+        public bool MtActualizarSolicitudD(int IdReporte)
+        {
+            using (SqlConnection conn = ConexionBD.MtAbrirConexion())
+            {
+                conn.Open();
+                bool num = false;
+                string consulta = "Sp_ActualizarSolicitud";
+                using (SqlCommand cmd = new SqlCommand(consulta, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@IdReporte", IdReporte);
+
+                    num = cmd.ExecuteNonQuery() > 0;
+
+                    return num;
+
+
+                }
+            }
+        }
+
     }
 }
