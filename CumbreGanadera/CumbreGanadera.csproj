@@ -117,6 +117,7 @@
     <Content Include="Vista\Source\Img\ImgProductos\Vaca.png" />
     <Content Include="Vista\Source\Img\Perfiles\Cliente\fotoP.jpg" />
     <Content Include="Vista\Source\JS\ScriptEstructura.js" />
+    <Content Include="Vista\Trabajador\GestionRecursos.aspx" />
     <Content Include="Vista\Trabajador\InicioTrabajador.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -125,11 +126,13 @@
     <Compile Include="Datos\HaciendaD.cs" />
     <Compile Include="Datos\MenuD.cs" />
     <Compile Include="Datos\ProductoD.cs" />
+    <Compile Include="Datos\RecursoD.cs" />
     <Compile Include="Datos\RegistroUsuarioD.cs" />
     <Compile Include="Datos\UsuarioD.cs" />
     <Compile Include="Logica\HaciendaL.cs" />
     <Compile Include="Logica\MenuL.cs" />
     <Compile Include="Logica\ProductoL.cs" />
+    <Compile Include="Logica\RecursoL.cs" />
     <Compile Include="Logica\RegistroUsuarioL.cs" />
     <Compile Include="Logica\UsuarioL.cs" />
     <Compile Include="Modelo\Compra.cs" />
@@ -137,6 +140,7 @@
     <Compile Include="Modelo\Hacienda.cs" />
     <Compile Include="Modelo\MenuM.cs" />
     <Compile Include="Modelo\Producto.cs" />
+    <Compile Include="Modelo\Recurso.cs" />
     <Compile Include="Modelo\RegistroUsusario.cs" />
     <Compile Include="Modelo\Rol.cs" />
     <Compile Include="Modelo\Solicitud.cs" />
@@ -302,6 +306,13 @@
     </Compile>
     <Compile Include="Vista\Perfiles.Master.designer.cs">
       <DependentUpon>Perfiles.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Trabajador\GestionRecursos.aspx.cs">
+      <DependentUpon>GestionRecursos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Trabajador\GestionRecursos.aspx.designer.cs">
+      <DependentUpon>GestionRecursos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vista\Trabajador\InicioTrabajador.aspx.cs">
       <DependentUpon>InicioTrabajador.aspx</DependentUpon>
