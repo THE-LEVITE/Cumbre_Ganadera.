@@ -10,9 +10,11 @@ namespace CumbreGanadera.Modelo
         public int Id { get; set; }
         public string Titulo { get; set; }
         public string Descripcion { get; set; }
-        public string Sector {  get; set; }
+        public Sector Sector { get; set; }
         public DateTime FechaAsignacion { get; set; }
         public DateTime FechaFinalizacion { get; set; }
         public string Estado { get; set; }
+        public int IdGerente { get; set; }
+        public Usuario DatosUsuario { get; set; }
     }
 }
