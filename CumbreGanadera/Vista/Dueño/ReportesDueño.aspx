@@ -223,7 +223,6 @@
                     AutoPostBack="true"
                     OnSelectedIndexChanged="ddlHaciendas_SelectedIndexChanged" 
                     CssClass="form-select custom-select">
-                    <asp:ListItem Text="-- Seleccione una hacienda --" Value="" />
                 </asp:DropDownList>
             </div>            
         </div>

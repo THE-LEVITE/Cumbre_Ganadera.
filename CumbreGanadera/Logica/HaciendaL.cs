@@ -42,5 +42,49 @@ namespace CumbreGanadera.Logica
         {
             return oDatosHacienda.MtActualizarSolicitudD(IdReporte);
         }
+
+        public List<Reporte> MtSolicitudGerenteL(int idGerente)
+        {
+            return oDatosHacienda.MtSolicitudGerenteD(idGerente);
+        }
+
+        public List<Reporte> MtRespuestaSolicitudL(int idSoli) 
+        {
+            return oDatosHacienda.MtRespuestaSolicitudD(idSoli);
+        }
+
+        public int MtCrearSolicitudL(Reporte oReport,int idGerente,int idHacienda)
+        {
+            return oDatosHacienda.MtCrearSolicitudD(oReport, idGerente, idHacienda);
+        }
+
+        public List<Producto> MtCargarTipoProductoL()
+        {
+            return oDatosHacienda.MtCargarTipoProductoD();
+        }
+        public List<Producto> MtCargarProductoL(int idHacienda)
+        {
+            return oDatosHacienda.MtCargarProductoD(idHacienda);
+        }
+
+        public Producto MtTraerProductoL(int idProducto)
+        {
+            return oDatosHacienda.MtTraerProductoD(idProducto);
+        }
+
+        public int MtCrearProductoL(int idHacienda,Producto oProduct,int idTipo)
+        {
+            return oDatosHacienda.MtCrearProductoD(idHacienda, oProduct, idTipo);
+        }
+        public int MtEditarProductoL(int IdProducto, Producto oProduct,int idTipo)
+        {
+            return oDatosHacienda.MtEditarProductoD(IdProducto, oProduct, idTipo);
+        }
+
+        public bool MtEliminarProductoL(int idProducto)
+        {
+            return oDatosHacienda.MtEliminarProductoD(idProducto);
+        }
+
     }
 }

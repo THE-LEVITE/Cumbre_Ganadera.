@@ -14,7 +14,9 @@ namespace CumbreGanadera.Modelo
         public string Descripcion { get; set; }
         public double Calificacion { get; set; }
         public int StockDisponible{ get; set; }
-        public string FotoProducto { get; set; } 
+        public string FotoProducto { get; set; }
+        public string NombreTipo { get; set; }
+        public int IdTipo { get; set; }
 
     }
 }

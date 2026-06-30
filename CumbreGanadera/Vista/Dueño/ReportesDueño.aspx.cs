@@ -72,38 +72,46 @@ namespace CumbreGanadera.Vista.Dueño
 
         protected void btnEnviarRespuesta_Click(object sender, EventArgs e)
         {
-
-            Reporte oReport = new Reporte()
+            if (string.IsNullOrWhiteSpace(txtTitulo.Value) || string.IsNullOrWhiteSpace(txtDescripcion.Value) || string.IsNullOrWhiteSpace(txtMotivo.Value))
             {
-                Titulo = txtTitulo.Value,
-                Descripcion = txtDescripcion.Value,
-                Motivo = txtMotivo.Value,
-                FechaCreacion = DateTime.Now
-            };
-
-            int idDueño = Convert.ToInt32(Session["Id"]);
-            int IdReporte = Convert.ToInt32(Session["idReporte"]);
-            int idHacienda = Convert.ToInt32(Session["IdHacienda"]);
-
-            int num = oHaciL.MtResponderSolicutudL(oReport, idDueño, IdReporte, idHacienda);
-
-            if (num == 2)
+                MostrarMensaje("Error de campos", "Se deben de llenar todos los campos para mandar la respuesta", "info");
+                return;
+            }
+            else
             {
-                bool actu = oHaciL.MtActualizarSolicitudL(IdReporte);
-                if (actu)
+                Reporte oReport = new Reporte()
                 {
-                    MostrarMensaje("Respuesta Enviada","La respuesta de la solicitud se envio correctamente", "success");
-                    txtTitulo.Value = "";
-                    txtDescripcion.Value = "";
-                    txtMotivo.Value = "";
-                    MtCargarReportes();
-                }
-                else
-                {
-                    MostrarMensaje("Error al Enviar", "La respuesta de la solicitud no se puedo enviar correctamente", "error");
+                    Titulo = txtTitulo.Value,
+                    Descripcion = txtDescripcion.Value,
+                    Motivo = txtMotivo.Value,
+                    FechaCreacion = DateTime.Now
+                };
 
+                int idDueño = Convert.ToInt32(Session["Id"]);
+                int IdReporte = Convert.ToInt32(Session["idReporte"]);
+                int idHacienda = Convert.ToInt32(Session["IdHacienda"]);
+
+                int num = oHaciL.MtResponderSolicutudL(oReport, idDueño, IdReporte, idHacienda);
+
+                if (num == 2)
+                {
+                    bool actu = oHaciL.MtActualizarSolicitudL(IdReporte);
+                    if (actu)
+                    {
+                        MostrarMensaje("Respuesta Enviada", "La respuesta de la solicitud se envio correctamente", "success");
+                        txtTitulo.Value = "";
+                        txtDescripcion.Value = "";
+                        txtMotivo.Value = "";
+                        MtCargarReportes();
+                    }
+                    else
+                    {
+                        MostrarMensaje("Error al Enviar", "La respuesta de la solicitud no se puedo enviar correctamente", "error");
+                        return;
+                    }
                 }
             }
+            
         }
 
         protected void btnResponder_Click(object sender, EventArgs e)

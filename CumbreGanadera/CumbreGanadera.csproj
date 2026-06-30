@@ -85,6 +85,7 @@
     <Content Include="Vista\Dueño\RegistroGerente.aspx" />
     <Content Include="Vista\Dueño\ReportesDueño.aspx" />
     <Content Include="Vista\Dueño\ResumenHacienda.aspx" />
+    <Content Include="Vista\Gerente\GestionProductos.aspx" />
     <Content Include="Vista\Gerente\InicioGerente.aspx" />
     <Content Include="Vista\Gerente\ReportesGerentes.aspx" />
     <Content Include="Vista\Invitado\InicioInvitado.aspx" />
@@ -283,6 +284,13 @@
     </Compile>
     <Compile Include="Vista\Estructura.Master.designer.cs">
       <DependentUpon>Estructura.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Gerente\GestionProductos.aspx.cs">
+      <DependentUpon>GestionProductos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Gerente\GestionProductos.aspx.designer.cs">
+      <DependentUpon>GestionProductos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vista\Gerente\InicioGerente.aspx.cs">
       <DependentUpon>InicioGerente.aspx</DependentUpon>
