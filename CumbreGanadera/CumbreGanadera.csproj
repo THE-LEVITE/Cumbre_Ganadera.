@@ -120,6 +120,7 @@
     <Content Include="Vista\Source\Img\Perfiles\Cliente\fotoP.jpg" />
     <Content Include="Vista\Source\JS\ScriptEstructura.js" />
     <Content Include="Vista\Trabajador\InicioTrabajador.aspx" />
+    <Content Include="Vista\Trabajador\Inventario.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +140,7 @@
     <Compile Include="Modelo\Hacienda.cs" />
     <Compile Include="Modelo\MenuM.cs" />
     <Compile Include="Modelo\Producto.cs" />
+    <Compile Include="Modelo\Recurso.cs" />
     <Compile Include="Modelo\RegistroUsusario.cs" />
     <Compile Include="Modelo\Reporte.cs" />
     <Compile Include="Modelo\Rol.cs" />
@@ -326,6 +328,13 @@
     </Compile>
     <Compile Include="Vista\Trabajador\InicioTrabajador.aspx.designer.cs">
       <DependentUpon>InicioTrabajador.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Trabajador\Inventario.aspx.cs">
+      <DependentUpon>Inventario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Trabajador\Inventario.aspx.designer.cs">
+      <DependentUpon>Inventario.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

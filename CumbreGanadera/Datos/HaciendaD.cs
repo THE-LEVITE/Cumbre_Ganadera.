@@ -499,6 +499,44 @@ namespace CumbreGanadera.Datos
             }
         }
 
+        public List<Recurso> MtEncontrarInsumoD(int idHacienda)
+        {
+            List<Recurso> listTipoProducto = new List<Recurso>();
+
+            using (SqlConnection cn = ConexionBD.MtAbrirConexion())
+            {
+                cn.Open();
+
+                string consulta = "Sp_ConsultarInsumo";
+
+                using (SqlCommand cmd = new SqlCommand(consulta, cn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@IdHacienda", idHacienda);
+
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            Recurso oRecurso = new Recurso()
+                            {
+                                Id = Convert.ToInt32(dr["Id"]),
+                                Nombre = dr["Nombre"].ToString(),
+                                Cantidad = Convert.ToInt32(dr["Cantidad"]),
+                                Descripcion = dr["Descripcion"].ToString(),
+                                Categoria = dr["Tipo"].ToString()
+
+                            };
+                            listTipoProducto.Add(oRecurso);
+                        }
+                    }
+                }
+            }
+
+            return listTipoProducto;
+        }
+
 
     }
 }

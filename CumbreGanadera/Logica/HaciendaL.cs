@@ -86,5 +86,10 @@ namespace CumbreGanadera.Logica
             return oDatosHacienda.MtEliminarProductoD(idProducto);
         }
 
+        public List<Recurso> MtEncontrarInsumoL(int idHacienda)
+        {
+            return oDatosHacienda.MtEncontrarInsumoD(idHacienda);
+        }
+
     }
 }
