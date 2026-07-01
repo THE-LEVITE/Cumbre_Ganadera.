@@ -21,7 +21,7 @@ namespace CumbreGanadera.Datos
 
                 string Consulta = "Select UT.Nombre as NombreTrabajador, UT.Apellido as ApellidoTrabajador, * From Tarea T inner join SectorArea SA on SA.IdTarea = T.Id inner join Sector S on SA.IdSector = S.Id inner join AsignacionTarea AT on AT.IdTarea = T.Id inner join Usuario U on AT.IdGerente = U.Id inner join Usuario UT on AT.IdTrabajador = UT.Id where AT.IdGerente = @IdGerente";
 
-                using(SqlCommand cmd = new SqlCommand(Consulta, cn))
+                using (SqlCommand cmd = new SqlCommand(Consulta, cn))
                 {
                     cmd.CommandType = CommandType.Text;
                     cmd.Parameters.AddWithValue("@IdGerente", IdGerente);
@@ -54,20 +54,20 @@ namespace CumbreGanadera.Datos
                     }
                 }
             }
-                return listaTareas;
+            return listaTareas;
         }
 
         public int MtRegistrarTarea(TareasM oTarea)
         {
             int Verificacion = 0;
 
-            using(SqlConnection cn = ConexionBD.MtAbrirConexion())
+            using (SqlConnection cn = ConexionBD.MtAbrirConexion())
             {
                 cn.Open();
 
                 string consulta = "";
 
-                using( SqlCommand cmd = new SqlCommand(consulta, cn))
+                using (SqlCommand cmd = new SqlCommand(consulta, cn))
                 {
                     cmd.CommandType = CommandType.Text;
                     cmd.Parameters.AddWithValue("@Titulo", oTarea.Titulo);
@@ -111,7 +111,7 @@ namespace CumbreGanadera.Datos
         {
             int Verificacion = 0;
 
-            using(SqlConnection cn = ConexionBD.MtAbrirConexion())
+            using (SqlConnection cn = ConexionBD.MtAbrirConexion())
             {
                 cn.Open();
 
@@ -123,7 +123,80 @@ namespace CumbreGanadera.Datos
                     cmd.Parameters.AddWithValue("@IdTarea", IdTarea);
                     Verificacion = cmd.ExecuteNonQuery();
                 }
-            }return Verificacion;
+            }
+            return Verificacion;
+        }
+
+        public List<Sector> MtObtenerSectores(int IdGerente)
+        {
+            List<Sector> Sectore = new List<Sector>();
+
+            using (SqlConnection cn = ConexionBD.MtAbrirConexion())
+            {
+                cn.Open();
+
+                string Consulta = "select s.* from sector s inner join hacienda h on s.IdHacienda = h.Id inner join RelacionHacienda rh on rh.IdHacienda = h.Id inner join Usuario u on rh.IdUsuario = u.Id where u.Id = @IdGerente";
+
+                using (SqlCommand cmd = new SqlCommand(Consulta, cn))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@IdGerente", IdGerente);
+
+                    DataTable dt = new DataTable();
+
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+                    da.Fill(dt);
+
+                    foreach (DataRow item in dt.Rows)
+                    {
+                        Sector oSector = new Sector()
+                        {
+                            Id = Convert.ToInt32(item["Id"]),
+                            Nombre = item["Nombre"].ToString(),
+                            Tamaño = item["Tamaño"].ToString()
+                        };
+                        Sectore.Add(oSector);
+                    }
+                }
+            }
+            return Sectore;
+        }
+        public List<Usuario> MtObtenerTrabajadores(int IdGerente)
+        {
+            List<Usuario> listarTrabajadores = new List<Usuario>();
+
+            using (SqlConnection cn = ConexionBD.MtAbrirConexion())
+            {
+                cn.Open();
+
+                string consulta = "Sp_ObtenerTrabajadores";
+
+                using (SqlCommand cmd = new SqlCommand(consulta, cn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@IdGerente", IdGerente);
+
+                    DataTable dt = new DataTable();
+
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+
+                    foreach (DataRow fila in dt.Rows)
+                    {
+                        listarTrabajadores.Add(new Usuario
+                        {
+                            Documento = fila["Documento"].ToString(),
+                            Nombre = fila["Nombre"].ToString(),
+                            Apellido = fila["Apellido"].ToString(),
+                            Email = fila["Email"].ToString(),
+                            Telefono = fila["Telefono"].ToString()
+                        });
+                    }
+
+                }
+            }
+            return listarTrabajadores;
         }
     }
 }

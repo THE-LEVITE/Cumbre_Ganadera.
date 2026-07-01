@@ -33,5 +33,17 @@ namespace CumbreGanadera.Logica
             int Verificacion = oTareasD.MtEliminarTarea(IdTarea);
             return Verificacion;
         }
+
+        public List<Sector> MtObtenerSectores(int IdGerente)
+        {
+            List<Sector> listaSectores = oTareasD.MtObtenerSectores(IdGerente);
+            return listaSectores;
+        }
+
+        public List<Usuario> MtobtenerTrabajadores(int IdGerente)
+        {
+            List<Usuario> listaTrabajadores = oTareasD.MtObtenerTrabajadores(IdGerente);
+            return listaTrabajadores;
+        }
     }
 }

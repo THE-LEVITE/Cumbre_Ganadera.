@@ -10,7 +10,7 @@ namespace CumbreGanadera.Vista.Gerente.CrudTareas
 {
     public partial class Tareas : System.Web.UI.Page
     {
-        
+        TareasL oTareasL = new TareasL();
         protected void Page_Load(object sender, EventArgs e)
         {
             int IdGerente = (int) Session["Id"];
@@ -23,7 +23,7 @@ namespace CumbreGanadera.Vista.Gerente.CrudTareas
 
         protected void btnAgregarTarea_Click(object sender, EventArgs e)
         {
-            Response.Redirect("");
+            Response.Redirect("CrearTarea.aspx");
         }
 
         protected void gvTareas_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -32,7 +32,6 @@ namespace CumbreGanadera.Vista.Gerente.CrudTareas
         }
         public void MtCargarTareas(int IdGerente)
         {
-            TareasL oTareasL = new TareasL();
             gvTareas.DataSource = oTareasL.MtObtenerTareas(IdGerente);
             gvTareas.DataBind();
         }
