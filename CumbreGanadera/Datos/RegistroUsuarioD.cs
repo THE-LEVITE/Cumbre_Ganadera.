@@ -9,15 +9,14 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.Remoting.Metadata;
 using System.Web;
+using System.Web.UI.WebControls;
 
 namespace CumbreGanadera.Datos
 {
     public class RegistroUsuarioD
     {
-        public Usuario MTRegistro(RegistroUsuario oRegistro)
+        public int MTRegistro(Usuario oRegistro)
         {
-            Usuario oRegistroUser = null;
-
             using (SqlConnection cn = ConexionBD.MtAbrirConexion())
             {
                 cn.Open();
@@ -33,6 +32,7 @@ namespace CumbreGanadera.Datos
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Nombre", oRegistro.Nombre);
                     cmd.Parameters.AddWithValue("@Apellido", oRegistro.Apellido);
+                    cmd.Parameters.AddWithValue("@TipoDocumento", oRegistro.TipoDocumento);
                     cmd.Parameters.AddWithValue("@Documento", oRegistro.Documento);
                     cmd.Parameters.AddWithValue("@Email", oRegistro.Email);
                     cmd.Parameters.AddWithValue("@Telefono", oRegistro.Telefono);
@@ -43,19 +43,11 @@ namespace CumbreGanadera.Datos
                     cmd.Parameters.AddWithValue("@Ciudad", oRegistro.Ciudad);
                     cmd.Parameters.AddWithValue("@Rol", 4);
 
-                    resultado = Convert.ToInt32(cmd.ExecuteScalar());
+                    return resultado = cmd.ExecuteNonQuery();
 
-                    if (resultado == -1)
-                    {
-                        return null; // usuario ya existe
-                    }
-                    else
-                    {
-                        return new Usuario() { Id = resultado };
-                    }
+
                 }
             }
-            return oRegistroUser;
         }
         public int MTInsertarGerente(RegistroUsuario gerente)
         {

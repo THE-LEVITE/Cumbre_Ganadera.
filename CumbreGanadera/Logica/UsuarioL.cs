@@ -53,5 +53,16 @@ namespace CumbreGanadera.Logica
             int filas = oUsuarioD.MTEliminarUsuario(IdUsuario);
             return filas;
         }
+        public Usuario MTObtenerGerente(int IdGerenteEditar)
+        {
+            Usuario InformacionGerente = oUsuarioD.MTObtenerEditarGerente(IdGerenteEditar);
+            return InformacionGerente;
+        }
+
+        public int MTEditarGerente(Usuario oGerente)
+        {
+            int filas = oUsuarioD.MTEditarGerente(oGerente);
+            return filas;
+        }
     }
 }

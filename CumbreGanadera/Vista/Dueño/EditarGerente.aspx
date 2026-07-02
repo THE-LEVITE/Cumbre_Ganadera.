@@ -1,43 +1,21 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vista/Estructura.Master" AutoEventWireup="true" CodeBehind="EditarGerente.aspx.cs" Inherits="CumbreGanadera.Vista.Dueño.EditarGerente" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 
     <div>
-        <label class="labelTitulo mt-2">Registro de gerentes </label>
+        <label class="labelTitulo mt-2">Editar gerente </label>
         <br>
-        <label class="labelDescripcion">Aqui podra registrar gerentes para la administracion de las areas que componen su hacienda</label>
+        <label class="labelDescripcion">Aqui podra editar la infotmacion del gerente que seleccionó</label>
     </div>
     <div class="contenedorTextbox">
         <div class="container">
 
             <%--primera fila--%>
-            <div class="row">
-                <div class="col">
-                    <label class="form-label colorTexto">Documento de Identidad</label>
-                    <asp:TextBox runat="server" ID="txtDocumento" CssClass="form-control fondotxt" placeholder="Ingrese su documento" oninput="this.value = this.value.replace(/[^0-9]/g, '')"></asp:TextBox>
-                </div>
-                <div class="col order-5">
-                    <label class="form-label colorTexto">Tipo de documento</label>
-                    <asp:DropDownList class="form-control fondotxt" ID="dlTipoDocumento" ForeColor="White" BackColor="#2f4029" runat="server"></asp:DropDownList>
-                </div>
-            </div>
-
-            <%--segudna fila--%>
-            <div class="row">
-                <div class="col mt-4">
-                    <label class="form-label colorTexto">Apellido</label>
-                    <asp:TextBox runat="server" ID="txtApellido" CssClass="form-control fondotxt" placeholder="Apellidos del gerente" oninput="this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ ]/g, '')"></asp:TextBox>
-                </div>
-                <div class="col order-5 mt-4">
-                    <label class="form-label colorTexto">Nombre</label>
-                    <asp:TextBox runat="server" ID="txtNombre" CssClass="form-control fondotxt" placeholder="Nombre del gerente" oninput="this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ ]/g, '')"></asp:TextBox>
-                </div>
-            </div>
-
-            <%--tercera fila--%>
             <div class="row">
                 <div class="col mt-4">
                     <label class="form-label colorTexto">Correo Electronico</label>
@@ -49,7 +27,26 @@
                 </div>
             </div>
 
-            <%--cuarta fila--%>
+
+
+            <%--segudna fila--%>
+            <div class="row">
+
+                <div class="col mt-4">
+                    <label class="form-label colorTexto">Seleccionar estado</label>
+                    <asp:DropDownList class="form-control fondotxt" ID="dlEstado" ForeColor="White" BackColor="#2f4029" runat="server">
+                        <asp:ListItem Text="Activo" Value="1" />
+                        <asp:ListItem Text="Inactivo" Value="2" />
+                    </asp:DropDownList>
+                </div>
+
+
+                <div class="col order-5 mt-4">
+                    <label class="form-label colorTexto">Tipo de documento</label>
+                    <asp:DropDownList class="form-control fondotxt" ID="dlTipoDocumento" ForeColor="White" BackColor="#2f4029" runat="server"></asp:DropDownList>
+                </div>
+            </div>
+            <%--tercera fila--%>
             <div class="row">
                 <div class="col mt-4">
                     <label class="form-label colorTexto">Departamento</label>
@@ -60,11 +57,6 @@
                 <div class="col mt-4">
                     <label class="form-label colorTexto">Ciudad</label>
                     <asp:DropDownList class="form-control fondotxt" ID="dlCiudad" ForeColor="White" BackColor="#2f4029" runat="server"></asp:DropDownList>
-
-                </div>
-                <div class="col order-5 mt-4">
-                    <label class="form-label colorTexto">Fecha de nacimiento</label>
-                    <asp:TextBox runat="server" ID="txtFechaNacimiento" CssClass="form-control fondotxt" TextMode="Date"></asp:TextBox>
                 </div>
 
             </div>
@@ -90,15 +82,12 @@
         </div>
 
     </div>
-    <h2 class="colorTextoLabel">NOTA: En caso de que el gerente a registrar no sea cliente aun, se le asignara la contraseña "Gerente123" de lo contrario se mantendra con la misma contraseña que uso en su primer registro.
-    </h2>
-
     <div class="row">
-        <div class="col mt-4 margenBotones">
-            <asp:Button ID="btnRegistrar" runat="server" Text="Completar registro" CssClass="btn w-100 boronesCrudRegistrar" />
+        <div class="col mt-4 margenBotones boton">
+            <asp:Button ID="btnEditar" CssClass="botonesCrudRegistrar btn w-100" runat="server" Text="Editar" OnClick="btnEditar_Click" />
         </div>
         <div class="col mt-4 margenBotones">
-            <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn w-100 boronesCrudCancelar" />
+            <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="botonesCrudCancelar btn w-100" OnClick="btnCancelar_Click" />
 
         </div>
     </div>

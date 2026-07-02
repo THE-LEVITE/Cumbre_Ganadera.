@@ -68,24 +68,16 @@ namespace CumbreGanadera.Vista.Dueño
 
                     ClientScript.RegisterStartupScript(this.GetType(), "Acceso", script, true);
                     Response.Redirect(Request.RawUrl);
-                }   
+                }
             }
-            
+
         }
 
         protected void bntEditar_Command(object sender, CommandEventArgs e)
         {
-            int id = Convert.ToInt32(e.CommandArgument);
-
-            MTGerenteEditar(id);
+            Session["IdGerenteEditar"] = Convert.ToInt32(e.CommandArgument);
 
             Response.Redirect("EditarGerente.aspx");
-        }
-
-        public int MTGerenteEditar(int Gerente)
-        {
-            int IdGerente = Gerente;
-            return IdGerente;
         }
     }
 }

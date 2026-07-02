@@ -93,6 +93,29 @@
             backdrop-filter: blur(12px);
             background: rgba(36, 44, 37, 0.4);
         }
+
+        .logincardRol {
+            margin: 20px;
+            background: #0b2001b3;
+            backdrop-filter: blur(12px);
+            border-radius: 18px;
+            padding: 30px;
+            width: 100%;
+            max-width: 1000px;
+            color: white;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            height: 100%;
+            max-height: 250px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+            .logincardRol:hover {
+                transform: translateY(-5px);
+            }
     </style>
 
 </asp:Content>
@@ -116,9 +139,9 @@
     </asp:LinkButton>
 
 
-  
+
     <!-- Gerente Card -->
-       <asp:LinkButton ID="btnGerente" runat="server" CssClass="logincardRol group w-full text-left cursor-pointer transition-all active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary/50 rounded-xl" OnClick="btnGerente_Click" Visible="false">
+    <asp:LinkButton ID="btnGerente" runat="server" CssClass="logincardRol group w-full text-left cursor-pointer transition-all active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary/50 rounded-xl" OnClick="btnGerente_Click" Visible="false">
        
       <div class="group">
    
@@ -150,7 +173,7 @@
     </asp:LinkButton>
 
     <!-- Cliente Card -->
-     <asp:LinkButton ID="btnCliente" runat="server" CssClass="logincardRol group w-full text-left cursor-pointer transition-all active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary/50 rounded-xl" OnClick="btnCliente_Click" Visible="false">
+    <asp:LinkButton ID="btnCliente" runat="server" CssClass="logincardRol group w-full text-left cursor-pointer transition-all active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary/50 rounded-xl" OnClick="btnCliente_Click" Visible="false">
 
         <div class=" group">
             <div class="bg-primary-container/10 flex items-center justify-center group-hover:bg-primary-container transition-colors duration-500 w-10 h-10 rounded-lg">
@@ -164,8 +187,8 @@
             </div>
 
         </div>
-      </asp:LinkButton>
-      
-      
+    </asp:LinkButton>
+
+
 
 </asp:Content>

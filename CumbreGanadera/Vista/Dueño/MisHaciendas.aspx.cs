@@ -20,14 +20,13 @@ namespace CumbreGanadera.Vista.Dueño
                 HaciendaL oDatosHacienda = new HaciendaL();
 
                 int dueñoId = Convert.ToInt32(Session["Id"].ToString());
-                Usuario oDueño = new Usuario { Id = dueñoId };
 
-                List<Hacienda> oListaHaciendas = oDatosHacienda.MTDueñoHacienda(oDueño);
+                List<Hacienda> oListaHaciendas = oDatosHacienda.MTDueñoHacienda(dueñoId);
                 rptHacienda.DataSource = oListaHaciendas;
                 rptHacienda.DataBind();
             }
         }
-       
+
         private void EjecutarAccion(string id)
         {
             Response.Redirect("ResumenHacienda.aspx");
@@ -44,3 +43,4 @@ namespace CumbreGanadera.Vista.Dueño
         }
     }
 }
+

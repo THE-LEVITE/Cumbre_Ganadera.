@@ -142,7 +142,7 @@ namespace CumbreGanadera.Datos
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Email", correo);
                     cmd.Parameters.AddWithValue("@Password", password);
-                    
+
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -247,7 +247,7 @@ namespace CumbreGanadera.Datos
             {
                 cn.Open();
 
-                string procedimiento = "sp_EliminarUsuario";
+                string procedimiento = "sp_EliminarGerente";
 
                 using (SqlCommand cmd = new SqlCommand(procedimiento, cn))
                 {
@@ -260,5 +260,56 @@ namespace CumbreGanadera.Datos
                 }
             }
         }
+        public Usuario MTObtenerEditarGerente(int IdGerenteEditar)
+        {
+            Usuario gerente = null;
+            using (SqlConnection cn = ConexionBD.MtAbrirConexion())
+            {
+                cn.Open();
+                string procedimiento = "sp_ObtenerEditarGerente";
+                using (SqlCommand cmd = new SqlCommand(procedimiento, cn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@IdGerenteEditar", IdGerenteEditar);
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr.Read())
+                        {
+                            gerente = new Usuario
+                            {
+                                Id = Convert.ToInt32(dr["Id"]),
+                                Nombre = dr["Nombre"].ToString(),
+                                Apellido = dr["Apellido"].ToString(),
+                                Telefono = dr["Telefono"].ToString(),
+                                AreaAsignada = dr["AreaAsignada"].ToString(),
+                                Estado = dr["Estado"].ToString()
+                            };
+                        }
+                    }
+                }
+            }
+            return gerente;
+        }
+        public int MTEditarGerente(Usuario Idusuario)
+        {
+            using (SqlConnection cn = ConexionBD.MtAbrirConexion())
+            {
+                cn.Open();
+
+                string procedimiento = "sp_EditarGerente";
+
+                using (SqlCommand cmd = new SqlCommand(procedimiento, cn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@IdUsuario", Idusuario);
+
+                    int filas = cmd.ExecuteNonQuery();
+
+                    return filas;
+                }
+            }
+        }
+
     }
 }
