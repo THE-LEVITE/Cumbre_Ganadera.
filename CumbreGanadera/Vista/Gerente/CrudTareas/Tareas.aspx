@@ -205,13 +205,6 @@
                         <asp:TemplateField HeaderText="Acciones">
                             <itemtemplate>
 
-                                <asp:Button ID="btnEditar"
-                                    runat="server"
-                                    Text="Editar"
-                                    CssClass="btn btn-sm btn-outline-primary"
-                                    CommandName="Editar"
-                                    CommandArgument='<%# Eval("Id") %>' />
-
                                 <asp:Button ID="btnEliminar"
                                     runat="server"
                                     Text="Eliminar"

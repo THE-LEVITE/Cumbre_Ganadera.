@@ -57,7 +57,7 @@ namespace CumbreGanadera.Datos
             return listaTareas;
         }
 
-        public int MtRegistrarTarea(TareasM oTarea)
+        public int MtRegistrarTarea(TareasM oTarea, int idTrabajador)
         {
             int Verificacion = 0;
 
@@ -65,18 +65,18 @@ namespace CumbreGanadera.Datos
             {
                 cn.Open();
 
-                string consulta = "";
+                string consulta = "Sp_RegistrarTarea";
 
                 using (SqlCommand cmd = new SqlCommand(consulta, cn))
                 {
-                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Titulo", oTarea.Titulo);
                     cmd.Parameters.AddWithValue("@Descripcion", oTarea.Descripcion);
                     cmd.Parameters.AddWithValue("@IdSector", oTarea.Sector.Id);
                     cmd.Parameters.AddWithValue("@FechaAsignacion", oTarea.FechaAsignacion);
                     cmd.Parameters.AddWithValue("@Estado", oTarea.Estado);
                     cmd.Parameters.AddWithValue("@IdGerente", oTarea.IdGerente);
-                    cmd.Parameters.AddWithValue("@IdTrabajador", oTarea.DatosUsuario.Id);
+                    cmd.Parameters.AddWithValue("@IdTrabajador", idTrabajador);
                     Verificacion = cmd.ExecuteNonQuery();
                 }
             }
@@ -186,6 +186,7 @@ namespace CumbreGanadera.Datos
                     {
                         listarTrabajadores.Add(new Usuario
                         {
+                            Id = Convert.ToInt32(fila["Id"]),
                             Documento = fila["Documento"].ToString(),
                             Nombre = fila["Nombre"].ToString(),
                             Apellido = fila["Apellido"].ToString(),

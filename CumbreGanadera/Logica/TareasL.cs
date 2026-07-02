@@ -16,9 +16,9 @@ namespace CumbreGanadera.Logica
             return oTareas;
         }
 
-        public int MtRegistrarTareas(TareasM oTareas)
+        public int MtRegistrarTareas(TareasM oTareas,int idTrabajador)
         {
-            int Verificacion = oTareasD.MtRegistrarTarea(oTareas);
+            int Verificacion = oTareasD.MtRegistrarTarea(oTareas, idTrabajador);
             return Verificacion;
         }
 

@@ -19,10 +19,10 @@ namespace CumbreGanadera.Vista.Gerente.CrudTareas
             {
                 TareasL oTareaL = new TareasL();
                 List<Sector> listaSectores = oTareaL.MtObtenerSectores(IdGerente);
-                ddlTrabajadores.DataSource = listaSectores;
-                ddlTrabajadores.DataTextField = "Nombre";
-                ddlTrabajadores.DataValueField = "Id";
-                ddlTrabajadores.DataBind();
+                ddlSectores.DataSource = listaSectores;
+                ddlSectores.DataTextField = "Nombre";
+                ddlSectores.DataValueField = "Id";
+                ddlSectores.DataBind();
 
                 ddlTrabajadores.DataSource = oTareaL.MtobtenerTrabajadores(IdGerente);
                 ddlTrabajadores.DataTextField = "Nombre";
@@ -44,6 +44,8 @@ namespace CumbreGanadera.Vista.Gerente.CrudTareas
             {
                 Id = Convert.ToInt32(ddlTrabajadores.SelectedValue)
             };
+
+            int idTrabajador = Convert.ToInt32(ddlTrabajadores.SelectedValue);
             oTareasM.Sector = new Sector()
             {
                 Id = Convert.ToInt32(ddlSectores.SelectedValue),
@@ -52,7 +54,7 @@ namespace CumbreGanadera.Vista.Gerente.CrudTareas
             
 
             TareasL oTareasl = new TareasL();
-            int Verificacion = oTareasl.MtRegistrarTareas(oTareasM);
+            int Verificacion = oTareasl.MtRegistrarTareas(oTareasM, idTrabajador);
 
             if (Verificacion > 0)
             {
@@ -60,6 +62,19 @@ namespace CumbreGanadera.Vista.Gerente.CrudTareas
                 icon: 'success',
                 title: '¡Exito!',
                 text: 'Tarea Registrada',
+                timer: 2000,
+                showConfirmButton: false
+                });";
+
+                ClientScript.RegisterStartupScript(this.GetType(), "Acceso", mensaje, true);
+
+            }
+            else
+            {
+                string mensaje = @"Swal.fire({
+                icon: 'error',
+                title: '¡Error!',
+                text: 'La tarea no se pudo registrar',
                 timer: 2000,
                 showConfirmButton: false
                 });";

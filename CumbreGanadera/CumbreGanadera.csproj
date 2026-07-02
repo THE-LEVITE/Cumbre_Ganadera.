@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Index.aspx" />
     <Content Include="Vista\Auth\InicioSesion.aspx" />
     <Content Include="Vista\Auth\RecuperarContraseña.aspx" />
     <Content Include="Vista\Auth\RegistroCliente.aspx" />
@@ -129,6 +130,13 @@
     <Compile Include="Datos\RegistroUsuarioD.cs" />
     <Compile Include="Datos\TareasD.cs" />
     <Compile Include="Datos\UsuarioD.cs" />
+    <Compile Include="Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Logica\HaciendaL.cs" />
     <Compile Include="Logica\MenuL.cs" />
     <Compile Include="Logica\ProductoL.cs" />
