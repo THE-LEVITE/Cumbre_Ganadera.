@@ -42,14 +42,14 @@
     </div>
 
 
-    <div class="data-grid" style="width:100%">
+    <div class="data-grid" style="width: 100%">
         <asp:GridView ID="gdGerentes" runat="server" AutoGenerateColumns="false">
 
             <Columns>
                 <asp:BoundField DataField="Nombre" HeaderText="Nombre" ItemStyle-Width="20%" ItemStyle-Height="50px" />
                 <asp:BoundField DataField="Apellido" HeaderText="Apellido" ItemStyle-Width="20%" />
                 <asp:BoundField DataField="Telefono" HeaderText="Telefono" ItemStyle-Width="15%" />
-                <asp:BoundField DataField="AreaAsignada" HeaderText="Area a cargo" ItemStyle-Width="20%" />
+                <asp:BoundField DataField="AreaAsignada" HeaderText="Area a cargo" ItemStyle-Width="15%" />
                 <asp:BoundField DataField="Estado" HeaderText="Estado" ItemStyle-Width="10%" />
 
                 <asp:TemplateField HeaderText="">

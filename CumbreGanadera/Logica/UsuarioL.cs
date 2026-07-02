@@ -9,15 +9,11 @@ namespace CumbreGanadera.Logica
 {
     public class UsuarioL
     {
-        //Instaciamos la clase UsuarioD y creamos un nuevo objeto llamado oUsuarioD
         UsuarioD oUsuarioD = new UsuarioD();
 
-        //Se crea un nuevo metodo con la clase Usuario llamando los datos de password y email
         public List<Usuario> MtLoginUsuario(DatosLoginUser oUsuario)
         {
-            //Asignamos a oUser el retorno de UsuarioD
             List<Usuario> ltUser = oUsuarioD.MtLogin(oUsuario);
-            //Se retorna los datos del usuario
             return ltUser;
 
         }
@@ -25,6 +21,19 @@ namespace CumbreGanadera.Logica
         {
             Usuario oPass = oUsuarioD.MtRecuperarContraseña(correo);
             return oPass;
+        }
+        public Usuario MtValidarCodigoRecuperacion(string correo)
+        {
+            Usuario oValidar = oUsuarioD.MtValidarCodigoRecuperacion(correo);
+            return oValidar;
+        }
+        public void MtGuardarCodigoRecuperacion(string correo, string codigo)
+        {
+            oUsuarioD.MtGuardarCodigoRecuperacion(correo, codigo);
+        }
+        public void MtActualizarPassword(string correo, string password)
+        {
+            oUsuarioD.MtActualizarPassword(correo, password);
         }
 
         private UsuarioD datos = new UsuarioD();
@@ -42,6 +51,17 @@ namespace CumbreGanadera.Logica
         public int MTEliminarUsuario(int IdUsuario)
         {
             int filas = oUsuarioD.MTEliminarUsuario(IdUsuario);
+            return filas;
+        }
+        public Usuario MTObtenerGerente(int IdGerenteEditar)
+        {
+            Usuario InformacionGerente = oUsuarioD.MTObtenerEditarGerente(IdGerenteEditar);
+            return InformacionGerente;
+        }
+
+        public int MTEditarGerente(Usuario oGerente)
+        {
+            int filas = oUsuarioD.MTEditarGerente(oGerente);
             return filas;
         }
     }

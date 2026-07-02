@@ -11,10 +11,9 @@ namespace CumbreGanadera.Logica
     {
         RegistroUsuarioD oRegistroD = new RegistroUsuarioD();
 
-        public Usuario MTRegistro(RegistroUsuario oRegistro)
+        public int MTRegistro(Usuario oRegistro)
         {
-            Usuario oRegistroUser = oRegistroD.MTRegistro(oRegistro);
-            return oRegistroUser;
+            return oRegistroD.MTRegistro(oRegistro);
         }
         public int MTRegistroGerente(RegistroUsuario oRegistroGer)
         {

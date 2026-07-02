@@ -18,20 +18,15 @@ namespace CumbreGanadera.Vista.Auth
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            //Validar que los textos tengan datos
             if (!string.IsNullOrEmpty(txtCorreo.Text) && !string.IsNullOrEmpty(txtPassword.Text))
             {
-                //creamos un nuevo objeto en el cual oLoginUser contiene los datos ingresados por el usuario
                 DatosLoginUser oLoginUser = new DatosLoginUser()
                 {
                     Email = txtCorreo.Text,
                     PasswordUser = txtPassword.Text
                 };
-                //creamos un nuevo objeto de oUsuariosL 
                 UsuarioL oUsuarioL = new UsuarioL();
-                //instanciamos un objeto de tipo usuario y le asignamos la informacion del MtLoginUsuario
                 List<Usuario> lUsuarioDatos = oUsuarioL.MtLoginUsuario(oLoginUser);
-                //Se hace una condicion por si el objeto llega null
                 var roles = lUsuarioDatos.Select(u => u.NombreRol.NombreRol).ToList();
                 Session["listausuarios"] = roles;
                 if (lUsuarioDatos != null)
@@ -44,7 +39,7 @@ namespace CumbreGanadera.Vista.Auth
                         Session["Nombre"] = oUsuario.Nombre + " " + oUsuario.Apellido;
                         Response.Redirect("~/Vista/Auth/SeleccionRol.aspx");
                     }
-                    else if(lUsuarioDatos.Count == 1)
+                    else if (lUsuarioDatos.Count == 1)
                     {
                         Session["SessionUsuario"] = oLoginUser.Email;
 
@@ -111,7 +106,7 @@ namespace CumbreGanadera.Vista.Auth
 
                             ClientScript.RegisterStartupScript(this.GetType(), "Acceso", mensaje, true);
                         }
-                        
+
                     }
                     else
                     {

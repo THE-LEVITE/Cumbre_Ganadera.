@@ -32,14 +32,14 @@
                             <div class="col">
                                 <h2><%# Eval("TipoProduccion") %></h2>
                             </div>
-                            <div class="MargenColumna Alinear col"> 
-                                <asp:Button ID="btnVerHacienda" runat="server" Text= "Ver Hacienda" 
-                                    CssClass="btn btn-success" CommandName="VerHacienda" CommandArgument='<%# Eval("Id") %>'/>
+                            <div class="MargenColumna Alinear col">
+                                <asp:Button ID="btnVerHacienda" runat="server" Text="Ver Hacienda"
+                                    CssClass="btn btn-success" CommandName="VerHacienda" CommandArgument='<%# Eval("Id") %>' />
                             </div>
                         </div>
                     </div>
                 </div>
-                  
+
 
             </ItemTemplate>
         </asp:Repeater>

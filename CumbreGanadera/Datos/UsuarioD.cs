@@ -13,27 +13,20 @@ namespace CumbreGanadera.Datos
 {
     public class UsuarioD
     {
-        //Se crea MtLogin en donde recibimos la informacion de los txt o datos usuario
         public List<Usuario> MtLogin(DatosLoginUser oDatosUsuario)
         {
-            //Aca definimos un objeto de usuario con la propiedad null para validarlo despues
             List<Usuario> ltUsuario = new List<Usuario>();
 
-            //se crea la conexion con su respectivo metodo
             using (SqlConnection cn = ConexionBD.MtAbrirConexion())
             {
                 cn.Open();
-                //Aca llamamos el procedimiento almacenado
                 string consulta = "SP_ValidacionLogin";
-                //El objeto Command esta reemplazando al adaptador, permitiendo hacer una conexion y consulta a la base de datos
                 using (SqlCommand cmd = new SqlCommand(consulta, cn))
                 {
-                    //Esto evita la Inyeccion SQL ya que solo muestra y almacena los parametros de la consulta de la parte superior
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Email", oDatosUsuario.Email);
                     cmd.Parameters.AddWithValue("@Password", oDatosUsuario.PasswordUser);
 
-                    //Aca lee la consulta de la base de datos 
                     DataTable dt = new DataTable();
 
                     SqlDataAdapter dr = new SqlDataAdapter(cmd);
@@ -47,10 +40,8 @@ namespace CumbreGanadera.Datos
                             Nombre = dr2["Nombre"].ToString(),
                             Apellido = dr2["Apellido"].ToString(),
                             Estado = dr2["Estado"].ToString(),
-                            //cantidadroles almacenara el numero de roles que tiene el usuario 
                             CantidadRoles = Convert.ToInt32(dr2["CantidadRoles"].ToString()),
 
-                            //Se debe hacer una instacia para acceder al nombre del rol  ya que este es una objeto en la clase Usuario
                             NombreRol = new Rol()
                             {
 
@@ -63,7 +54,6 @@ namespace CumbreGanadera.Datos
                     }
                 }
             }
-            //retornar los datos del usuario
             return ltUsuario;
         }
         public Usuario MtRecuperarContraseña(string correo)
@@ -75,10 +65,8 @@ namespace CumbreGanadera.Datos
                 cn.Open();
                 string consulta = "SP_RecuperarContraseña";
 
-                //El objeto Command esta reemplazando al adaptador, permitiendo hacer una conexion y consulta a la base de datos
                 using (SqlCommand cmd = new SqlCommand(consulta, cn))
                 {
-                    //Esto evita la Inyeccion SQL ya que solo muestra y almacena los parametros de la consulta de la parte superior
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Email", correo);
 
@@ -91,15 +79,73 @@ namespace CumbreGanadera.Datos
                             {
                                 Email = dr["Email"].ToString(),
                                 Password = dr["PasswordUser"].ToString()
-
-
                             };
                         }
-
                     }
                 }
             }
             return oUser;
+        }
+        public void MtGuardarCodigoRecuperacion(string Correo, string Codigo)
+        {
+            using (SqlConnection cn = ConexionBD.MtAbrirConexion())
+            {
+                cn.Open();
+                string consulta = "Sp_GuardarCodigoRecuperacion";
+
+                using (SqlCommand cmd = new SqlCommand(consulta, cn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Email", Correo);
+                    cmd.Parameters.AddWithValue("@Codigo", Codigo);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+        public Usuario MtValidarCodigoRecuperacion(string correo)
+        {
+            Usuario oUser = null;
+
+            using (SqlConnection cn = ConexionBD.MtAbrirConexion())
+            {
+                cn.Open();
+                string consulta = "Sp_ValidarCodigoRecuperacion";
+                using (SqlCommand cmd = new SqlCommand(consulta, cn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Email", correo);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            oUser = new Usuario()
+                            {
+                                CodigoRecuperacion = reader["CodigoRecuperacion"].ToString()
+                            };
+                        }
+                    }
+                }
+            }
+            return oUser;
+        }
+        public void MtActualizarPassword(string correo, string password)
+        {
+            using (SqlConnection cn = ConexionBD.MtAbrirConexion())
+            {
+                cn.Open();
+                string consulta = "Sp_ActualizarPassword";
+
+                using (SqlCommand cmd = new SqlCommand(consulta, cn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Email", correo);
+                    cmd.Parameters.AddWithValue("@Password", password);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
         public Usuario ObtenerPorId(int id)
@@ -108,7 +154,6 @@ namespace CumbreGanadera.Datos
             using (SqlConnection cn = ConexionBD.MtAbrirConexion())
             {
                 cn.Open();
-                // Se usa el nombre del procedimiento almacenado
                 string sql = "sp_ObtenerPorId";
                 using (SqlCommand cmd = new SqlCommand(sql, cn))
                 {
@@ -136,7 +181,6 @@ namespace CumbreGanadera.Datos
             return usuario;
         }
 
-        // Actualizar datos personales 
         public bool ActualizarUsuario(Usuario usuario)
         {
             using (SqlConnection cn = ConexionBD.MtAbrirConexion())
@@ -203,7 +247,7 @@ namespace CumbreGanadera.Datos
             {
                 cn.Open();
 
-                string procedimiento = "sp_EliminarUsuario";
+                string procedimiento = "sp_EliminarGerente";
 
                 using (SqlCommand cmd = new SqlCommand(procedimiento, cn))
                 {
@@ -216,5 +260,56 @@ namespace CumbreGanadera.Datos
                 }
             }
         }
+        public Usuario MTObtenerEditarGerente(int IdGerenteEditar)
+        {
+            Usuario gerente = null;
+            using (SqlConnection cn = ConexionBD.MtAbrirConexion())
+            {
+                cn.Open();
+                string procedimiento = "sp_ObtenerEditarGerente";
+                using (SqlCommand cmd = new SqlCommand(procedimiento, cn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@IdGerenteEditar", IdGerenteEditar);
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr.Read())
+                        {
+                            gerente = new Usuario
+                            {
+                                Id = Convert.ToInt32(dr["Id"]),
+                                Nombre = dr["Nombre"].ToString(),
+                                Apellido = dr["Apellido"].ToString(),
+                                Telefono = dr["Telefono"].ToString(),
+                                AreaAsignada = dr["AreaAsignada"].ToString(),
+                                Estado = dr["Estado"].ToString()
+                            };
+                        }
+                    }
+                }
+            }
+            return gerente;
+        }
+        public int MTEditarGerente(Usuario Idusuario)
+        {
+            using (SqlConnection cn = ConexionBD.MtAbrirConexion())
+            {
+                cn.Open();
+
+                string procedimiento = "sp_EditarGerente";
+
+                using (SqlCommand cmd = new SqlCommand(procedimiento, cn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@IdUsuario", Idusuario);
+
+                    int filas = cmd.ExecuteNonQuery();
+
+                    return filas;
+                }
+            }
+        }
+
     }
 }
