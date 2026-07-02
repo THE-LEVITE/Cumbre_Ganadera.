@@ -536,6 +536,80 @@ namespace CumbreGanadera.Datos
 
             return listTipoProducto;
         }
+        public List<Recurso> MtEncontrarHerramientaD(int idHacienda)
+        {
+            List<Recurso> listTipoProducto = new List<Recurso>();
+
+            using (SqlConnection cn = ConexionBD.MtAbrirConexion())
+            {
+                cn.Open();
+
+                string consulta = "Sp_ConsultarHerramienta";
+
+                using (SqlCommand cmd = new SqlCommand(consulta, cn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@IdHacienda", idHacienda);
+
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            Recurso oRecurso = new Recurso()
+                            {
+                                Id = Convert.ToInt32(dr["Id"]),
+                                Nombre = dr["Nombre"].ToString(),
+                                Estado = dr["Estado"].ToString(),
+                                Descripcion = dr["Descripcion"].ToString(),
+                                Categoria = dr["Tipo"].ToString()
+
+                            };
+                            listTipoProducto.Add(oRecurso);
+                        }
+                    }
+                }
+            }
+
+            return listTipoProducto;
+        }
+        public List<Recurso> MtEncontrarMaquinariaD(int idHacienda)
+        {
+            List<Recurso> listTipoProducto = new List<Recurso>();
+
+            using (SqlConnection cn = ConexionBD.MtAbrirConexion())
+            {
+                cn.Open();
+
+                string consulta = "Sp_ConsultarMaquinaria";
+
+                using (SqlCommand cmd = new SqlCommand(consulta, cn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@IdHacienda", idHacienda);
+
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            Recurso oRecurso = new Recurso()
+                            {
+                                Id = Convert.ToInt32(dr["Id"]),
+                                Nombre = dr["Nombre"].ToString(),
+                                Marca = dr["Marca"].ToString(),
+                                Descripcion = dr["Descripcion"].ToString(),
+                                Categoria = dr["NombreMaquina"].ToString()
+
+                            };
+                            listTipoProducto.Add(oRecurso);
+                        }
+                    }
+                }
+            }
+
+            return listTipoProducto;
+        }
 
 
     }

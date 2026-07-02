@@ -90,6 +90,16 @@ namespace CumbreGanadera.Logica
         {
             return oDatosHacienda.MtEncontrarInsumoD(idHacienda);
         }
+        public List<Recurso> MtEncontrarHerramientaL(int idHacienda)
+        {
+            return oDatosHacienda.MtEncontrarHerramientaD(idHacienda);
+        }
+        public List<Recurso> MtEncontrarMaquinariaL(int idHacienda)
+        {
+            return oDatosHacienda.MtEncontrarMaquinariaD(idHacienda);
+        }
+
+
 
     }
 }
