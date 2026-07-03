@@ -45,5 +45,10 @@ namespace CumbreGanadera.Logica
             List<Usuario> listaTrabajadores = oTareasD.MtObtenerTrabajadores(IdGerente);
             return listaTrabajadores;
         }
+
+        public List<TareasM> MtConsultarTareasL(int idTrabajador)
+        {
+            return oTareasD.MtConsultarTareasD(idTrabajador);
+        }
     }
 }

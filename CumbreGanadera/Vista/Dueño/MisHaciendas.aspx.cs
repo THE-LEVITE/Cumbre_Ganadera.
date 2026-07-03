@@ -24,6 +24,19 @@ namespace CumbreGanadera.Vista.Dueño
                 List<Hacienda> oListaHaciendas = oDatosHacienda.MTDueñoHacienda(dueñoId);
                 rptHacienda.DataSource = oListaHaciendas;
                 rptHacienda.DataBind();
+
+                if (oListaHaciendas != null && oListaHaciendas.Count > 0)
+                {
+                    lblTotalHaciendas.Text = oListaHaciendas.Count.ToString();
+                    divCards.Visible = true;
+                    lblSinHaciendas.Visible = false;
+                }
+                else
+                {
+                    lblTotalHaciendas.Text = "0";
+                    divCards.Visible = false;
+                    lblSinHaciendas.Visible = true;
+                }
             }
         }
 

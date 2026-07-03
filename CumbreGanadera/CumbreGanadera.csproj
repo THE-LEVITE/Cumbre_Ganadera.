@@ -160,6 +160,7 @@
     <Content Include="Vista\Gerente\GestionRecursos.aspx" />
     <Content Include="Vista\Trabajador\InicioTrabajador.aspx" />
     <Content Include="Vista\Trabajador\Inventario.aspx" />
+    <Content Include="Vista\Trabajador\TareasTrabajador.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -438,6 +439,13 @@
     </Compile>
     <Compile Include="Vista\Trabajador\Inventario.aspx.designer.cs">
       <DependentUpon>Inventario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Trabajador\TareasTrabajador.aspx.cs">
+      <DependentUpon>TareasTrabajador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Trabajador\TareasTrabajador.aspx.designer.cs">
+      <DependentUpon>TareasTrabajador.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -15,6 +15,24 @@ namespace CumbreGanadera.Vista.Dueño
     {
 
         /// <summary>
+        /// Control lblTotalHaciendas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotalHaciendas;
+
+        /// <summary>
+        /// Control divCards.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divCards;
+
+        /// <summary>
         /// Control rptHacienda.
         /// </summary>
         /// <remarks>
@@ -22,5 +40,14 @@ namespace CumbreGanadera.Vista.Dueño
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptHacienda;
+
+        /// <summary>
+        /// Control lblSinHaciendas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSinHaciendas;
     }
 }

@@ -18,7 +18,7 @@ namespace CumbreGanadera.Datos
             {
                 cn.Open();
 
-                string Consulta = "Select UT.Nombre as NombreTrabajador, UT.Apellido as ApellidoTrabajador, * From Tarea T inner join SectorArea SA on SA.IdTarea = T.Id inner join Sector S on SA.IdSector = S.Id inner join AsignacionTarea AT on AT.IdTarea = T.Id inner join Usuario U on AT.IdGerente = U.Id inner join Usuario UT on AT.IdTrabajador = UT.Id where AT.IdGerente = @IdGerente";
+                string Consulta = "Select UT.Nombre as NombreTrabajador, UT.Apellido as ApellidoTrabajador, T.Id as IdTarea, * From Tarea T inner join SectorArea SA on SA.IdTarea = T.Id inner join Sector S on SA.IdSector = S.Id inner join AsignacionTarea AT on AT.IdTarea = T.Id inner join Usuario U on AT.IdGerente = U.Id inner join Usuario UT on AT.IdTrabajador = UT.Id where AT.IdGerente = @IdGerente";
 
                 using (SqlCommand cmd = new SqlCommand(Consulta, cn))
                 {
@@ -35,6 +35,7 @@ namespace CumbreGanadera.Datos
                     {
                         TareasM oTareaM = new TareasM()
                         {
+                            Id = Convert.ToInt32(item["IdTarea"]),
                             Titulo = item["Titulo"].ToString(),
                             Descripcion = item["Descripcion"].ToString(),
                             Sector = new Sector()
@@ -114,11 +115,11 @@ namespace CumbreGanadera.Datos
             {
                 cn.Open();
 
-                string consulta = "";
+                string consulta = "Sp_EliminarTareaConCascada";
 
                 using (SqlCommand cmd = new SqlCommand(consulta, cn))
                 {
-                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@IdTarea", IdTarea);
                     Verificacion = cmd.ExecuteNonQuery();
                 }
@@ -197,6 +198,42 @@ namespace CumbreGanadera.Datos
                 }
             }
             return listarTrabajadores;
+        }
+
+
+        public List<TareasM> MtConsultarTareasD(int idTrabajador)
+        {
+            List<TareasM> listarTrareas = new List<TareasM>();
+
+            using (SqlConnection cn = ConexionBD.MtAbrirConexion())
+            {
+                cn.Open();
+
+                string consulta = "select t.Titulo, t.Descripcion from Tarea t join AsignacionTarea ast on t.Id = ast.IdTarea where ast.IdTrabajador = @IdGerente";
+
+                using (SqlCommand cmd = new SqlCommand(consulta, cn))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@IdGerente", idTrabajador);
+
+                    DataTable dt = new DataTable();
+
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+
+                    foreach (DataRow fila in dt.Rows)
+                    {
+                        listarTrareas.Add(new TareasM
+                        {
+                            Titulo = fila["Titulo"].ToString(),
+                            Descripcion = fila["Descripcion"].ToString()
+                            
+                        });
+                    }
+
+                }
+            }
+            return listarTrareas;
         }
     }
 }

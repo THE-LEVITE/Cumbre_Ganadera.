@@ -7,83 +7,56 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace CumbreGanadera.Vista.Gerente
+namespace CumbreGanadera.Vista.Trabajador
 {
 
 
-    public partial class CrearTarea
+    public partial class TareasTrabajador
     {
 
         /// <summary>
-        /// Control hlCancelar.
+        /// Control spanContador.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlCancelar;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spanContador;
 
         /// <summary>
-        /// Control btnGuargarTarea.
+        /// Control lblTotalTareas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGuargarTarea;
+        protected global::System.Web.UI.WebControls.Label lblTotalTareas;
 
         /// <summary>
-        /// Control txtTitulo.
+        /// Control divTablaTareas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTitulo;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divTablaTareas;
 
         /// <summary>
-        /// Control txtDescripcion.
+        /// Control gvTareasTrabajador.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDescripcion;
+        protected global::System.Web.UI.WebControls.GridView gvTareasTrabajador;
 
         /// <summary>
-        /// Control ddlSectores.
+        /// Control lblSintareas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSectores;
-
-        /// <summary>
-        /// Control ddlTrabajadores.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTrabajadores;
-
-        /// <summary>
-        /// Control rbActivo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbActivo;
-
-        /// <summary>
-        /// Control rbInactivo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbInactivo;
+        protected global::System.Web.UI.WebControls.Label lblSintareas;
     }
 }

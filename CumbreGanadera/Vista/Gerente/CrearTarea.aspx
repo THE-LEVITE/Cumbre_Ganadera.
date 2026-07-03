@@ -1,216 +1,380 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vista/Estructura.Master" AutoEventWireup="true" CodeBehind="CrearTarea.aspx.cs" Inherits="CumbreGanadera.Vista.Gerente.CrearTarea" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Material Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
-
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <style>
+        /* ====== ESTILOS GENERALES ====== */
         body {
             font-family: 'Inter', sans-serif;
             background: #f4f5f7;
-            overflow-x: hidden;
-        }
-        /* SIDEBAR */
-
-        .sidebar {
-            width: 260px;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            background: #fff;
-            border-right: 1px solid #dee2e6;
-            padding: 20px;
-            z-index: 1000;
         }
 
-            .sidebar .logo {
-                width: 60px;
-                height: 60px;
-                background: #39A900;
-                border-radius: 18px;
-                color: white;
-                font-size: 32px;
-                font-weight: bold;
+        /* ====== BREADCRUMB ====== */
+        .breadcrumb-custom {
+            padding: 12px 0;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb-custom a {
+            color: #4b6043;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .breadcrumb-custom a:hover {
+            color: #2d8700;
+        }
+
+        .breadcrumb-custom .separator {
+            color: #6c757d;
+            margin: 0 8px;
+        }
+
+        .breadcrumb-custom .active {
+            color: #6c757d;
+        }
+
+        /* ====== ENCABEZADO ====== */
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .page-header h2 {
+            font-weight: 700;
+            color: #1a202c;
+            margin: 0;
+        }
+
+        .page-header h2 i {
+            color: #4b6043;
+            margin-right: 10px;
+        }
+
+        .page-header .subtitle {
+            color: #6c757d;
+            font-size: 0.95rem;
+            margin-top: 5px;
+        }
+
+        /* ====== BOTONES ====== */
+        .btn-cancelar {
+            background: #6c757d;
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-cancelar:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        .btn-guardar {
+            background: linear-gradient(135deg, #4b6043 0%, #4b6043 100%);
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 10px rgba(75, 96, 67, 0.3);
+        }
+
+        .btn-guardar:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(75, 96, 67, 0.4);
+            color: white;
+        }
+
+        .btn-guardar:active {
+            transform: scale(0.95);
+        }
+
+        /* ====== FORM CARD ====== */
+        .form-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid #e9ecef;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+
+        .form-card .section-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #1a202c;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e9ecef;
+            margin-bottom: 25px;
+        }
+
+        .form-card .section-title i {
+            color: #4b6043;
+            margin-right: 8px;
+        }
+
+        /* ====== CAMPOS DEL FORMULARIO ====== */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: #2d3748;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .form-group label i {
+            color: #4b6043;
+            margin-right: 6px;
+        }
+
+        .form-control-custom {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .form-control-custom:focus {
+            border-color: #4b6043;
+            box-shadow: 0 0 0 0.2rem rgba(75, 96, 67, 0.25);
+            outline: none;
+        }
+
+        .form-control-custom::placeholder {
+            color: #adb5bd;
+        }
+
+        select.form-control-custom {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%234b6043' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            padding-right: 40px;
+        }
+
+        /* ====== ESTADO ====== */
+        .status-section {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px 30px;
+            margin-top: 30px;
+            border: 1px solid #e9ecef;
+        }
+
+        .status-section .status-title {
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 5px;
+        }
+
+        .status-section .status-subtitle {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        .status-section .status-options {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .status-section .status-options .form-check {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .status-section .status-options .form-check input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #4b6043;
+            cursor: pointer;
+        }
+
+        .status-section .status-options .form-check label {
+            font-weight: 500;
+            color: #2d3748;
+            cursor: pointer;
+            margin: 0;
+        }
+
+        /* ====== RESPONSIVE ====== */
+        @media (max-width: 768px) {
+            .page-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .page-header .btn-group {
+                width: 100%;
                 display: flex;
-                align-items: center;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .page-header .btn-group .btn {
+                width: 100%;
                 justify-content: center;
             }
 
-        .sidebar-menu a {
-            text-decoration: none;
-            color: #495057;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 16px;
-            border-radius: 14px;
-            margin-bottom: 10px;
-            transition: 0.3s;
-            font-size: 18px;
-        }
-
-            .sidebar-menu a:hover {
-                background: #edf3ff;
+            .form-card {
+                padding: 20px;
             }
 
-        .sidebar-menu .active {
-            background: #0d6efd;
-            color: white;
-        }
-        /* MAIN */
-
-        .main-container {
-            margin-left: 260px;
-            min-height: 100vh;
-            width: calc(100% - 260px);
-        }
-        /* TOPBAR */
-
-        .topbar {
-            height: 75px;
-            background: white;
-            border-bottom: 1px solid #dee2e6;
-            padding: 0 30px;
-        }
-        /* SEARCH */
-
-        .search-box {
-            position: relative;
-            width: 350px;
-        }
-
-            .search-box input {
-                padding-left: 45px;
-                border-radius: 50px;
-                height: 45px;
+            .status-section {
+                padding: 20px;
             }
 
-            .search-box .material-symbols-outlined {
-                position: absolute;
-                left: 14px;
-                top: 50%;
-                transform: translateY(-50%);
-                color: gray;
+            .status-section .status-options {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+                margin-top: 10px;
             }
-        /* CARDS */
-
-        .stats-card {
-            border: none;
-            border-radius: 24px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-            padding: 30px;
-        }
-        /* TABLE */
-
-        .table-container {
-            background: white;
-            border-radius: 25px;
-            overflow: hidden;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
         }
 
-        .table tbody tr:hover {
-            background: #f8fafc;
-        }
-        /* BUTTON GREEN */
-
-        .btn-green {
-            background: #39A900;
-            color: white;
-            border: none;
-        }
-
-            .btn-green:hover {
-                background: #2d8700;
-                color: white;
+        @media (max-width: 576px) {
+            .form-card {
+                padding: 15px;
             }
 
-        .badge-tech {
-            background: #dbeafe;
-            color: #0d6efd;
-            font-size: 14px;
-        }
-
-        .badge-tec {
-            background: #e9ecef;
-            color: #495057;
-            font-size: 14px;
+            .form-control-custom {
+                font-size: 0.85rem;
+                padding: 10px 14px;
+            }
         }
     </style>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <!-- CONTENT -->
-    <main class="p-4">
-        <!-- BREADCRUMB -->
-        <nav class="mb-4">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="Tareas.aspx">Tareas </a></li>
-                <li class="breadcrumb-item active">Nueva Tarea </li>
-            </ol>
-        </nav>
-        <!-- HEADER -->
-        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
-            <div>
-                <h2 class="fw-bold">Crear Nueva Tarea </h2>
-                <p class="text-muted">Registre la información básica para una nueva tarea. </p>
-            </div>
-            <div class="d-flex gap-3">
-                <button class="btn btn-outline-secondary px-4" href="Tareas.aspx">Cancelar </button>
-                <asp:Button ID="btnGuargarTarea" class="btn btn-green px-4" runat="server" Text="Guardar Tarea" OnClick="btnGuargarTarea_Click" />
-            </div>
-        </div>
-        <!-- FORM CARD -->
-        <div class="form-card">
-            <form>
-                <!-- SECTION -->
-                <div class="section-title">Información General </div>
-                <div class="row g-4">
-                    <!-- CODIGO -->
-                    <div class="col-md-6">
-                        <label class="form-label fw-semibold">Titulo </label>
-                        <asp:TextBox ID="txtTitulo" class="form-control form-control-lg" runat="server" placeholder="Ingrese el titulo"></asp:TextBox>
-                    </div>
-                    <!-- VERSION -->
-                    <div class="col-md-6">
-                        <label class="form-label fw-semibold">Descripción </label>
-                        <asp:TextBox ID="txtDescripcion" class="form-control form-control-lg" placeholder="Ingrese una descripción" runat="server"></asp:TextBox>
-                    </div>
-                    <!-- NIVEL -->
-                    <div class="col-md-6">
-                        <label class="form-label fw-semibold">Sector </label>
-                        <asp:DropDownList ID="ddlSectores" class="form-select form-select-lg" runat="server">
-                        </asp:DropDownList>
-                    </div>
 
-                    <!-- NIVEL -->
-                    <div class="col-md-6">
-                        <label class="form-label fw-semibold">Trabajadores </label>
-                        <asp:DropDownList ID="ddlTrabajadores" class="form-select form-select-lg" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    <div class="container-fluid p-4">
+        <!-- ====== BREADCRUMB ====== -->
+        <div class="breadcrumb-custom">
+            <a href="Tareas.aspx">Tareas</a>
+            <span class="separator">/</span>
+            <span class="active">Nueva Tarea</span>
+        </div>
+
+        <!-- ====== ENCABEZADO ====== -->
+        <div class="page-header">
+            <div>
+                <h2>
+                    <i class="bi bi-plus-circle"></i> Crear Nueva Tarea
+                </h2>
+                <p class="subtitle">Registre la información básica para una nueva tarea.</p>
+            </div>
+            <div class="btn-group" style="display: flex; gap: 12px;">
+                <asp:HyperLink ID="hlCancelar" runat="server" NavigateUrl="Tareas.aspx" CssClass="btn-cancelar">
+                    <i class="bi bi-x-circle"></i> Cancelar
+                </asp:HyperLink>
+                <asp:Button ID="btnGuargarTarea" class="btn-guardar" runat="server" 
+                    Text="Guardar Tarea" OnClick="btnGuargarTarea_Click" />
+            </div>
+        </div>
+
+        <!-- ====== FORM CARD ====== -->
+        <div class="form-card">
+            <div class="section-title">
+                <i class="bi bi-info-circle"></i> Información General
+            </div>
+
+            <div class="row g-4">
+                <!-- TÍTULO -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label><i class="bi bi-tag"></i> Título</label>
+                        <asp:TextBox ID="txtTitulo" class="form-control-custom" runat="server" 
+                            placeholder="Ingrese el título de la tarea" />
+                    </div>
+                </div>
+
+                <!-- DESCRIPCIÓN -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label><i class="bi bi-file-text"></i> Descripción</label>
+                        <asp:TextBox ID="txtDescripcion" class="form-control-custom" runat="server" 
+                            placeholder="Ingrese una descripción detallada" />
+                    </div>
+                </div>
+
+                <!-- SECTOR -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label><i class="bi bi-building"></i> Sector</label>
+                        <asp:DropDownList ID="ddlSectores" class="form-control-custom" runat="server">
                         </asp:DropDownList>
                     </div>
                 </div>
-                <!-- STATUS -->
-                <div class="bg-light rounded-4 p-4 mt-5">
-                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
-                        <div>
-                            <h5 class="fw-bold">Estado de la Tarea </h5>
-                            <p class="text-muted mb-0">Disponible para inscripciones. </p>
-                        </div>
-                        <div class="d-flex gap-4">
-                            <asp:RadioButton ID="rbEstado" class="form-check-label" GroupName="estado" runat="server" Text="Activo" />
-                            <asp:RadioButton ID="rb" class="form-check-label" GroupName="estado" runat="server" Text="Inactivo" />
+
+                <!-- TRABAJADOR -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label><i class="bi bi-person"></i> Trabajador Asignado</label>
+                        <asp:DropDownList ID="ddlTrabajadores" class="form-control-custom" runat="server">
+                        </asp:DropDownList>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ====== ESTADO ====== -->
+            <div class="status-section">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h5 class="status-title">
+                            <i class="bi bi-toggle-on" style="color: #4b6043;"></i> Estado de la Tarea
+                        </h5>
+                        <p class="status-subtitle">Seleccione el estado inicial de la tarea.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="status-options">
+                            <div class="form-check">
+                                <asp:RadioButton ID="rbActivo" GroupName="estado" runat="server" Checked="true" />
+                                <label for="rbActivo">Activo</label>
+                            </div>
+                            <div class="form-check">
+                                <asp:RadioButton ID="rbInactivo" GroupName="estado" runat="server" />
+                                <label for="rbInactivo">Inactivo</label>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
-    </main>
-    <!-- BOOTSTRAP -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    </div>
+
 </asp:Content>
